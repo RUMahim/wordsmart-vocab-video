@@ -771,15 +771,17 @@ button:active {
 
 <!-- Modal: Thumbnail Generator -->
 <div id="thm" class="modal-overlay" hidden role="dialog" aria-modal="true">
-  <div class="modal-box">
-    <h3>🖼 High-Res Thumbnail Generator</h3>
-    <div class="lab">Aspect Ratio</div>
+  <div class="modal-box" style="max-width:680px;">
+    <h3>🖼 High-Res Thumbnail Generator (YouTube & Social Media)</h3>
+    <div class="lab">Episode / পর্ব নির্বাচন</div>
+    <div class="seg" id="th-ep"></div>
+    <div class="lab" style="margin-top:8px">Aspect Ratio / প্ল্যাটফর্ম সাইজ</div>
     <div class="seg" id="th-ar"></div>
-    <div class="lab" style="margin-top:8px">Resolution</div>
+    <div class="lab" style="margin-top:8px">Resolution / রেজোলিউশন</div>
     <div class="seg" id="th-res"></div>
-    <div id="thv" style="margin:10px 0; min-height:140px;"></div>
-    <div class="msg" id="thmsg" role="status"></div>
-    <div class="acts">
+    <div id="thv" style="margin:12px 0; min-height:160px; display:flex; justify-content:center; align-items:center;"></div>
+    <div class="msg" id="thmsg" role="status" style="text-align:center;font-weight:600;color:#86efac;"></div>
+    <div class="acts" style="margin-top:10px;">
       <button class="pri" id="thsave">💾 SAVE PNG THUMBNAIL</button>
       <button class="dng" id="thx">CLOSE</button>
     </div>
@@ -2954,6 +2956,7 @@ const Core = (function() {
   const FAM = '"Hind Siliguri", "Noto Sans Bengali", sans-serif';
   const EN_FAM = '"Inter", sans-serif';
 
+  let thEp = currentEp || 1;
   let thAr = '16:9', thRes = 1080, thBlob = null, thUrl = null;
 
   const dims = () => {
@@ -2961,11 +2964,11 @@ const Core = (function() {
     if (thAr === '16:9') return [Math.round(r * 16 / 9), r];
     if (thAr === '9:16') return [r, Math.round(r * 16 / 9)];
     if (thAr === '1:1') return [r, r];
-    return [r, Math.round(r * 5 / 4)];
+    return [r, Math.round(r * 5 / 4)]; // 4:5 Portrait
   };
 
   function seg(id, vals, curVal, onSelect, lab) {
-    const el = $(id); el.innerHTML = '';
+    const el = $(id); if (!el) return; el.innerHTML = '';
     vals.forEach(v => {
       const b = document.createElement('button');
       b.type = 'button';
@@ -2979,133 +2982,417 @@ const Core = (function() {
     });
   }
 
+  function rr(c, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    c.beginPath();
+    c.moveTo(x + r, y);
+    c.arcTo(x + w, y, x + w, y + h, r);
+    c.arcTo(x + w, y + h, x, y + h, r);
+    c.arcTo(x, y + h, x, y, r);
+    c.arcTo(x, y, x + w, y, r);
+    c.closePath();
+  }
+
   function renderThumbnailCanvas(cv, W, H) {
     const c = cv.getContext('2d');
-    const u = (W / 100) * Math.sqrt((H / W) / (9 / 16));
+    const u = W / 100;
+    const epData = ALL_EPISODES[thEp] || ALL_EPISODES[1];
+    const th = epData.thumb;
 
-    // Deep Emerald Gradient Background
-    const g = c.createRadialGradient(0.2 * W, 0.15 * H, 0, 0.2 * W, 0.15 * H, W);
-    g.addColorStop(0, '#166534');
-    g.addColorStop(0.55, '#0b1f17');
-    g.addColorStop(1, '#050f0a');
+    // 1. Deep Emerald & Midnight Radial Background
+    const g = c.createRadialGradient(0.2 * W, 0.2 * H, 0, 0.2 * W, 0.2 * H, Math.hypot(W, H));
+    g.addColorStop(0, '#065f46');   // rich emerald
+    g.addColorStop(0.35, '#064e3b');
+    g.addColorStop(0.7, '#061d15'); // dark pine
+    g.addColorStop(1, '#020906');   // deepest black
     c.fillStyle = g;
     c.fillRect(0, 0, W, H);
 
-    // Glowing Circles
-    c.fillStyle = 'rgba(34,197,94,0.12)';
-    [[W * 0.9, H * 0.15, 12 * u], [W * 0.1, H * 0.85, 15 * u], [W * 0.6, H * 0.9, 8 * u]].forEach(([bx, by, r]) => {
-      c.beginPath(); c.arc(bx, by, r, 0, Math.PI * 2); c.fill();
-    });
+    // 2. Cinematic Lighting & Neon Ambient Glows
+    const drawGlow = (gx, gy, gr, col) => {
+      const radG = c.createRadialGradient(gx, gy, 0, gx, gy, gr);
+      radG.addColorStop(0, col);
+      radG.addColorStop(1, 'transparent');
+      c.fillStyle = radG;
+      c.beginPath(); c.arc(gx, gy, gr, 0, Math.PI * 2); c.fill();
+    };
+    drawGlow(W * 0.85, H * 0.15, W * 0.35, 'rgba(16, 185, 129, 0.18)');
+    drawGlow(W * 0.15, H * 0.85, W * 0.38, 'rgba(34, 197, 94, 0.15)');
+    drawGlow(W * 0.5, H * 0.5, W * 0.45, 'rgba(250, 204, 21, 0.08)');
 
-    const isLandscape = (W / H) >= 1.25;
+    // 3. Subtle Elegant Inner Border
+    c.save();
+    c.strokeStyle = 'rgba(34, 197, 94, 0.28)';
+    c.lineWidth = 0.5 * u;
+    rr(c, 1.2 * u, 1.2 * u, W - 2.4 * u, H - 2.4 * u, 2.5 * u);
+    c.stroke();
+    c.restore();
 
-    if (isLandscape) {
-      // Left Column: Branding & Titles
-      // Top Yellow Badge
-      const bw = 32 * u, bh = 5.2 * u;
+    // Helper: Draw Glassmorphic Card
+    function drawGlassCard(cx, cy, cw, ch, strokeCol, fillCol) {
+      c.save();
+      rr(c, cx, cy, cw, ch, 2.2 * u);
+      c.fillStyle = fillCol || 'rgba(255, 255, 255, 0.07)';
+      c.fill();
+      c.strokeStyle = strokeCol || 'rgba(34, 197, 94, 0.7)';
+      c.lineWidth = 0.35 * u;
+      c.stroke();
+      c.restore();
+    }
+
+    // Helper: Draw 3D Golden "VS" Badge
+    function drawVsBadge(vx, vy, vr) {
+      c.save();
+      c.shadowColor = 'rgba(250, 204, 21, 0.6)';
+      c.shadowBlur = 20;
       c.beginPath();
-      c.roundRect(W * 0.05, H * 0.08, bw, bh, bh / 2);
+      c.arc(vx, vy, vr, 0, Math.PI * 2);
+      c.fillStyle = '#facc15';
+      c.fill();
+      c.shadowBlur = 0;
+      c.lineWidth = 0.35 * u;
+      c.strokeStyle = '#ffffff';
+      c.stroke();
+      c.font = '800 ' + (1.2 * vr) + 'px ' + EN_FAM;
+      c.fillStyle = '#0f172a';
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      c.fillText('VS', vx, vy + 0.1 * vr);
+      c.restore();
+    }
+
+    // Helper: Draw Action CTA Pill
+    function drawCtaPill(px, py, pw, ph, text) {
+      c.save();
+      c.shadowColor = 'rgba(220, 38, 38, 0.65)';
+      c.shadowBlur = 30;
+      rr(c, px, py, pw, ph, ph / 2);
+      const ctaGrad = c.createLinearGradient(px, py, px + pw, py);
+      ctaGrad.addColorStop(0, '#ef4444');
+      ctaGrad.addColorStop(1, '#b91c1c');
+      c.fillStyle = ctaGrad;
+      c.fill();
+      c.shadowBlur = 0;
+      c.lineWidth = 0.3 * u;
+      c.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+      c.stroke();
+      c.font = '700 ' + (0.46 * ph) + 'px ' + FAM;
+      c.fillStyle = '#ffffff';
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      c.fillText(text, px + pw / 2, py + ph / 2);
+      c.restore();
+    }
+
+    // =====================================================================
+    // LAYOUT 1: LANDSCAPE (16:9) - YOUTUBE VIDEO THUMBNAIL
+    // =====================================================================
+    if (thAr === '16:9') {
+      const leftX = W * 0.055;
+
+      // 1. Top Yellow Episode Badge
+      const bw = 33 * u, bh = 5.4 * u;
+      c.save();
+      rr(c, leftX, H * 0.08, bw, bh, bh / 2);
       c.fillStyle = '#facc15'; c.fill();
-      c.font = '700 ' + (2.5 * u) + 'px ' + FAM;
-      c.fillStyle = '#111'; c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.fillText('🔥 Word Smart ১ | পর্ব-০২', W * 0.05 + bw / 2, H * 0.08 + bh / 2);
+      c.font = '700 ' + (2.6 * u) + 'px ' + FAM;
+      c.fillStyle = '#0f172a';
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(th.epBadge, leftX + bw / 2, H * 0.08 + bh / 2);
+      c.restore();
 
-      // Main Bengali/English Title
+      // 2. Main Title: Word Smart 1
+      c.save();
       c.textAlign = 'left';
-      c.font = '700 ' + (6.5 * u) + 'px ' + FAM;
-      c.fillStyle = '#f4fff8';
-      c.fillText('Word Smart 1', W * 0.05, H * 0.28);
+      c.font = '800 ' + (6.8 * u) + 'px ' + FAM;
+      c.fillStyle = '#ffffff';
+      c.shadowColor = 'rgba(0, 0, 0, 0.6)'; c.shadowBlur = 18;
+      c.fillText('Word Smart 1', leftX, H * 0.28);
 
-      c.font = '700 ' + (5.2 * u) + 'px ' + FAM;
-      c.fillStyle = '#22c55e';
-      c.shadowColor = 'rgba(34,197,94,0.6)'; c.shadowBlur = 25;
-      c.fillText('ভোকাবুলারি মাস্টারক্লাস', W * 0.05, H * 0.42);
+      // 3. Subtitle: ভোকাবুলারি মাস্টারক্লাস (Neon Emerald)
+      c.font = '800 ' + (5.4 * u) + 'px ' + FAM;
+      c.fillStyle = '#34d399';
+      c.shadowColor = 'rgba(52, 211, 153, 0.6)'; c.shadowBlur = 24;
+      c.fillText('ভোকাবুলারি মাস্টারক্লাস', leftX, H * 0.42);
       c.shadowBlur = 0;
 
-      c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+      // 4. Exams Targeting Pill
+      c.font = '700 ' + (2.4 * u) + 'px ' + FAM;
       c.fillStyle = '#fef08a';
-      c.fillText('BCS • Bank • Admission • IBA', W * 0.05, H * 0.56);
+      c.fillText('🎯 BCS • Bank • Admission (DU/IBA) • GRE', leftX, H * 0.54);
 
-      // Bottom CTA Pill
-      const cw = 32 * u, ch = 6.2 * u;
-      c.beginPath();
-      c.roundRect(W * 0.05, H * 0.72, cw, ch, ch / 2);
-      c.fillStyle = '#dc2626'; c.fill();
-      c.font = '700 ' + (3 * u) + 'px ' + FAM;
-      c.fillStyle = '#fff'; c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.fillText('শব্দ ১১-২০ + ট্রিক + ৩টি কুইজ ▶', W * 0.05 + cw / 2, H * 0.72 + ch / 2);
+      // 5. Short Feature Note
+      c.font = '600 ' + (2.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#a7f3d0';
+      c.fillText('💡 অর্থ • Synonyms • Antonyms • ম্যাজিক ট্রিক', leftX, H * 0.63);
 
-      // Right Column: Teaser Comparison Cards
-      const rx = W * 0.54, rw = W * 0.41;
-      // Card 1
-      c.beginPath();
-      c.roundRect(rx, H * 0.14, rw, H * 0.34, 2 * u);
-      c.fillStyle = 'rgba(255,255,255,0.07)'; c.fill();
-      c.lineWidth = 0.3 * u; c.strokeStyle = '#22c55e'; c.stroke();
+      // 6. Action CTA Button
+      const ctaW = 39 * u, ctaH = 6.8 * u;
+      drawCtaPill(leftX, H * 0.74, ctaW, ctaH, th.cta);
+      c.restore();
 
+      // 7. Right Hero Teaser Cards
+      const rx = W * 0.53, rw = W * 0.42;
+
+      // Card 1 (Top Hero)
+      drawGlassCard(rx, H * 0.08, rw, H * 0.38, '#22c55e', 'rgba(20, 83, 45, 0.35)');
+      c.save();
       c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.font = '700 ' + (5.5 * u) + 'px ' + EN_FAM;
+      c.font = '800 ' + (5.6 * u) + 'px ' + EN_FAM;
       c.fillStyle = '#ffffff';
-      c.fillText('Abridge', rx + rw / 2, H * 0.25);
-      c.font = '600 ' + (3.2 * u) + 'px ' + FAM;
-      c.fillStyle = '#22c55e';
-      c.fillText('সংক্ষিপ্ত করা ✂️', rx + rw / 2, H * 0.38);
+      c.fillText(th.w1, rx + rw / 2, H * 0.19);
+      c.font = '700 ' + (3.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#86efac';
+      c.fillText(th.m1, rx + rw / 2, H * 0.32);
+      c.restore();
 
-      // VS Separator
-      c.font = '700 ' + (3.2 * u) + 'px ' + EN_FAM;
-      c.fillStyle = '#facc15';
-      c.fillText('VS', rx + rw / 2, H * 0.52);
+      // VS Badge in Center
+      drawVsBadge(rx + rw / 2, H * 0.49, 3.4 * u);
+
+      // Card 2 (Bottom Hero)
+      drawGlassCard(rx, H * 0.54, rw, H * 0.38, '#38bdf8', 'rgba(12, 74, 110, 0.35)');
+      c.save();
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '800 ' + (5.6 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w2, rx + rw / 2, H * 0.65);
+      c.font = '700 ' + (3.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#7dd3fc';
+      c.fillText(th.m2, rx + rw / 2, H * 0.78);
+      c.restore();
+    }
+
+    // =====================================================================
+    // LAYOUT 2: VERTICAL (9:16) - YOUTUBE SHORTS / REELS / TIKTOK
+    // =====================================================================
+    else if (thAr === '9:16') {
+      const cx = W / 2;
+
+      // Top Episode Pill
+      const bw = 70 * u, bh = 4.2 * (H / 100);
+      c.save();
+      rr(c, cx - bw / 2, H * 0.10, bw, bh, bh / 2);
+      c.fillStyle = '#facc15'; c.fill();
+      c.font = '700 ' + (4.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#0f172a';
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(th.epBadge, cx, H * 0.10 + bh / 2);
+      c.restore();
+
+      // Header Titles
+      c.save();
+      c.textAlign = 'center';
+      c.font = '800 ' + (8.5 * u) + 'px ' + FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText('Word Smart 1', cx, H * 0.18);
+
+      c.font = '800 ' + (6.8 * u) + 'px ' + FAM;
+      c.fillStyle = '#34d399';
+      c.shadowColor = 'rgba(52, 211, 153, 0.5)'; c.shadowBlur = 20;
+      c.fillText('ভোকাবুলারি মাস্টারক্লাস', cx, H * 0.23);
+      c.shadowBlur = 0;
+      c.restore();
+
+      // Hero Teaser Cards (Middle Section)
+      const cw = W * 0.88, ch = H * 0.18;
+      const cardX = (W - cw) / 2;
+
+      // Card 1
+      drawGlassCard(cardX, H * 0.28, cw, ch, '#22c55e', 'rgba(20, 83, 45, 0.35)');
+      c.save();
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '800 ' + (7.8 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w1, cx, H * 0.34);
+      c.font = '700 ' + (4.6 * u) + 'px ' + FAM;
+      c.fillStyle = '#86efac';
+      c.fillText(th.m1, cx, H * 0.41);
+      c.restore();
+
+      // VS Badge
+      drawVsBadge(cx, H * 0.48, 5.2 * u);
 
       // Card 2
-      c.beginPath();
-      c.roundRect(rx, H * 0.56, rw, H * 0.34, 2 * u);
-      c.fillStyle = 'rgba(255,255,255,0.07)'; c.fill();
-      c.lineWidth = 0.3 * u; c.strokeStyle = '#38bdf8'; c.stroke();
-
-      c.font = '700 ' + (5.5 * u) + 'px ' + EN_FAM;
-      c.fillStyle = '#ffffff';
-      c.fillText('Abrogate', rx + rw / 2, H * 0.67);
-      c.font = '600 ' + (3.2 * u) + 'px ' + FAM;
-      c.fillStyle = '#38bdf8';
-      c.fillText('বাতিল বা রদ করা 🚫', rx + rw / 2, H * 0.80);
-
-    } else {
-      // Portrait / Square Layout (Stacked)
+      drawGlassCard(cardX, H * 0.51, cw, ch, '#38bdf8', 'rgba(12, 74, 110, 0.35)');
+      c.save();
       c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.font = '700 ' + (6.2 * u) + 'px ' + FAM;
-      c.fillStyle = '#f4fff8';
-      c.fillText('Word Smart 1', W / 2, H * 0.16);
+      c.font = '800 ' + (7.8 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w2, cx, H * 0.57);
+      c.font = '700 ' + (4.6 * u) + 'px ' + FAM;
+      c.fillStyle = '#7dd3fc';
+      c.fillText(th.m2, cx, H * 0.64);
+      c.restore();
 
-      c.font = '700 ' + (5.0 * u) + 'px ' + FAM;
-      c.fillStyle = '#22c55e';
-      c.fillText('ভোকাবুলারি পর্ব-০২', W / 2, H * 0.26);
+      // Lower Section: Exams & Hook
+      c.save();
+      c.textAlign = 'center';
+      c.font = '700 ' + (3.8 * u) + 'px ' + FAM;
+      c.fillStyle = '#fef08a';
+      c.fillText('🎯 BCS • Bank • Admission • IBA', cx, H * 0.73);
 
-      // Teaser Cards
-      const cw = W * 0.86, cx = W * 0.07;
-      c.beginPath();
-      c.roundRect(cx, H * 0.36, cw, H * 0.22, 2 * u);
-      c.fillStyle = 'rgba(255,255,255,0.07)'; c.fill();
-      c.lineWidth = 0.3 * u; c.strokeStyle = '#22c55e'; c.stroke();
+      c.font = '600 ' + (3.5 * u) + 'px ' + FAM;
+      c.fillStyle = '#a7f3d0';
+      c.fillText('💡 অর্থ + Synonyms + Antonyms + ট্রিক', cx, H * 0.77);
 
-      c.font = '700 ' + (6 * u) + 'px ' + EN_FAM;
-      c.fillStyle = '#fff';
-      c.fillText('Abdicate', W / 2, H * 0.43);
-      c.font = '600 ' + (3.4 * u) + 'px ' + FAM;
-      c.fillStyle = '#22c55e';
-      c.fillText('ক্ষমতা বা সিংহাসন ত্যাগ করা', W / 2, H * 0.51);
+      // Bottom CTA
+      const ctaW = W * 0.86, ctaH = 5.2 * (H / 100);
+      drawCtaPill(cx - ctaW / 2, H * 0.81, ctaW, ctaH, th.cta);
+      c.restore();
+    }
 
-      c.font = '700 ' + (3.5 * u) + 'px ' + FAM;
-      c.fillStyle = '#facc15';
-      c.fillText('কোনটি এর Antonym? 🤔', W / 2, H * 0.65);
+    // =====================================================================
+    // LAYOUT 3: SQUARE (1:1) - INSTAGRAM / FACEBOOK / COMMUNITY POST
+    // =====================================================================
+    else if (thAr === '1:1') {
+      const cx = W / 2;
 
-      // CTA Pill
-      const pw = W * 0.75, ph = 7 * u;
-      c.beginPath();
-      c.roundRect(W / 2 - pw / 2, H * 0.78, pw, ph, ph / 2);
-      c.fillStyle = '#dc2626'; c.fill();
-      c.font = '700 ' + (3.6 * u) + 'px ' + FAM;
-      c.fillStyle = '#fff';
-      c.fillText('১০ মিনিটে সব মনে রাখুন ▶', W / 2, H * 0.78 + ph / 2);
+      // Top Episode Badge
+      const bw = 55 * u, bh = 5.2 * u;
+      c.save();
+      rr(c, cx - bw / 2, H * 0.06, bw, bh, bh / 2);
+      c.fillStyle = '#facc15'; c.fill();
+      c.font = '700 ' + (3.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#0f172a';
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(th.epBadge, cx, H * 0.06 + bh / 2);
+      c.restore();
+
+      // Header Titles
+      c.save();
+      c.textAlign = 'center';
+      c.font = '800 ' + (6.6 * u) + 'px ' + FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText('Word Smart 1', cx, H * 0.16);
+
+      c.font = '800 ' + (5.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#34d399';
+      c.shadowColor = 'rgba(52, 211, 153, 0.5)'; c.shadowBlur = 20;
+      c.fillText('ভোকাবুলারি মাস্টারক্লাস', cx, H * 0.23);
+      c.shadowBlur = 0;
+      c.restore();
+
+      // Cards
+      const cw = W * 0.88, ch = H * 0.20;
+      const cardX = (W - cw) / 2;
+
+      // Card 1
+      drawGlassCard(cardX, H * 0.28, cw, ch, '#22c55e', 'rgba(20, 83, 45, 0.35)');
+      c.save();
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '800 ' + (6.5 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w1, cx, H * 0.35);
+      c.font = '700 ' + (3.8 * u) + 'px ' + FAM;
+      c.fillStyle = '#86efac';
+      c.fillText(th.m1, cx, H * 0.43);
+      c.restore();
+
+      // VS Badge
+      drawVsBadge(cx, H * 0.505, 4.2 * u);
+
+      // Card 2
+      drawGlassCard(cardX, H * 0.53, cw, ch, '#38bdf8', 'rgba(12, 74, 110, 0.35)');
+      c.save();
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '800 ' + (6.5 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w2, cx, H * 0.60);
+      c.font = '700 ' + (3.8 * u) + 'px ' + FAM;
+      c.fillStyle = '#7dd3fc';
+      c.fillText(th.m2, cx, H * 0.68);
+      c.restore();
+
+      // Lower Section
+      c.save();
+      c.textAlign = 'center';
+      c.font = '700 ' + (3.0 * u) + 'px ' + FAM;
+      c.fillStyle = '#fef08a';
+      c.fillText('🎯 BCS • Bank • Admission (DU/IBA)', cx, H * 0.78);
+
+      // CTA Button
+      const ctaW = W * 0.86, ctaH = 7.2 * u;
+      drawCtaPill(cx - ctaW / 2, H * 0.84, ctaW, ctaH, th.cta);
+      c.restore();
+    }
+
+    // =====================================================================
+    // LAYOUT 4: PORTRAIT (4:5) - INSTAGRAM FEED / FACEBOOK
+    // =====================================================================
+    else {
+      const cx = W / 2;
+
+      // Top Episode Badge
+      const bw = 58 * u, bh = 4.8 * (H / 100);
+      c.save();
+      rr(c, cx - bw / 2, H * 0.07, bw, bh, bh / 2);
+      c.fillStyle = '#facc15'; c.fill();
+      c.font = '700 ' + (3.4 * u) + 'px ' + FAM;
+      c.fillStyle = '#0f172a';
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(th.epBadge, cx, H * 0.07 + bh / 2);
+      c.restore();
+
+      // Header Titles
+      c.save();
+      c.textAlign = 'center';
+      c.font = '800 ' + (7.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText('Word Smart 1', cx, H * 0.16);
+
+      c.font = '800 ' + (5.6 * u) + 'px ' + FAM;
+      c.fillStyle = '#34d399';
+      c.shadowColor = 'rgba(52, 211, 153, 0.5)'; c.shadowBlur = 20;
+      c.fillText('ভোকাবুলারি মাস্টারক্লাস', cx, H * 0.22);
+      c.shadowBlur = 0;
+      c.restore();
+
+      // Cards
+      const cw = W * 0.88, ch = H * 0.19;
+      const cardX = (W - cw) / 2;
+
+      // Card 1
+      drawGlassCard(cardX, H * 0.28, cw, ch, '#22c55e', 'rgba(20, 83, 45, 0.35)');
+      c.save();
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '800 ' + (6.8 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w1, cx, H * 0.35);
+      c.font = '700 ' + (4.0 * u) + 'px ' + FAM;
+      c.fillStyle = '#86efac';
+      c.fillText(th.m1, cx, H * 0.42);
+      c.restore();
+
+      // VS Badge
+      drawVsBadge(cx, H * 0.495, 4.4 * u);
+
+      // Card 2
+      drawGlassCard(cardX, H * 0.52, cw, ch, '#38bdf8', 'rgba(12, 74, 110, 0.35)');
+      c.save();
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '800 ' + (6.8 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText(th.w2, cx, H * 0.59);
+      c.font = '700 ' + (4.0 * u) + 'px ' + FAM;
+      c.fillStyle = '#7dd3fc';
+      c.fillText(th.m2, cx, H * 0.66);
+      c.restore();
+
+      // Lower Section
+      c.save();
+      c.textAlign = 'center';
+      c.font = '700 ' + (3.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#fef08a';
+      c.fillText('🎯 BCS • Bank • Admission (DU/IBA)', cx, H * 0.76);
+
+      c.font = '600 ' + (3.0 * u) + 'px ' + FAM;
+      c.fillStyle = '#a7f3d0';
+      c.fillText('💡 অর্থ + Synonyms + Antonyms + ট্রিক', cx, H * 0.80);
+
+      // CTA Button
+      const ctaW = W * 0.86, ctaH = 6.2 * (H / 100);
+      drawCtaPill(cx - ctaW / 2, H * 0.84, ctaW, ctaH, th.cta);
+      c.restore();
     }
   }
 
@@ -3124,14 +3411,34 @@ const Core = (function() {
     const img = new Image();
     img.src = thUrl;
     img.alt = 'Thumbnail Preview';
+    img.style.maxHeight = '240px';
+    img.style.maxWidth = '100%';
+    img.style.objectFit = 'contain';
+    img.style.borderRadius = '10px';
+    img.style.boxShadow = '0 6px 20px rgba(0,0,0,0.6)';
     thv.appendChild(img);
 
-    $('thmsg').textContent = `Ready: ${W}×${H} px (${(thBlob.size / 1048576).toFixed(2)} MB)`;
-  }
+    const epTitle = (ALL_EPISODES[thEp] || ALL_EPISODES[1]).badge;
+    $('thmsg').textContent = `✨ ${epTitle} | ${thAr} | Ready: ${W}×${H} px (${(thBlob.size / 1048576).toFixed(2)} MB)`;
+  };
 
   $('thb').onclick = () => {
-    seg('th-ar', ['16:9', '9:16', '1:1', '4:5'], thAr, v => { thAr = v; updateThumbnail(); });
+    thEp = currentEp || 1;
+    // Episode Selector
+    const epKeys = Object.keys(ALL_EPISODES).map(Number);
+    seg('th-ep', epKeys, thEp, v => { thEp = v; updateThumbnail(); }, v => ALL_EPISODES[v].badge);
+    
+    // Aspect Ratio Selector
+    seg('th-ar', ['16:9', '9:16', '1:1', '4:5'], thAr, v => { thAr = v; updateThumbnail(); }, v => {
+      if (v === '16:9') return '16:9 (YouTube Video)';
+      if (v === '9:16') return '9:16 (Shorts / Reels)';
+      if (v === '1:1') return '1:1 (Square Post)';
+      return '4:5 (Portrait Feed)';
+    });
+
+    // Resolution Selector
     seg('th-res', [1080, 1440, 2160], thRes, v => { thRes = v; updateThumbnail(); }, v => v === 1080 ? '1080p (FHD)' : v === 1440 ? '2K (QHD)' : '4K (UHD)');
+    
     $('thm').hidden = false;
     updateThumbnail();
   };
@@ -3145,253 +3452,7 @@ const Core = (function() {
     if (!thBlob) return;
     const a = document.createElement('a');
     a.href = URL.createObjectURL(thBlob);
-    a.download = `wordsmart-thumbnail-${thAr.replace(':', 'x')}-${thRes}p.png`;
-    a.click();
-    URL.revokeObjectURL(a.href);
-  };
-})();
-
-/* =======================================================================
-   6. 4K CLIENT-SIDE VIDEO & ZIP EXPORT ENGINE (WebCodecs + mp4-muxer)
-   ======================================================================= */
-(function initVideoExporter() {
-  const $ = id => document.getElementById(id);
-  let st = { ar: '16:9', res: 1080, fps: 30 };
-  let busy = false, cancel = false, expResult = null, expUrls = [];
-
-  const ev = n => Math.max(2, Math.round(n / 2) * 2);
-  const dims = () => {
-    const r = st.res;
-    if (st.ar === '16:9') return [ev(r * 16 / 9), r];
-    if (st.ar === '9:16') return [r, ev(r * 16 / 9)];
-    if (st.ar === '1:1') return [r, r];
-    return [r, ev(r * 5 / 4)];
-  };
-
-  const bitrate = (W, H, f) => Math.round(W * H * f * 0.08);
-
-  function seg(id, vals, key, lab) {
-    const el = $(id); el.innerHTML = '';
-    vals.forEach(v => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = lab ? lab(v) : v;
-      b.setAttribute('aria-pressed', String(st[key] === v));
-      b.onclick = () => {
-        st[key] = v;
-        Array.from(el.children).forEach(c => c.setAttribute('aria-pressed', String(c === b)));
-        updateInfo();
-      };
-      el.appendChild(b);
-    });
-  }
-
-  function updateInfo() {
-    const d = dims(), f = st.fps;
-    const n = Math.round(Core.DUR * f);
-    const mb = bitrate(d[0], d[1], f) * Core.DUR / 8 / 1048576;
-    $('info').textContent = `Resolution: ${d[0]}×${d[1]} px · Duration: ${Core.DUR.toFixed(1)}s · Total: ${n} frames @ ${f} fps · Est. Size: ≈ ${mb.toFixed(1)} MB`;
-  }
-
-  function view(v) {
-    ['v-opt', 'v-prog', 'v-res'].forEach(id => $(id).hidden = (id !== v));
-  }
-
-  async function pickEncoderConfig(W, H, f0) {
-    if (typeof VideoEncoder === 'undefined') return null;
-    // High Profile up to Level 5.2 for 4K video encoding
-    const codecs = ['avc1.640034', 'avc1.640033', 'avc1.64002A', 'avc1.4D4034', 'avc1.42E034'];
-    const rates = f0 === 60 ? [60, 30] : [30];
-    for (const rate of rates) {
-      for (const codec of codecs) {
-        const cfg = { codec, width: W, height: H, bitrate: bitrate(W, H, rate), framerate: rate, avc: { format: 'avc' } };
-        try {
-          const r = await VideoEncoder.isConfigSupported(cfg);
-          if (r && r.supported) return { cfg, fps: rate, codec };
-        } catch (e) {}
-      }
-    }
-    return null;
-  }
-
-  async function exportMP4(W, H, f0) {
-    const pk = await pickEncoderConfig(W, H, f0);
-    if (!pk) throw new Error('WebCodecs H.264 is not supported for this resolution in this browser.');
-    if (typeof Mp4Muxer === 'undefined') throw new Error('mp4-muxer library failed to load.');
-
-    const fps = pk.fps;
-    const cv = (typeof OffscreenCanvas !== 'undefined') ? new OffscreenCanvas(W, H) : document.createElement('canvas');
-    cv.width = W; cv.height = H;
-    const ctx = cv.getContext('2d');
-
-    const ab = await window.VoiceSys.audioFor();
-    const muxOpt = {
-      target: new Mp4Muxer.ArrayBufferTarget(),
-      video: { codec: 'avc', width: W, height: H },
-      fastStart: 'in-memory',
-      firstTimestampBehavior: 'offset'
-    };
-    if (ab) muxOpt.audio = { codec: 'aac', numberOfChannels: 2, sampleRate: ab.sampleRate };
-    const mux = new Mp4Muxer.Muxer(muxOpt);
-
-    let err = null;
-    const enc = new VideoEncoder({
-      output: (chunk, meta) => mux.addVideoChunk(chunk, meta),
-      error: e => { err = e; }
-    });
-    enc.configure(pk.cfg);
-
-    const N = Math.round(Core.DUR * fps);
-    try {
-      for (let i = 0; i < N; i++) {
-        if (cancel) throw 'cancelled';
-        if (err) throw err;
-
-        Core.at(ctx, W, H, i / fps);
-        const fr = new VideoFrame(cv, { timestamp: Math.round(i * 1e6 / fps), duration: Math.round(1e6 / fps) });
-        enc.encode(fr, { keyFrame: i % (fps * 2) === 0 });
-        fr.close();
-
-        while (enc.encodeQueueSize > 4) {
-          await new Promise(r => setTimeout(r, 4));
-          if (cancel || err) break;
-        }
-
-        if (i % 6 === 0) {
-          const prog = i / N * 0.95;
-          $('pfill').style.width = Math.round(prog * 100) + '%';
-          $('pst').textContent = `Encoding Frame ${i + 1} / ${N} (${Math.round(prog * 100)}%)`;
-          if (i % 24 === 0) {
-            const x = $('xc');
-            x.width = 480; x.height = Math.round(480 * H / W);
-            x.getContext('2d').drawImage(cv, 0, 0, x.width, x.height);
-          }
-          await new Promise(r => setTimeout(r, 0));
-        }
-      }
-
-      if (cancel) throw 'cancelled';
-      $('pst').textContent = 'Finalizing video stream…';
-      await enc.flush();
-      if (err) throw err;
-
-      if (ab) {
-        $('pst').textContent = 'Encoding synchronized AAC audio…';
-        await window.VoiceSys.encodeAudio(ab, mux);
-      }
-      mux.finalize();
-    } finally {
-      try { enc.close(); } catch (e) {}
-    }
-
-    return { blob: new Blob([mux.target.buffer], { type: 'video/mp4' }), ext: 'mp4', fps };
-  }
-
-  async function renderPNGs(W, H, singleIdx) {
-    const list = [];
-    for (let i = 0; i < Core.SC.length; i++) {
-      if (singleIdx != null && i !== singleIdx) continue;
-      if (cancel) throw 'cancelled';
-      const cv = document.createElement('canvas');
-      cv.width = W; cv.height = H;
-      Core.at(cv.getContext('2d'), W, H, Core.still(i));
-      const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
-      list.push({ i, name: `slide-${('0' + (i + 1)).slice(-2)}.png`, blob });
-    }
-    return list;
-  }
-
-  async function runExport(kind) {
-    const [W, H] = dims();
-    busy = true; cancel = false;
-    view('v-prog');
-    $('pfill').style.width = '0%';
-    $('pst').textContent = 'Preparing export…';
-
-    try {
-      let res;
-      if (kind === 'mp4') {
-        res = await exportMP4(W, H, st.fps);
-        res.name = `wordsmart-vocab-${W}x${H}.${res.ext}`;
-        res.kind = 'video';
-      } else if (kind === 'png') {
-        const cur = document.querySelector('.scene.active');
-        const idx = cur ? +cur.dataset.idx : 0;
-        const p = await renderPNGs(W, H, idx);
-        res = { blob: p[0].blob, name: `wordsmart-slide-${idx + 1}-${W}x${H}.png`, kind: 'png' };
-      } else {
-        const p = await renderPNGs(W, H, null);
-        const fl = [];
-        for (const it of p) fl.push({ name: it.name, data: new Uint8Array(await it.blob.arrayBuffer()) });
-        res = { blob: Core.zip(fl), name: `wordsmart-all-slides-${W}x${H}.zip`, kind: 'zip', thumbs: p };
-      }
-
-      if (cancel) throw 'cancelled';
-      showExportResult(res);
-    } catch (e) {
-      if (e === 'cancelled' || cancel) {
-        $('omsg').textContent = 'Export was cancelled.';
-      } else {
-        $('omsg').textContent = 'Export error: ' + (e.message || e);
-      }
-      view('v-opt');
-    } finally {
-      busy = false;
-    }
-  }
-
-  function showExportResult(res) {
-    expResult = res;
-    const pv = $('pv'); pv.innerHTML = '';
-    const u = URL.createObjectURL(res.blob);
-    expUrls.push(u);
-
-    if (res.kind === 'video') {
-      const v = document.createElement('video');
-      v.controls = true; v.playsInline = true; v.src = u;
-      pv.appendChild(v);
-    } else if (res.kind === 'png') {
-      const img = new Image(); img.src = u; pv.appendChild(img);
-    } else {
-      const g = document.createElement('div'); g.className = 'th';
-      res.thumbs.slice(0, 6).forEach(t => {
-        const tu = URL.createObjectURL(t.blob);
-        expUrls.push(tu);
-        const im = new Image(); im.src = tu; g.appendChild(im);
-      });
-      pv.appendChild(g);
-    }
-
-    $('rmsg').textContent = `Ready: ${(res.blob.size / 1048576).toFixed(2)} MB (${res.name})`;
-    view('v-res');
-  }
-
-  $('dlb').onclick = () => {
-    seg('s-ar', ['16:9', '9:16', '1:1', '4:5'], 'ar');
-    seg('s-res', [720, 1080, 1440, 2160], 'res', v => v === 720 ? '720p (HD)' : v === 1080 ? '1080p (FHD)' : v === 1440 ? '2K (QHD)' : '4K (UHD)');
-    seg('s-fps', [30, 60], 'fps', v => v + ' fps');
-    updateInfo();
-    view('v-opt');
-    $('dl').hidden = false;
-  };
-
-  $('b-mp4').onclick = () => runExport('mp4');
-  $('b-png').onclick = () => runExport('png');
-  $('b-zip').onclick = () => runExport('zip');
-  $('b-ocancel').onclick = () => { $('dl').hidden = true; };
-  $('b-xcancel').onclick = () => { cancel = true; };
-  $('b-back').onclick = () => view('v-opt');
-  $('b-close').onclick = () => {
-    expUrls.forEach(u => URL.revokeObjectURL(u));
-    expUrls = [];
-    $('dl').hidden = true;
-  };
-
-  $('b-save').onclick = () => {
-    if (!expResult) return;
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(expResult.blob);
-    a.download = expResult.name;
+    a.download = `wordsmart-ep0${thEp}-thumbnail-${thAr.replace(':', 'x')}-${thRes}p.png`;
     a.click();
     URL.revokeObjectURL(a.href);
   };

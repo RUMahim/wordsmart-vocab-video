@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Word Smart 1 | ভোকাবুলারি টিউটোরিয়াল (পর্ব-০১)</title>
+<title>Word Smart 1 | ভোকাবুলারি মাস্টারক্লাস সিরিজ (সকল পর্ব)</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -704,11 +704,11 @@ button:active {
 <body>
 
 
-  <div class="series-nav" style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(34,197,94,0.3);padding:6px 16px;border-radius:30px;font-size:14px;font-weight:600;margin-bottom:6px;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
-    <span style="color:#facc15;">📚 Word Smart 1 Series:</span>
-    <a href="index.html" style="text-decoration:none;padding:5px 14px;border-radius:20px;color:#050f0a;background:#22c55e;font-weight:700;box-shadow:0 0 10px rgba(34,197,94,0.5);">🔥 পর্ব-০১ (১-১০) [বর্তমান]</a>
-    <a href="part2.html" style="text-decoration:none;padding:5px 14px;border-radius:20px;color:#f4fff8;background:rgba(255,255,255,0.08);transition:all 0.2s;">▶ পর্ব-০২ (১১-২০)</a>
-    <a href="part3.html" style="text-decoration:none;padding:5px 14px;border-radius:20px;color:#f4fff8;background:rgba(255,255,255,0.08);transition:all 0.2s;">▶ পর্ব-০৩ (২১-৩০)</a>
+    <div class="series-nav" style="display:flex;align-items:center;justify-content:center;gap:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(34,197,94,0.3);padding:8px 18px;border-radius:30px;font-size:14px;font-weight:600;margin-bottom:6px;box-shadow:0 4px 15px rgba(0,0,0,0.3);flex-wrap:wrap;">
+    <span style="color:#facc15;display:flex;align-items:center;gap:6px;">
+      <span>📚</span> <span>Word Smart ১ সিরিজ:</span>
+    </span>
+    <div id="ep-nav-container" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"></div>
   </div>
 
   <div id="stage">
@@ -842,320 +842,1007 @@ button:active {
 // 2 = MCQ Quiz Slide
 // 3 = Outro Slide
 
-const SCENES_DATA = [
-  {
-    "type": 0,
-    "badge": "🔥 Word Smart ১ | ফুল লেকচার সিরিজ (পর্ব-০১)",
-    "exams": [
-      "🎯 BCS প্রিলি ও লিখিত",
-      "🎯 Bank Officers",
-      "🎯 বিশ্ববিদ্যালয় ভর্তি (DU/IBA)",
-      "🎯 Job & Admission"
-    ],
-    "title1": "ভোকাবুলারিতে ফুল মার্কস নিশ্চিত করার",
-    "title2": "প্রমাণিত ও সহজতম টেকনিক!",
-    "feat": "✨ অর্থ • Synonyms • Antonyms • বাক্যে প্রয়োগ • ম্যাজিক ট্রিক 💡",
-    "chip": "🚀 চলুন শুরু করি Word Smart-এর প্রথম ১০টি শব্দ দিয়ে!",
-    "dur": 11.5,
-    "script": "বিসিএস প্রিলিমিনারি ও লিখিত, ব্যাংক নিয়োগ পরীক্ষা কিংবা বিশ্ববিদ্যালয় ভর্তি—ভোকাবুলারিতে ভালো না করলে কোনো প্রতিযোগিতামূলক পরীক্ষাতেই টিকে থাকা সম্ভব নয়! আর বিশ্বসেরা ভোকাবুলারি বই ‘Word Smart’ হলো এর সবচেয়ে কার্যকর সমাধান। আজ আমরা শুরু করছি Word Smart-এর পূর্ণাঙ্গ লেকচার সিরিজের প্রথম পর্ব। প্রতিটি শব্দের অর্থ, সিনোনিম, অ্যান্টনিম এবং মনে রাখার জাদুকরী ট্রিক একবারে শিখে ফেলব। চলুন, শুরু করা যাক প্রথম ১০টি গুরুত্বপূর্ণ শব্দ দিয়ে..."
-  },
-  {
-    "type": 1,
-    "num": 1,
-    "word": "Abase",
-    "pos": "Verb",
-    "pron": "uh-BAYS",
-    "meaning": "অপমান করা / নীচু করা",
-    "syn": "Humiliate (অপমান করা), Degrade (মর্যাদাহানি করা), Belittle (ছোট করা)",
-    "ant": "Exalt (গৌরবান্বিত করা), Praise (প্রশংসা করা), Honor (সম্মান করা)",
-    "exEn": "A true leader never tries to abase his subordinates to show his power.",
-    "exBn": "একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না।",
-    "trick": "কোনো কিছুকে একদম Base (নিচে) নামিয়ে আনা মানেই কাউকে হেয় বা অপমান করা।",
-    "dur": 13.5,
-    "script": "১ নম্বর শব্দ: Abase. এটি একটি Verb. এর বাংলা অর্থ হলো অপমান করা বা নীচু করা। Synonyms হলো Humiliate, Degrade এবং Belittle। Antonyms হলো Exalt, Praise এবং Honor। বাক্যে ব্যবহার: A true leader never tries to abase his subordinates to show his power. অর্থাৎ, একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না। মনে রাখার কৌশল: কোনো কিছুকে একদম Base বা নিচে নামিয়ে আনা মানেই অপমান করা।"
-  },
-  {
-    "type": 1,
-    "num": 2,
-    "word": "Abash",
-    "pos": "Verb",
-    "pron": "uh-BASH",
-    "meaning": "বিব্রত করা / লজ্জিত করা",
-    "syn": "Embarrass (বিব্রত করা), Fluster (অপ্রস্তুত করা), Mortify (লজ্জায় ফেলা)",
-    "ant": "Embolden (সাহস জোগানো), Reassure (আশ্বস্ত করা), Encourage (উৎসাহিত করা)",
-    "exEn": "She was abashed when she forgot her speech on stage.",
-    "exBn": "মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল।",
-    "trick": "সবার সামনে কেউ কাউকে Bash (তীব্র সমালোচনা) দিলে সে স্বাভাবিকভাবেই লজ্জিত (Abash) হবে।",
-    "dur": 13.5,
-    "script": "২ নম্বর শব্দ: Abash. এটি একটি Verb. এর অর্থ বিব্রত করা বা লজ্জিত করা। Synonyms হলো Embarrass, Fluster এবং Mortify। Antonyms হলো Embolden, Reassure এবং Encourage। বাক্যে ব্যবহার: She was abashed when she forgot her speech on stage. অর্থাৎ, মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল। মনে রাখার কৌশল: কারো তীব্র সমালোচনা বা Bash করলে সে স্বাভাবিকভাবেই লজ্জিত বা Abash হবে।"
-  },
-  {
-    "type": 1,
-    "num": 3,
-    "word": "Abate",
-    "pos": "Verb",
-    "pron": "uh-BAYT",
-    "meaning": "হ্রাস করা / তীব্রতা কমে যাওয়া",
-    "syn": "Subside (প্রশমিত হওয়া), Diminish (হ্রাস পাওয়া), Lessen (কমে যাওয়া)",
-    "ant": "Intensify (তীব্রতর হওয়া), Escalate (বেড়ে যাওয়া), Aggravate (খারাপ হওয়া)",
-    "exEn": "The storm finally abated after three days.",
-    "exBn": "টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল।",
-    "trick": "Weight (ওজন) কমানোর মতো কোনো কিছুর জোর বা তীব্রতা কমে যাওয়াকে Abate বলে।",
-    "dur": 13,
-    "script": "৩ নম্বর শব্দ: Abate. এটি একটি Verb. এর অর্থ হ্রাস করা, কমানো বা তীব্রতা কমে যাওয়া। Synonyms হলো Subside, Diminish এবং Lessen। Antonyms হলো Intensify, Escalate এবং Aggravate। বাক্যে ব্যবহার: The storm finally abated after three days. অর্থাৎ, টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল। মনে রাখার কৌশল: Weight বা ওজন কমানোর মতো তীব্রতা কমে যাওয়া হলো Abate।"
-  },
-  {
-    "type": 1,
-    "num": 4,
-    "word": "Abdicate",
-    "pos": "Verb",
-    "pron": "AB-dih-kayt",
-    "meaning": "ক্ষমতা ছেড়ে দেওয়া / পদত্যাগ করা",
-    "syn": "Renounce (ত্যাগ করা), Relinquish (ছেড়ে দেওয়া), Resign (পদত্যাগ করা)",
-    "ant": "Usurp (ক্ষমতা দখল করা), Claim (দাবি করা), Retain (ধরে রাখা)",
-    "exEn": "The king abdicated his throne to marry a commoner.",
-    "exBn": "একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন।",
-    "trick": "যখন কোনো Dictator (স্বৈরশাসক) তার ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।",
-    "dur": 13.5,
-    "script": "৪ নম্বর শব্দ: Abdicate. এটি একটি Verb. এর অর্থ ক্ষমতা ছেড়ে দেওয়া বা পদত্যাগ করা। Synonyms হলো Renounce, Relinquish এবং Resign। Antonyms হলো Usurp, Claim এবং Retain। বাক্যে ব্যবহার: The king abdicated his throne to marry a commoner. অর্থাৎ, একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন। মনে রাখার কৌশল: Dictator যখন ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।"
-  },
-  {
-    "type": 1,
-    "num": 5,
-    "word": "Aberration",
-    "pos": "Noun",
-    "pron": "ab-uh-RAY-shun",
-    "meaning": "স্বাভাবিকের ব্যতিক্রম / বিচ্যুতি",
-    "syn": "Anomaly (অনিয়ম), Deviation (বিচ্যুতি), Oddity (অদ্ভুত বিষয়)",
-    "ant": "Normality (স্বাভাবিকতা), Conformity (অনুরূপতা), Regularity (নিয়মানুবর্তিতা)",
-    "exEn": "His rude behavior was an aberration from his usual kindness.",
-    "exBn": "তার এই অভদ্র আচরণটি ছিল স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম।",
-    "trick": "স্বাভাবিক পথে চলার সময় কোনো Error (ত্রুটি) ঘটার বিচ্যুতিই হলো Aberration।",
-    "dur": 13.5,
-    "script": "৫ নম্বর শব্দ: Aberration. এটি একটি Noun. এর অর্থ স্বাভাবিকের ব্যতিক্রম বা বিচ্যুতি। Synonyms হলো Anomaly, Deviation এবং Oddity। Antonyms হলো Normality, Conformity এবং Regularity। বাক্যে ব্যবহার: His rude behavior was an aberration from his usual kindness. অর্থাৎ, তার এই অভদ্র আচরণটি ছিল তার স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম। মনে রাখার কৌশল: স্বাভাবিক পথে Error বা ত্রুটি ঘটাই হলো Aberration।"
-  },
-  {
-    "type": 1,
-    "num": 6,
-    "word": "Abet",
-    "pos": "Verb",
-    "pron": "uh-BET",
-    "meaning": "অপকর্মে সহায়তা করা / উৎসাহিত করা",
-    "syn": "Instigate (উসকানি দেওয়া), Incite (প্ররোচিত করা), Assist (অপকর্মে সাহায্য)",
-    "ant": "Deter (নিরুৎসাহিত করা), Hinder (বাধা দেওয়া), Discourage (দমিয়ে দেওয়া)",
-    "exEn": "Anyone who aids and abets a thief is equally guilty under the law.",
-    "exBn": "যে চোরকে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী।",
-    "trick": "কোনো খারাপ কাজে Bet (বাজি) ধরে কাউকে উসকে দেওয়া বা সাহায্য করাই Abet।",
-    "dur": 13.5,
-    "script": "৬ নম্বর শব্দ: Abet. এটি একটি Verb. এর অর্থ কোনো খারাপ বা অপরাধমূলক কাজে সহায়তা করা বা উৎসাহিত করা। Synonyms হলো Instigate, Incite এবং Assist। Antonyms হলো Deter, Hinder এবং Discourage। বাক্যে ব্যবহার: Anyone who aids and abets a thief is equally guilty under the law. অর্থাৎ, যে কেউ চোরকে খারাপ কাজে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী। মনে রাখার কৌশল: খারাপ কাজে Bet ধরে কাউকে উসকে দেওয়াই হলো Abet।"
-  },
-  {
-    "type": 1,
-    "num": 7,
-    "word": "Abeyance",
-    "pos": "Noun",
-    "pron": "uh-BAY-unce",
-    "meaning": "স্থগিত অবস্থা / সাময়িক বিরতি",
-    "syn": "Suspension (স্থগিতাদেশ), Dormancy (সুপ্তাবস্থা), Intermission (বিরতি)",
-    "ant": "Continuation (ধারাবাহিকতা), Resumption (পুনরায় শুরু), Operation (চালু থাকা)",
-    "exEn": "The project was held in abeyance until funds arrived.",
-    "exBn": "তহবিল (ফান্ড) না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল।",
-    "trick": "কোনো কাজ শুরু হওয়ার আগেই যখন Bay (তীরে) আটকে থাকে বা থেমে যায়, সেটাই Abeyance।",
-    "dur": 13.5,
-    "script": "৭ নম্বর শব্দ: Abeyance. এটি একটি Noun. এর অর্থ স্থগিত অবস্থা বা সাময়িক বিরতি। Synonyms হলো Suspension, Dormancy এবং Intermission। Antonyms হলো Continuation, Resumption এবং Operation। বাক্যে ব্যবহার: The project was held in abeyance until funds arrived. অর্থাৎ, তহবিল বা ফান্ড না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল। মনে রাখার কৌশল: তীরে বা Bay-তে আটকে থাকা অবস্থাই হলো Abeyance।"
-  },
-  {
-    "type": 1,
-    "num": 8,
-    "word": "Abhor",
-    "pos": "Verb",
-    "pron": "ab-HOR",
-    "meaning": "তীব্র ঘৃণা করা / বিদ্বেষ পোষণ করা",
-    "syn": "Detest (তীব্র ঘৃণা করা), Loathe (অপছন্দ করা), Despise (তুচ্ছ ও ঘৃণা করা)",
-    "ant": "Adore (গভীরভাবে ভালোবাসা), Cherish (লালন করা), Admire (প্রশংসা করা)",
-    "exEn": "An honest public servant must abhor corruption in all its forms.",
-    "exBn": "একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে।",
-    "trick": "Horror (ভয়ঙ্কর) জিনিসকে আমরা যেভাবে তীব্রভাবে অপছন্দ বা ঘৃণা করি, সেটাই হলো Abhor।",
-    "dur": 13.5,
-    "script": "৮ নম্বর শব্দ: Abhor. এটি একটি Verb. এর অর্থ তীব্র ঘৃণা করা বা বিদ্বেষ পোষণ করা। Synonyms হলো Detest, Loathe এবং Despise। Antonyms হলো Adore, Cherish এবং Admire। বাক্যে ব্যবহার: An honest public servant must abhor corruption in all its forms. অর্থাৎ, একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে। মনে রাখার কৌশল: Horror জিনিসকে আমরা যেভাবে তীব্র ঘৃণা করি, সেভাবেই মনে রাখুন Abhor।"
-  },
-  {
-    "type": 1,
-    "num": 9,
-    "word": "Abject",
-    "pos": "Adjective",
-    "pron": "AB-jekt",
-    "meaning": "চরম হতাশ / শোচনীয় / দুর্দশাগ্রস্ত",
-    "syn": "Miserable (দুর্দশাগ্রস্ত), Wretched (শোচনীয়), Hopeless (হতাশাজনক)",
-    "ant": "Prosperous (সমৃদ্ধ), Noble (মহৎ), Exalted (উন্নত)",
-    "exEn": "The refugees lived in abject poverty in the camp.",
-    "exBn": "শরণার্থীরা ক্যাম্পে চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল।",
-    "trick": "বারবার Reject হতে থাকলে মানুষের অবস্থা যেমন শোচনীয় বা চরম হতাশাজনক হয়, সেটাই Abject।",
-    "dur": 13.5,
-    "script": "৯ নম্বর শব্দ: Abject. এটি একটি Adjective. এর অর্থ চরম হতাশ, শোচনীয় বা দুর্দশাগ্রস্ত। Synonyms হলো Miserable, Wretched এবং Hopeless। Antonyms হলো Prosperous, Noble এবং Exalted। বাক্যে ব্যবহার: The refugees lived in abject poverty. অর্থাৎ, শরণার্থীরা চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল। মনে রাখার কৌশল: বারবার Reject হয়ে মানুষের শোচনীয় অবস্থা হওয়াই হলো Abject।"
-  },
-  {
-    "type": 1,
-    "num": 10,
-    "word": "Abjure",
-    "pos": "Verb",
-    "pron": "ab-JOOR",
-    "meaning": "শপথ করে ত্যাগ করা / পরিহার করা",
-    "syn": "Renounce (পরিহার করা), Forsake (পরিত্যাগ করা), Disavow (অস্বীকার করা)",
-    "ant": "Embrace (গ্রহণ করা), Espouse (সমর্থন করা), Adopt (গ্রহণ করা)",
-    "exEn": "He abjured violence and chose a peaceful path.",
-    "exBn": "তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন।",
-    "trick": "Jury (বিচারক)-এর সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই Abjure।",
-    "dur": 13.5,
-    "script": "১০ নম্বর শব্দ: Abjure. এটি একটি Verb. এর অর্থ শপথ করে ত্যাগ করা বা পরিহার করা। Synonyms হলো Renounce, Forsake এবং Disavow। Antonyms হলো Embrace, Espouse এবং Adopt। বাক্যে ব্যবহার: He abjured violence and chose a peaceful path. অর্থাৎ, তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন। মনে রাখার কৌশল: Jury বা বিচারকের সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই হলো Abjure।"
-  },
-  {
-    "type": 4,
-    "badge": "⚡ কুইজের আগে দ্রুত রিভিশন | Quick Recap",
-    "title": "এক নজরে আজকের ১০টি মাস্টার ওয়ার্ড",
-    "sub": "অর্থ ও শীর্ষ সমার্থক শব্দ (Master Summary Table)",
-    "words": [
+const ALL_EPISODES = {
+  "1": {
+    "id": 1,
+    "title": "পর্ব-০১: শব্দ ১ থেকে ১০ ও কুইজ",
+    "badge": "পর্ব-০১ (১-১০)",
+    "wordsRange": "১-১০",
+    "thumb": {
+      "epBadge": "🔥 Word Smart ১ | পর্ব-০১",
+      "cta": "শব্দ ১-১০ + ট্রিক + ৩টি কুইজ ▶",
+      "w1": "Abash",
+      "m1": "লজ্জিত করা 😳",
+      "w2": "Abject",
+      "m2": "চরম দুর্দশাগ্রস্ত 😔",
+      "portW": "Abdicate",
+      "portM": "সিংহাসন ত্যাগ করা"
+    },
+    "scenes": [
       {
+        "type": 0,
+        "badge": "🔥 Word Smart ১ | ফুল লেকচার সিরিজ (পর্ব-০১)",
+        "exams": [
+          "🎯 BCS প্রিলি ও লিখিত",
+          "🎯 Bank Officers",
+          "🎯 বিশ্ববিদ্যালয় ভর্তি (DU/IBA)",
+          "🎯 Job & Admission"
+        ],
+        "title1": "ভোকাবুলারিতে ফুল মার্কস নিশ্চিত করার",
+        "title2": "প্রমাণিত ও সহজতম টেকনিক!",
+        "feat": "✨ অর্থ • Synonyms • Antonyms • বাক্যে প্রয়োগ • ম্যাজিক ট্রিক 💡",
+        "chip": "🚀 চলুন শুরু করি Word Smart-এর প্রথম ১০টি শব্দ দিয়ে!",
+        "dur": 11.5,
+        "script": "বিসিএস প্রিলিমিনারি ও লিখিত, ব্যাংক নিয়োগ পরীক্ষা কিংবা বিশ্ববিদ্যালয় ভর্তি—ভোকাবুলারিতে ভালো না করলে কোনো প্রতিযোগিতামূলক পরীক্ষাতেই টিকে থাকা সম্ভব নয়! আর বিশ্বসেরা ভোকাবুলারি বই ‘Word Smart’ হলো এর সবচেয়ে কার্যকর সমাধান। আজ আমরা শুরু করছি Word Smart-এর পূর্ণাঙ্গ লেকচার সিরিজের প্রথম পর্ব। প্রতিটি শব্দের অর্থ, সিনোনিম, অ্যান্টনিম এবং মনে রাখার জাদুকরী ট্রিক একবারে শিখে ফেলব। চলুন, শুরু করা যাক প্রথম ১০টি গুরুত্বপূর্ণ শব্দ দিয়ে..."
+      },
+      {
+        "type": 1,
         "num": 1,
         "word": "Abase",
-        "pos": "v.",
-        "bn": "অপমান করা / নীচু করা",
-        "syn": "Humiliate"
+        "pos": "Verb",
+        "pron": "uh-BAYS",
+        "meaning": "অপমান করা / নীচু করা",
+        "syn": "Humiliate (অপমান করা), Degrade (মর্যাদাহানি করা), Belittle (ছোট করা)",
+        "ant": "Exalt (গৌরবান্বিত করা), Praise (প্রশংসা করা), Honor (সম্মান করা)",
+        "exEn": "A true leader never tries to abase his subordinates to show his power.",
+        "exBn": "একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না।",
+        "trick": "কোনো কিছুকে একদম Base (নিচে) নামিয়ে আনা মানেই কাউকে হেয় বা অপমান করা।",
+        "dur": 13.5,
+        "script": "১ নম্বর শব্দ: Abase. এটি একটি Verb. এর বাংলা অর্থ হলো অপমান করা বা নীচু করা। Synonyms হলো Humiliate, Degrade এবং Belittle। Antonyms হলো Exalt, Praise এবং Honor। বাক্যে ব্যবহার: A true leader never tries to abase his subordinates to show his power. অর্থাৎ, একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না। মনে রাখার কৌশল: কোনো কিছুকে একদম Base বা নিচে নামিয়ে আনা মানেই অপমান করা।"
       },
       {
+        "type": 1,
         "num": 2,
         "word": "Abash",
-        "pos": "v.",
-        "bn": "বিব্রত বা লজ্জিত করা",
-        "syn": "Embarrass"
+        "pos": "Verb",
+        "pron": "uh-BASH",
+        "meaning": "বিব্রত করা / লজ্জিত করা",
+        "syn": "Embarrass (বিব্রত করা), Fluster (অপ্রস্তুত করা), Mortify (লজ্জায় ফেলা)",
+        "ant": "Embolden (সাহস জোগানো), Reassure (আশ্বস্ত করা), Encourage (উৎসাহিত করা)",
+        "exEn": "She was abashed when she forgot her speech on stage.",
+        "exBn": "মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল।",
+        "trick": "সবার সামনে কেউ কাউকে Bash (তীব্র সমালোচনা) দিলে সে স্বাভাবিকভাবেই লজ্জিত (Abash) হবে।",
+        "dur": 13.5,
+        "script": "২ নম্বর শব্দ: Abash. এটি একটি Verb. এর অর্থ বিব্রত করা বা লজ্জিত করা। Synonyms হলো Embarrass, Fluster এবং Mortify। Antonyms হলো Embolden, Reassure এবং Encourage। বাক্যে ব্যবহার: She was abashed when she forgot her speech on stage. অর্থাৎ, মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল। মনে রাখার কৌশল: কারো তীব্র সমালোচনা বা Bash করলে সে স্বাভাবিকভাবেই লজ্জিত বা Abash হবে।"
       },
       {
+        "type": 1,
         "num": 3,
         "word": "Abate",
-        "pos": "v.",
-        "bn": "হ্রাস পাওয়া / তীব্রতা কমা",
-        "syn": "Subside"
+        "pos": "Verb",
+        "pron": "uh-BAYT",
+        "meaning": "হ্রাস করা / তীব্রতা কমে যাওয়া",
+        "syn": "Subside (প্রশমিত হওয়া), Diminish (হ্রাস পাওয়া), Lessen (কমে যাওয়া)",
+        "ant": "Intensify (তীব্রতর হওয়া), Escalate (বেড়ে যাওয়া), Aggravate (খারাপ হওয়া)",
+        "exEn": "The storm finally abated after three days.",
+        "exBn": "টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল।",
+        "trick": "Weight (ওজন) কমানোর মতো কোনো কিছুর জোর বা তীব্রতা কমে যাওয়াকে Abate বলে।",
+        "dur": 13,
+        "script": "৩ নম্বর শব্দ: Abate. এটি একটি Verb. এর অর্থ হ্রাস করা, কমানো বা তীব্রতা কমে যাওয়া। Synonyms হলো Subside, Diminish এবং Lessen। Antonyms হলো Intensify, Escalate এবং Aggravate। বাক্যে ব্যবহার: The storm finally abated after three days. অর্থাৎ, টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল। মনে রাখার কৌশল: Weight বা ওজন কমানোর মতো তীব্রতা কমে যাওয়া হলো Abate।"
       },
       {
+        "type": 1,
         "num": 4,
         "word": "Abdicate",
-        "pos": "v.",
-        "bn": "পদ বা সিংহাসন ত্যাগ করা",
-        "syn": "Renounce"
+        "pos": "Verb",
+        "pron": "AB-dih-kayt",
+        "meaning": "ক্ষমতা ছেড়ে দেওয়া / পদত্যাগ করা",
+        "syn": "Renounce (ত্যাগ করা), Relinquish (ছেড়ে দেওয়া), Resign (পদত্যাগ করা)",
+        "ant": "Usurp (ক্ষমতা দখল করা), Claim (দাবি করা), Retain (ধরে রাখা)",
+        "exEn": "The king abdicated his throne to marry a commoner.",
+        "exBn": "একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন।",
+        "trick": "যখন কোনো Dictator (স্বৈরশাসক) তার ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।",
+        "dur": 13.5,
+        "script": "৪ নম্বর শব্দ: Abdicate. এটি একটি Verb. এর অর্থ ক্ষমতা ছেড়ে দেওয়া বা পদত্যাগ করা। Synonyms হলো Renounce, Relinquish এবং Resign। Antonyms হলো Usurp, Claim এবং Retain। বাক্যে ব্যবহার: The king abdicated his throne to marry a commoner. অর্থাৎ, একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন। মনে রাখার কৌশল: Dictator যখন ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।"
       },
       {
+        "type": 1,
         "num": 5,
         "word": "Aberration",
-        "pos": "n.",
-        "bn": "স্বাভাবিক পথ থেকে বিচ্যুতি",
-        "syn": "Anomaly"
+        "pos": "Noun",
+        "pron": "ab-uh-RAY-shun",
+        "meaning": "স্বাভাবিকের ব্যতিক্রম / বিচ্যুতি",
+        "syn": "Anomaly (অনিয়ম), Deviation (বিচ্যুতি), Oddity (অদ্ভুত বিষয়)",
+        "ant": "Normality (স্বাভাবিকতা), Conformity (অনুরূপতা), Regularity (নিয়মানুবর্তিতা)",
+        "exEn": "His rude behavior was an aberration from his usual kindness.",
+        "exBn": "তার এই অভদ্র আচরণটি ছিল স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম।",
+        "trick": "স্বাভাবিক পথে চলার সময় কোনো Error (ত্রুটি) ঘটার বিচ্যুতিই হলো Aberration।",
+        "dur": 13.5,
+        "script": "৫ নম্বর শব্দ: Aberration. এটি একটি Noun. এর অর্থ স্বাভাবিকের ব্যতিক্রম বা বিচ্যুতি। Synonyms হলো Anomaly, Deviation এবং Oddity। Antonyms হলো Normality, Conformity এবং Regularity। বাক্যে ব্যবহার: His rude behavior was an aberration from his usual kindness. অর্থাৎ, তার এই অভদ্র আচরণটি ছিল তার স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম। মনে রাখার কৌশল: স্বাভাবিক পথে Error বা ত্রুটি ঘটাই হলো Aberration।"
       },
       {
+        "type": 1,
         "num": 6,
         "word": "Abet",
-        "pos": "v.",
-        "bn": "খারাপ কাজে উস্কানি/সাহায্য",
-        "syn": "Assist"
+        "pos": "Verb",
+        "pron": "uh-BET",
+        "meaning": "অপকর্মে সহায়তা করা / উৎসাহিত করা",
+        "syn": "Instigate (উসকানি দেওয়া), Incite (প্ররোচিত করা), Assist (অপকর্মে সাহায্য)",
+        "ant": "Deter (নিরুৎসাহিত করা), Hinder (বাধা দেওয়া), Discourage (দমিয়ে দেওয়া)",
+        "exEn": "Anyone who aids and abets a thief is equally guilty under the law.",
+        "exBn": "যে চোরকে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী।",
+        "trick": "কোনো খারাপ কাজে Bet (বাজি) ধরে কাউকে উসকে দেওয়া বা সাহায্য করাই Abet।",
+        "dur": 13.5,
+        "script": "৬ নম্বর শব্দ: Abet. এটি একটি Verb. এর অর্থ কোনো খারাপ বা অপরাধমূলক কাজে সহায়তা করা বা উৎসাহিত করা। Synonyms হলো Instigate, Incite এবং Assist। Antonyms হলো Deter, Hinder এবং Discourage। বাক্যে ব্যবহার: Anyone who aids and abets a thief is equally guilty under the law. অর্থাৎ, যে কেউ চোরকে খারাপ কাজে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী। মনে রাখার কৌশল: খারাপ কাজে Bet ধরে কাউকে উসকে দেওয়াই হলো Abet।"
       },
       {
+        "type": 1,
         "num": 7,
         "word": "Abeyance",
-        "pos": "n.",
-        "bn": "স্থগিতাবস্থা / সাময়িক বিরতি",
-        "syn": "Suspension"
+        "pos": "Noun",
+        "pron": "uh-BAY-unce",
+        "meaning": "স্থগিত অবস্থা / সাময়িক বিরতি",
+        "syn": "Suspension (স্থগিতাদেশ), Dormancy (সুপ্তাবস্থা), Intermission (বিরতি)",
+        "ant": "Continuation (ধারাবাহিকতা), Resumption (পুনরায় শুরু), Operation (চালু থাকা)",
+        "exEn": "The project was held in abeyance until funds arrived.",
+        "exBn": "তহবিল (ফান্ড) না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল।",
+        "trick": "কোনো কাজ শুরু হওয়ার আগেই যখন Bay (তীরে) আটকে থাকে বা থেমে যায়, সেটাই Abeyance।",
+        "dur": 13.5,
+        "script": "৭ নম্বর শব্দ: Abeyance. এটি একটি Noun. এর অর্থ স্থগিত অবস্থা বা সাময়িক বিরতি। Synonyms হলো Suspension, Dormancy এবং Intermission। Antonyms হলো Continuation, Resumption এবং Operation। বাক্যে ব্যবহার: The project was held in abeyance until funds arrived. অর্থাৎ, তহবিল বা ফান্ড না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল। মনে রাখার কৌশল: তীরে বা Bay-তে আটকে থাকা অবস্থাই হলো Abeyance।"
       },
       {
+        "type": 1,
         "num": 8,
         "word": "Abhor",
-        "pos": "v.",
-        "bn": "তীব্রভাবে ঘৃণা করা",
-        "syn": "Detest"
+        "pos": "Verb",
+        "pron": "ab-HOR",
+        "meaning": "তীব্র ঘৃণা করা / বিদ্বেষ পোষণ করা",
+        "syn": "Detest (তীব্র ঘৃণা করা), Loathe (অপছন্দ করা), Despise (তুচ্ছ ও ঘৃণা করা)",
+        "ant": "Adore (গভীরভাবে ভালোবাসা), Cherish (লালন করা), Admire (প্রশংসা করা)",
+        "exEn": "An honest public servant must abhor corruption in all its forms.",
+        "exBn": "একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে।",
+        "trick": "Horror (ভয়ঙ্কর) জিনিসকে আমরা যেভাবে তীব্রভাবে অপছন্দ বা ঘৃণা করি, সেটাই হলো Abhor।",
+        "dur": 13.5,
+        "script": "৮ নম্বর শব্দ: Abhor. এটি একটি Verb. এর অর্থ তীব্র ঘৃণা করা বা বিদ্বেষ পোষণ করা। Synonyms হলো Detest, Loathe এবং Despise। Antonyms হলো Adore, Cherish এবং Admire। বাক্যে ব্যবহার: An honest public servant must abhor corruption in all its forms. অর্থাৎ, একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে। মনে রাখার কৌশল: Horror জিনিসকে আমরা যেভাবে তীব্র ঘৃণা করি, সেভাবেই মনে রাখুন Abhor।"
       },
       {
+        "type": 1,
         "num": 9,
         "word": "Abject",
-        "pos": "adj.",
-        "bn": "চরম হতাশ / শোচনীয় অবস্থা",
-        "syn": "Miserable"
+        "pos": "Adjective",
+        "pron": "AB-jekt",
+        "meaning": "চরম হতাশ / শোচনীয় / দুর্দশাগ্রস্ত",
+        "syn": "Miserable (দুর্দশাগ্রস্ত), Wretched (শোচনীয়), Hopeless (হতাশাজনক)",
+        "ant": "Prosperous (সমৃদ্ধ), Noble (মহৎ), Exalted (উন্নত)",
+        "exEn": "The refugees lived in abject poverty in the camp.",
+        "exBn": "শরণার্থীরা ক্যাম্পে চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল।",
+        "trick": "বারবার Reject হতে থাকলে মানুষের অবস্থা যেমন শোচনীয় বা চরম হতাশাজনক হয়, সেটাই Abject।",
+        "dur": 13.5,
+        "script": "৯ নম্বর শব্দ: Abject. এটি একটি Adjective. এর অর্থ চরম হতাশ, শোচনীয় বা দুর্দশাগ্রস্ত। Synonyms হলো Miserable, Wretched এবং Hopeless। Antonyms হলো Prosperous, Noble এবং Exalted। বাক্যে ব্যবহার: The refugees lived in abject poverty. অর্থাৎ, শরণার্থীরা চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল। মনে রাখার কৌশল: বারবার Reject হয়ে মানুষের শোচনীয় অবস্থা হওয়াই হলো Abject।"
       },
       {
+        "type": 1,
         "num": 10,
         "word": "Abjure",
-        "pos": "v.",
-        "bn": "শপথ করে ত্যাগ করা",
-        "syn": "Renounce"
+        "pos": "Verb",
+        "pron": "ab-JOOR",
+        "meaning": "শপথ করে ত্যাগ করা / পরিহার করা",
+        "syn": "Renounce (পরিহার করা), Forsake (পরিত্যাগ করা), Disavow (অস্বীকার করা)",
+        "ant": "Embrace (গ্রহণ করা), Espouse (সমর্থন করা), Adopt (গ্রহণ করা)",
+        "exEn": "He abjured violence and chose a peaceful path.",
+        "exBn": "তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন।",
+        "trick": "Jury (বিচারক)-এর সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই Abjure।",
+        "dur": 13.5,
+        "script": "১০ নম্বর শব্দ: Abjure. এটি একটি Verb. এর অর্থ শপথ করে ত্যাগ করা বা পরিহার করা। Synonyms হলো Renounce, Forsake এবং Disavow। Antonyms হলো Embrace, Espouse এবং Adopt। বাক্যে ব্যবহার: He abjured violence and chose a peaceful path. অর্থাৎ, তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন। মনে রাখার কৌশল: Jury বা বিচারকের সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই হলো Abjure।"
+      },
+      {
+        "type": 4,
+        "badge": "⚡ কুইজের আগে দ্রুত রিভিশন | Quick Recap",
+        "title": "এক নজরে আজকের ১০টি মাস্টার ওয়ার্ড",
+        "sub": "অর্থ ও শীর্ষ সমার্থক শব্দ (Master Summary Table)",
+        "words": [
+          {
+            "num": 1,
+            "word": "Abase",
+            "pos": "v.",
+            "bn": "অপমান করা / নীচু করা",
+            "syn": "Humiliate"
+          },
+          {
+            "num": 2,
+            "word": "Abash",
+            "pos": "v.",
+            "bn": "বিব্রত বা লজ্জিত করা",
+            "syn": "Embarrass"
+          },
+          {
+            "num": 3,
+            "word": "Abate",
+            "pos": "v.",
+            "bn": "হ্রাস পাওয়া / তীব্রতা কমা",
+            "syn": "Subside"
+          },
+          {
+            "num": 4,
+            "word": "Abdicate",
+            "pos": "v.",
+            "bn": "পদ বা সিংহাসন ত্যাগ করা",
+            "syn": "Renounce"
+          },
+          {
+            "num": 5,
+            "word": "Aberration",
+            "pos": "n.",
+            "bn": "স্বাভাবিক পথ থেকে বিচ্যুতি",
+            "syn": "Anomaly"
+          },
+          {
+            "num": 6,
+            "word": "Abet",
+            "pos": "v.",
+            "bn": "খারাপ কাজে উস্কানি/সাহায্য",
+            "syn": "Assist"
+          },
+          {
+            "num": 7,
+            "word": "Abeyance",
+            "pos": "n.",
+            "bn": "স্থগিতাবস্থা / সাময়িক বিরতি",
+            "syn": "Suspension"
+          },
+          {
+            "num": 8,
+            "word": "Abhor",
+            "pos": "v.",
+            "bn": "তীব্রভাবে ঘৃণা করা",
+            "syn": "Detest"
+          },
+          {
+            "num": 9,
+            "word": "Abject",
+            "pos": "adj.",
+            "bn": "চরম হতাশ / শোচনীয় অবস্থা",
+            "syn": "Miserable"
+          },
+          {
+            "num": 10,
+            "word": "Abjure",
+            "pos": "v.",
+            "bn": "শপথ করে ত্যাগ করা",
+            "syn": "Renounce"
+          }
+        ],
+        "cta": "🎯 এবার চলুন দেখি ৩টি কুইজে আপনার রিভিশন স্কোর কত হয়!",
+        "dur": 15,
+        "script": "কুইজে যাওয়ার আগে চলুন এক নজরে আজকের ১০টি শব্দ চটজলদি রিভিশন দিয়ে নেওয়া যাক: Abase—অপমান বা নীচু করা; Abash—বিব্রত বা লজ্জিত করা; Abate—হ্রাস পাওয়া বা কমা; Abdicate—সিংহাসন বা ক্ষমতা ত্যাগ করা; Aberration—স্বাভাবিক পথ থেকে বিচ্যুতি; Abet—খারাপ কাজে সাহায্য বা উস্কানি দেওয়া; Abeyance—স্থগিতাবস্থা; Abhor—তীব্র ঘৃণা করা; Abject—চরম হতাশ বা শোচনীয়; এবং Abjure—শপথ করে কোনো কিছু ত্যাগ করা। এবার চলুন শুরু করা যাক আজকের কুইজ..."
+      },
+      {
+        "type": 2,
+        "qNum": 1,
+        "totalQ": 3,
+        "question": "\"Abate\" শব্দের সঠিক Antonym কোনটি?",
+        "options": [
+          "Diminish",
+          "Intensify",
+          "Subside",
+          "Lessen"
+        ],
+        "ansIdx": 1,
+        "ansText": "✅ সঠিক উত্তর: (b) Intensify",
+        "explain": "Abate অর্থ হ্রাস পাওয়া বা কমানো; তাই বিপরীত শব্দ হলো Intensify (তীব্রতর হওয়া)।",
+        "trick": "Diminish, Subside, Lessen হলো Abate-এর Synonyms!",
+        "dur": 14,
+        "script": "কুইজ ১: Abate শব্দের সঠিক Antonym কোনটি? অপশনগুলো হলো: এ Diminish, বি Intensify, সি Subside, ডি Lessen... চিন্তা করার জন্য সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, Intensify। কারণ Abate অর্থ কমানো বা কমে যাওয়া, আর Intensify অর্থ তীব্রতর হওয়া।"
+      },
+      {
+        "type": 2,
+        "qNum": 2,
+        "totalQ": 3,
+        "question": "রাজার সিংহাসন বা ক্ষমতা ত্যাগ করা বোঝাতে কোন শব্দটি ব্যবহৃত হয়?",
+        "options": [
+          "Abet",
+          "Abhor",
+          "Abdicate",
+          "Abase"
+        ],
+        "ansIdx": 2,
+        "ansText": "✅ সঠিক উত্তর: (c) Abdicate",
+        "explain": "Abdicate অর্থ স্বেচ্ছায় পদ বা সিংহাসন ত্যাগ করা। (Abet = অপকর্মে সাহায্য, Abhor = ঘৃণা করা)।",
+        "trick": "Dictator ক্ষমতা ছেড়ে দিলে Abdicate করে!",
+        "dur": 14,
+        "script": "কুইজ ২: রাজার সিংহাসন বা ক্ষমতা ত্যাগ করা বোঝাতে কোন শব্দটি ব্যবহৃত হয়? অপশনগুলো দেখে নিন... আপনার সময় শুরু হচ্ছে এখন... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন সি, Abdicate। এর অর্থ স্বেচ্ছায় সিংহাসন বা ক্ষমতা ত্যাগ করা।"
+      },
+      {
+        "type": 2,
+        "qNum": 3,
+        "totalQ": 3,
+        "question": "\"The project was held in ____ until funds arrived.\"",
+        "options": [
+          "abeyance",
+          "abjure",
+          "aberration",
+          "abject"
+        ],
+        "ansIdx": 0,
+        "ansText": "✅ সঠিক উত্তর: (a) abeyance",
+        "explain": "\"Held in abeyance\" একটি সাধারণ প্রবচন (idiom), যার অর্থ স্থগিত বা সাময়িক বিরতিতে রাখা।",
+        "trick": "ফান্ড না থাকায় তীরে (Bay) আটকে রাখা হয়েছিল!",
+        "dur": 14,
+        "script": "কুইজ ৩: The project was held in blank until funds arrived. শূন্যস্থানে কোন শব্দটি বসবে? উত্তর ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন এ, abeyance। Held in abeyance মানে সাময়িকভাবে স্থগিত বা পেন্ডিং রাখা।"
+      },
+      {
+        "type": 3,
+        "title": "🎉 চমৎকার রিভিশন!",
+        "sub1": "১০টি শব্দ ও ৩টি কুইজের মধ্যে তোমার কতটি মনে আছে?",
+        "btn": "▶ SUBSCRIBE 🔔",
+        "sub2": "কমেন্টে তোমার স্কোর জানাও ও বন্ধুদের সাথে শেয়ার করো!",
+        "thank": "পরের পর্বে দেখা হবে নতুন ১০টি শব্দ নিয়ে — ধন্যবাদ! 💚",
+        "dur": 9,
+        "script": "ভিডিওটি দেখার জন্য ধন্যবাদ! আজকের ১০টি শব্দ এবং ৩টি কুইজের মধ্যে তোমার স্কোর কত হলো কমেন্টে জানাও। নিয়মিত এরকম শিক্ষণীয় ভিডিও পেতে এখনই চ্যানেলটি সাবস্ক্রাইব করে বেল আইকনে ক্লিক করে রাখো। পরের পর্বে দেখা হবে, সবাই ভালো থেকো!"
       }
-    ],
-    "cta": "🎯 এবার চলুন দেখি ৩টি কুইজে আপনার রিভিশন স্কোর কত হয়!",
-    "dur": 15,
-    "script": "কুইজে যাওয়ার আগে চলুন এক নজরে আজকের ১০টি শব্দ চটজলদি রিভিশন দিয়ে নেওয়া যাক: Abase—অপমান বা নীচু করা; Abash—বিব্রত বা লজ্জিত করা; Abate—হ্রাস পাওয়া বা কমা; Abdicate—সিংহাসন বা ক্ষমতা ত্যাগ করা; Aberration—স্বাভাবিক পথ থেকে বিচ্যুতি; Abet—খারাপ কাজে সাহায্য বা উস্কানি দেওয়া; Abeyance—স্থগিতাবস্থা; Abhor—তীব্র ঘৃণা করা; Abject—চরম হতাশ বা শোচনীয়; এবং Abjure—শপথ করে কোনো কিছু ত্যাগ করা। এবার চলুন শুরু করা যাক আজকের কুইজ..."
+    ]
   },
-  {
-    "type": 2,
-    "qNum": 1,
-    "totalQ": 3,
-    "question": "\"Abate\" শব্দের সঠিক Antonym কোনটি?",
-    "options": [
-      "Diminish",
-      "Intensify",
-      "Subside",
-      "Lessen"
-    ],
-    "ansIdx": 1,
-    "ansText": "✅ সঠিক উত্তর: (b) Intensify",
-    "explain": "Abate অর্থ হ্রাস পাওয়া বা কমানো; তাই বিপরীত শব্দ হলো Intensify (তীব্রতর হওয়া)।",
-    "trick": "Diminish, Subside, Lessen হলো Abate-এর Synonyms!",
-    "dur": 14,
-    "script": "কুইজ ১: Abate শব্দের সঠিক Antonym কোনটি? অপশনগুলো হলো: এ Diminish, বি Intensify, সি Subside, ডি Lessen... চিন্তা করার জন্য সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, Intensify। কারণ Abate অর্থ কমানো বা কমে যাওয়া, আর Intensify অর্থ তীব্রতর হওয়া।"
+  "2": {
+    "id": 2,
+    "title": "পর্ব-০২: শব্দ ১১ থেকে ২০ ও কুইজ",
+    "badge": "পর্ব-০২ (১১-২০)",
+    "wordsRange": "১১-২০",
+    "thumb": {
+      "epBadge": "🔥 Word Smart ১ | পর্ব-০২",
+      "cta": "শব্দ ১১-২০ + ট্রিক + ৩টি কুইজ ▶",
+      "w1": "Abridge",
+      "m1": "সংক্ষিপ্ত করা ✂️",
+      "w2": "Abrogate",
+      "m2": "বাতিল বা রদ করা 🚫",
+      "portW": "Abdicate",
+      "portM": "সিংহাসন ত্যাগ করা"
+    },
+    "scenes": [
+      {
+        "type": 0,
+        "badge": "🔥 Word Smart ১ | ফুল লেকচার সিরিজ (পর্ব-০২)",
+        "exams": [
+          "🎯 BCS প্রিলি ও লিখিত",
+          "🎯 Bank Officers",
+          "🎯 বিশ্ববিদ্যালয় ভর্তি (DU/IBA)",
+          "🎯 Job & Admission"
+        ],
+        "title1": "ভোকাবুলারিতে ফুল মার্কস নিশ্চিত করার",
+        "title2": "পর্ব-০২: শব্দ ১১ থেকে ২০ ও রিভিশন কুইজ!",
+        "feat": "✨ অর্থ • Synonyms • Antonyms • বাক্যে প্রয়োগ • ম্যাজিক ট্রিক 💡",
+        "chip": "🚀 চলুন শিখে ফেলি Word Smart-এর পরবর্তী ১০টি মাস্টার ওয়ার্ড!",
+        "dur": 11.5,
+        "script": "বিসিএস প্রিলিমিনারি ও লিখিত, ব্যাংক নিয়োগ পরীক্ষা কিংবা বিশ্ববিদ্যালয় ভর্তি—ভোকাবুলারিতে ভালো না করলে কোনো প্রতিযোগিতামূলক পরীক্ষাতেই এগিয়ে থাকা যায় না। আজ আমরা নিয়ে এলাম Word Smart পূর্ণাঙ্গ লেকচার সিরিজের দ্বিতীয় পর্ব। এই পর্বে আমরা শিখব ১১ নম্বর থেকে ২০ নম্বর পর্যন্ত গুরুত্বপূর্ণ ১০টি শব্দ, এদের সিনোনিম, অ্যান্টনিম, বাক্যে প্রয়োগ ও জাদুকরী ট্রিক। চলুন শুরু করা যাক শব্দ ১১ দিয়ে..."
+      },
+      {
+        "type": 1,
+        "num": 11,
+        "word": "Abnegate",
+        "pos": "Verb",
+        "pron": "ab-ni-geyt",
+        "meaning": "নিজের স্বার্থ বা অধিকার ত্যাগ করা / প্রত্যাখ্যান করা",
+        "syn": "Renounce (পরিহার করা), Relinquish (ছেড়ে দেওয়া), Surrender (ত্যাগ করা), Deny (অস্বীকার করা)",
+        "ant": "Claim (দাবি করা), Assert (প্রতিষ্ঠা করা), Embrace (গ্রহণ করা), Indulge (লিপ্ত হওয়া)",
+        "exEn": "She abnegated her personal desires to serve the poor.",
+        "exBn": "দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন।",
+        "trick": "‘Negate’ মানে বাতিল করা; নিজের ভোগবিলাস বা স্বার্থ Negate করাই হলো Abnegate!",
+        "dur": 13.5,
+        "script": "১১ নম্বর শব্দ: Abnegate. এটি একটি Verb. এর অর্থ নিজের স্বার্থ বা অধিকার ত্যাগ করা অথবা প্রত্যাখ্যান করা। Synonyms হলো Renounce, Relinquish এবং Deny। Antonyms হলো Claim, Assert এবং Embrace। বাক্যে ব্যবহার: She abnegated her personal desires to serve the poor. অর্থাৎ, দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন। মনে রাখার কৌশল: Negate মানে বাতিল করা; নিজের স্বার্থ বা ভোগবিলাস Negate করাই হলো Abnegate!"
+      },
+      {
+        "type": 1,
+        "num": 12,
+        "word": "Abomination",
+        "pos": "Noun",
+        "pron": "uh-bom-uh-NAY-shun",
+        "meaning": "চরম ঘৃণা / ঘৃণ্য বস্তু / অতি জঘন্য কাজ",
+        "syn": "Anathema (অভিশাপ/ঘৃণ্য বস্তু), Atrocity (নৃশংসতা), Disgrace (কলঙ্ক), Abhorrence (তীব্র ঘৃণা)",
+        "ant": "Delight (আনন্দ), Blessing (আশীর্বাদ), Treasure (সম্পদ), Adoration (শ্রদ্ধা)",
+        "exEn": "War is an abomination that destroys countless innocent lives.",
+        "exBn": "যুদ্ধ হলো একটি চরম ঘৃণ্য ও ধ্বংসাত্মক বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়।",
+        "trick": "Ab + Ominous (অশুভ) কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বা অভিশপ্ত বিষয় হলো Abomination!",
+        "dur": 13.5,
+        "script": "১২ নম্বর শব্দ: Abomination. এটি একটি Noun. এর অর্থ চরম ঘৃণা, ঘৃণ্য বস্তু বা অতি জঘন্য কাজ। Synonyms হলো Anathema, Atrocity এবং Abhorrence। Antonyms হলো Delight, Blessing এবং Adoration। বাক্যে ব্যবহার: War is an abomination that destroys countless innocent lives. অর্থাৎ, যুদ্ধ হলো একটি চরম ঘৃণ্য বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়। মনে রাখার কৌশল: Ominous বা অশুভ কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বিষয়ই হলো Abomination!"
+      },
+      {
+        "type": 1,
+        "num": 13,
+        "word": "Aboriginal",
+        "pos": "Adjective / Noun",
+        "pron": "ab-uh-RIJ-uh-nul",
+        "meaning": "আদিবাসী / দেশীয় অধিবাসী / আদিম",
+        "syn": "Native (দেশীয়/স্থানীয়), Indigenous (ভূমিপুত্র/আদিবাসী), Original (আদি), Earliest (প্রাচীনতম)",
+        "ant": "Immigrant (অভিবাসী), Foreign (বিদেশি), Alien (বহিরাগত), Modern (আধুনিক)",
+        "exEn": "The aboriginal people have lived on this continent for thousands of years.",
+        "exBn": "আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে।",
+        "trick": "‘Origin’ (উৎপত্তি) থেকে মনে রাখুন; ভূমির মূল বা শুরু থেকে যারা আছে তারাই Aboriginal!",
+        "dur": 13.5,
+        "script": "১৩ নম্বর শব্দ: Aboriginal. এটি Adjective এবং Noun উভয় হিসেবেই ব্যবহৃত হয়। এর অর্থ আদিবাসী, স্থানীয় অধিবাসী বা আদিম। Synonyms হলো Native, Indigenous এবং Original। Antonyms হলো Immigrant, Foreign এবং Alien। বাক্যে ব্যবহার: The aboriginal people have lived on this continent for thousands of years. অর্থাৎ, আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে। মনে রাখার কৌশল: Origin বা উৎপত্তি থেকে মনে রাখুন, ভূমির শুরু থেকে যারা বসবাস করছে তারাই Aboriginal!"
+      },
+      {
+        "type": 1,
+        "num": 14,
+        "word": "Abortive",
+        "pos": "Adjective",
+        "pron": "uh-BOR-tiv",
+        "meaning": "ব্যর্থ / অসফল / অঙ্কুরেই বিনষ্ট",
+        "syn": "Unsuccessful (ব্যর্থ), Failed (অসফল), Futile (নিষ্ফল), Fruitless (পণ্ডশ্রম)",
+        "ant": "Successful (সফল), Fruitful (ফলপ্রসূ), Effective (কার্যকর), Productive (উৎপাদনশীল)",
+        "exEn": "Their abortive attempt to escape ended in immediate capture.",
+        "exBn": "পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল।",
+        "trick": "‘Abort’ (মাঝপথে বন্ধ করা) থেকে Abortive; সফল না হয়ে অঙ্কুরেই বিনষ্ট বা ব্যর্থ হওয়া!",
+        "dur": 13.5,
+        "script": "১৪ নম্বর শব্দ: Abortive. এটি একটি Adjective. এর অর্থ ব্যর্থ, অসফল বা অঙ্কুরেই বিনষ্ট। Synonyms হলো Unsuccessful, Failed এবং Futile। Antonyms হলো Successful, Fruitful এবং Effective। বাক্যে ব্যবহার: Their abortive attempt to escape ended in immediate capture. অর্থাৎ, পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল। মনে রাখার কৌশল: কোনো মিশন Abort করা মানে মাঝপথে বাতিল হওয়া, সেখান থেকেই Abortive মানে ব্যর্থ বা নিষ্ফল!"
+      },
+      {
+        "type": 1,
+        "num": 15,
+        "word": "Abound",
+        "pos": "Verb",
+        "pron": "uh-BOWND",
+        "meaning": "প্রচুর পরিমাণে থাকা / উপচে পড়া / ভরপুর থাকা",
+        "syn": "Teem (ভরপুর থাকা), Plentiful (প্রচুর), Overflow (উথলে ওঠা), Flourish (সমৃদ্ধ হওয়া)",
+        "ant": "Lack (অভাব থাকা), Dearth (ঘাটতি), Deficient (অপর্যাপ্ত), Scarce (দুষ্প্রাপ্য)",
+        "exEn": "Fish abound in the fresh rivers of Bangladesh during the monsoon.",
+        "exBn": "বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়।",
+        "trick": "সীমানা বা ‘Bound’ উপচে পড়ার মতো কোনো এলাকায় প্রচুর থাকা মানেই Abound!",
+        "dur": 13.5,
+        "script": "১৫ নম্বর শব্দ: Abound. এটি একটি Verb. এর অর্থ প্রচুর পরিমাণে থাকা বা ভরপুর থাকা। Synonyms হলো Teem, Plentiful এবং Overflow। Antonyms হলো Lack, Dearth এবং Scarce। বাক্যে ব্যবহার: Fish abound in the fresh rivers of Bangladesh during the monsoon. অর্থাৎ, বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়। মনে রাখার কৌশল: বাউন্ডারি বা সীমানা উপচে পড়ার মতো কোনো কিছু প্রচুর থাকাই হলো Abound!"
+      },
+      {
+        "type": 1,
+        "num": 16,
+        "word": "Abridge",
+        "pos": "Verb",
+        "pron": "uh-BRIJ",
+        "meaning": "সংক্ষিপ্ত করা / ছোট করা",
+        "syn": "Shorten (ছোট করা), Condense (সংক্ষিপ্ত করা), Curtail (ছাঁটাই করা), Abbreviate (সংক্ষেপ করা)",
+        "ant": "Expand (প্রসারিত করা), Lengthen (দীর্ঘ করা), Extend (বাড়ানো), Elaborate (বিস্তারিত করা)",
+        "exEn": "The editor abridged the massive novel to fit the magazine format.",
+        "exBn": "সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন।",
+        "trick": "নদীর দুই তীরের দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, লেখার দৈর্ঘ্য ছোট করা হলো Abridge!",
+        "dur": 13.5,
+        "script": "১৬ নম্বর শব্দ: Abridge. এটি একটি Verb. এর অর্থ সংক্ষিপ্ত করা বা ছোট করা। Synonyms হলো Shorten, Condense এবং Curtail। Antonyms হলো Expand, Lengthen এবং Extend। বাক্যে ব্যবহার: The editor abridged the massive novel to fit the magazine format. অর্থাৎ, সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন। মনে রাখার কৌশল: নদীর দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, তেমনি লেখার দৈর্ঘ্য ছোট করা হলো Abridge!"
+      },
+      {
+        "type": 1,
+        "num": 17,
+        "word": "Abrogate",
+        "pos": "Verb",
+        "pron": "AB-ruh-gayt",
+        "meaning": "আইন বা চুক্তি আনুষ্ঠানিকভাবে বাতিল করা / রদ করা",
+        "syn": "Repeal (বাতিল করা), Nullify (অকার্যকর করা), Revoke (প্রত্যাহার করা), Rescind (রদ করা)",
+        "ant": "Enact (আইন প্রণয়ন করা), Ratify (অনুমোদন করা), Establish (প্রতিষ্ঠা করা), Enforce (বলবৎ করা)",
+        "exEn": "The government voted to abrogate the outdated colonial law.",
+        "exBn": "সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল।",
+        "trick": "কোনো পুরনো আইন বা নীতিকে Gate বন্ধ করে চিরতরে বাতিল (Nullify) করাই হলো Abrogate!",
+        "dur": 13.5,
+        "script": "১৭ নম্বর শব্দ: Abrogate. এটি একটি Verb. এর অর্থ আনুষ্ঠানিকভাবে আইন বা চুক্তি বাতিল বা রদ করা। Synonyms হলো Repeal, Nullify এবং Revoke। Antonyms হলো Enact, Ratify এবং Enforce। বাক্যে ব্যবহার: The government voted to abrogate the outdated colonial law. অর্থাৎ, সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল। মনে রাখার কৌশল: পুরনো নীতিকে গেট-আউট করে চিরতরে বাতিল করাই হলো Abrogate!"
+      },
+      {
+        "type": 1,
+        "num": 18,
+        "word": "Absolute",
+        "pos": "Adjective",
+        "pron": "AB-suh-loot",
+        "meaning": "সম্পূর্ণ / নিরঙ্কুশ / শর্তহীন / অসীম",
+        "syn": "Total (সম্পূর্ণ), Complete (পূর্ণাঙ্গ), Unconditional (শর্তহীন), Supreme (সর্বোচ্চ)",
+        "ant": "Limited (সীমিত), Conditional (শর্তাধীন), Partial (আংশিক), Incomplete (অসম্পূর্ণ)",
+        "exEn": "The monarch ruled with absolute power over the entire kingdom.",
+        "exBn": "সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ও অসীম ক্ষমতা নিয়ে রাজত্ব করেছিলেন।",
+        "trick": "Absolute মানে যেখানে কোনো ‘If’ বা ‘But’ নেই—সম্পূর্ণ নিরঙ্কুশ ও চূড়ান্ত!",
+        "dur": 13.5,
+        "script": "১৮ নম্বর শব্দ: Absolute. এটি একটি Adjective. এর অর্থ সম্পূর্ণ, নিরঙ্কুশ বা শর্তহীন। Synonyms হলো Total, Complete এবং Supreme। Antonyms হলো Limited, Conditional এবং Partial। বাক্যে ব্যবহার: The monarch ruled with absolute power over the entire kingdom. অর্থাৎ, সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ক্ষমতা নিয়ে রাজত্ব করেছিলেন। মনে রাখার কৌশল: Absolute মানে যেখানে কোনো যদি বা কিন্তু নেই—পুরোপুরি নিরঙ্কুশ ও চূড়ান্ত!"
+      },
+      {
+        "type": 1,
+        "num": 19,
+        "word": "Absolve",
+        "pos": "Verb",
+        "pron": "ab-ZOLV",
+        "meaning": "অপরাধ বা দায় থেকে মুক্তি দেওয়া / নির্দোষ ঘোষণা করা",
+        "syn": "Acquit (খালাস দেওয়া), Exonerate (দায়মুক্ত করা), Pardon (ক্ষমা করা), Clear (দোষমুক্ত করা)",
+        "ant": "Blame (দোষারোপ করা), Accuse (অভিযুক্ত করা), Condemn (দণ্ডিত করা), Convict (দোষী সাব্যস্ত করা)",
+        "exEn": "The court examined the evidence and absolved him of all criminal charges.",
+        "exBn": "আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল।",
+        "trick": "রহস্য Solve হয়ে যাওয়ার পর আদালত নির্দোষ ব্যক্তিকে দায়মুক্ত (Absolve) করে!",
+        "dur": 13.5,
+        "script": "১৯ নম্বর শব্দ: Absolve. এটি একটি Verb. এর অর্থ অপরাধ বা দায় থেকে মুক্তি দেওয়া বা নির্দোষ ঘোষণা করা। Synonyms হলো Acquit, Exonerate এবং Pardon। Antonyms হলো Blame, Accuse এবং Condemn। বাক্যে ব্যবহার: The court examined the evidence and absolved him of all criminal charges. অর্থাৎ, আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল। মনে রাখার কৌশল: কেস Solve হওয়ার পর নির্দোষ ব্যক্তিকে দায়মুক্ত করাই হলো Absolve!"
+      },
+      {
+        "type": 1,
+        "num": 20,
+        "word": "Abstinent",
+        "pos": "Adjective",
+        "pron": "AB-stuh-nunt",
+        "meaning": "স্বেচ্ছায় বিরত থাকা / সংযমী / মিতাচারী",
+        "syn": "Temperate (সংযমী/পরিমিত), Moderate (পরিমিত), Restrained (সংযত), Abstemious (মিতাচারী)",
+        "ant": "Self-indulgent (আত্মভোগী), Gluttonous (পেটুক/লোভী), Intemperate (অসংযমী)",
+        "exEn": "He remained abstinent from unhealthy habits to maintain peak athletic fitness.",
+        "exBn": "শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন।",
+        "trick": "লোভনীয় কিন্তু ক্ষতিকর জিনিস থেকে নিজে ‘Absent’ বা দূরে থাকাই হলো Abstinent!",
+        "dur": 13.5,
+        "script": "২০ নম্বর শব্দ: Abstinent. এটি একটি Adjective. এর অর্থ স্বেচ্ছায় কোনো কিছু থেকে বিরত থাকা বা সংযমী। Synonyms হলো Temperate, Moderate এবং Restrained। Antonyms হলো Self-indulgent, Gluttonous এবং Intemperate। বাক্যে ব্যবহার: He remained abstinent from unhealthy habits to maintain peak athletic fitness. অর্থাৎ, শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন। মনে রাখার কৌশল: ক্ষতিকর আকর্ষণ থেকে নিজেকে দূরে বা Absent রাখাই হলো Abstinent!"
+      },
+      {
+        "type": 4,
+        "badge": "⚡ কুইজের আগে দ্রুত রিভিশন | Quick Recap",
+        "title": "এক নজরে আজকের ১০টি মাস্টার ওয়ার্ড",
+        "sub": "অর্থ ও শীর্ষ সমার্থক শব্দ (Master Summary Table)",
+        "words": [
+          {
+            "num": 11,
+            "word": "Abnegate",
+            "pos": "v.",
+            "bn": "স্বার্থ বা অধিকার ত্যাগ করা",
+            "syn": "Renounce"
+          },
+          {
+            "num": 12,
+            "word": "Abomination",
+            "pos": "n.",
+            "bn": "চরম ঘৃণা / ঘৃণ্য বস্তু বা কাজ",
+            "syn": "Anathema"
+          },
+          {
+            "num": 13,
+            "word": "Aboriginal",
+            "pos": "adj.",
+            "bn": "আদিবাসী / স্থানীয় অধিবাসী",
+            "syn": "Native"
+          },
+          {
+            "num": 14,
+            "word": "Abortive",
+            "pos": "adj.",
+            "bn": "ব্যর্থ / অঙ্কুরেই বিনষ্ট",
+            "syn": "Unsuccessful"
+          },
+          {
+            "num": 15,
+            "word": "Abound",
+            "pos": "v.",
+            "bn": "প্রচুর পরিমাণে থাকা / ভরপুর",
+            "syn": "Teem"
+          },
+          {
+            "num": 16,
+            "word": "Abridge",
+            "pos": "v.",
+            "bn": "সংক্ষিপ্ত করা / সংক্ষেপ করা",
+            "syn": "Shorten"
+          },
+          {
+            "num": 17,
+            "word": "Abrogate",
+            "pos": "v.",
+            "bn": "আইন বা চুক্তি বাতিল/রদ করা",
+            "syn": "Repeal"
+          },
+          {
+            "num": 18,
+            "word": "Absolute",
+            "pos": "adj.",
+            "bn": "সম্পূর্ণ / নিরঙ্কুশ / অসীম",
+            "syn": "Total"
+          },
+          {
+            "num": 19,
+            "word": "Absolve",
+            "pos": "v.",
+            "bn": "অভিযোগ থেকে দায়মুক্ত ঘোষণা",
+            "syn": "Exonerate"
+          },
+          {
+            "num": 20,
+            "word": "Abstinent",
+            "pos": "adj.",
+            "bn": "স্বেচ্ছায় বিরত থাকা / সংযমী",
+            "syn": "Temperate"
+          }
+        ],
+        "cta": "🎯 এবার চলুন দেখি ৩টি কুইজে আপনার রিভিশন স্কোর কত হয়!",
+        "dur": 15,
+        "script": "কুইজে যাওয়ার আগে চলুন এক নজরে আজকের ১০টি শব্দ চটজলদি রিভিশন দিয়ে নেওয়া যাক: Abnegate—স্বার্থ বা অধিকার ত্যাগ করা; Abomination—চরম ঘৃণা বা ঘৃণ্য কাজ; Aboriginal—আদিবাসী বা স্থানীয় অধিবাসী; Abortive—ব্যর্থ বা অঙ্কুরেই বিনষ্ট; Abound—প্রচুর পরিমাণে থাকা; Abridge—সংক্ষিপ্ত করা; Abrogate—আইন বাতিল বা রদ করা; Absolute—নিরঙ্কুশ বা সম্পূর্ণ; Absolve—অভিযোগ থেকে দায়মুক্ত ঘোষণা করা; এবং Abstinent—স্বেচ্ছায় বিরত থাকা বা সংযমী। এবার চলুন শুরু করা যাক আজকের কুইজ রাউন্ড..."
+      },
+      {
+        "type": 2,
+        "qNum": 1,
+        "totalQ": 3,
+        "question": "\"Abridge\" শব্দের সঠিক Synonym কোনটি?",
+        "options": [
+          "Expand",
+          "Condense",
+          "Elaborate",
+          "Prolong"
+        ],
+        "ansIdx": 1,
+        "ansText": "✅ সঠিক উত্তর: (b) Condense",
+        "explain": "Abridge অর্থ সংক্ষেপ বা সংক্ষিপ্ত করা; তাই এর সঠিক সমার্থক শব্দ হলো Condense (ঘনীভূত/ছোট করা)।",
+        "trick": "Bridge যেমন নদী পারাপারের দূরত্ব কমায়, তেমনি লেখার দৈর্ঘ্য ছোট করা হলো Abridge!",
+        "dur": 14,
+        "script": "কুইজ ১: Abridge শব্দের সঠিক Synonym কোনটি? অপশনগুলো হলো: এ Expand, বি Condense, সি Elaborate, ডি Prolong... উত্তর ভাবার জন্য সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, Condense। কারণ Abridge অর্থ সংক্ষিপ্ত বা সংক্ষেপ করা, আর Condense অর্থও সংক্ষেপ করা।"
+      },
+      {
+        "type": 2,
+        "qNum": 2,
+        "totalQ": 3,
+        "question": "আইন বা পুরনো চুক্তি আনুষ্ঠানিকভাবে বাতিল (Nullify/Repeal) করা বোঝাতে কোনটি সঠিক?",
+        "options": [
+          "Abrogate",
+          "Abound",
+          "Absolve",
+          "Abortive"
+        ],
+        "ansIdx": 0,
+        "ansText": "✅ সঠিক উত্তর: (a) Abrogate",
+        "explain": "Abrogate অর্থ আইনি প্রক্রিয়ায় কোনো আইন বা চুক্তি আনুষ্ঠানিকভাবে বাতিল বা রদ করা (Repeal/Nullify)।",
+        "trick": "পুরনো আইনকে চিরতরে Gate বন্ধ করে বাতিল করাই হলো Abrogate!",
+        "dur": 14,
+        "script": "কুইজ ২: আইন বা কোনো পুরনো চুক্তি আনুষ্ঠানিকভাবে বাতিল বা রদ করা বোঝাতে কোন শব্দটি সঠিক? অপশনগুলো লক্ষ্য করুন... উত্তর চিন্তা করার সময় শুরু হচ্ছে এখন... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন এ, Abrogate। এর অর্থ আনুষ্ঠানিকভাবে কোনো আইন বা চুক্তি বাতিল বা রদ করা।"
+      },
+      {
+        "type": 2,
+        "qNum": 3,
+        "totalQ": 3,
+        "question": "\"The court examined the evidence and ____ the innocent man of all charges.\"",
+        "options": [
+          "abrogated",
+          "absolved",
+          "abnegated",
+          "abounded"
+        ],
+        "ansIdx": 1,
+        "ansText": "✅ সঠিক উত্তর: (b) absolved",
+        "explain": "Absolve of/from মানে কোনো অপরাধ বা অভিযোগ থেকে খালাস দেওয়া বা নির্দোষ ঘোষণা করা।",
+        "trick": "সত্য Solve হয়ে যাওয়ার পর আদালত নির্দোষ ব্যক্তিকে দায়মুক্ত (Absolve) করে!",
+        "dur": 14,
+        "script": "কুইজ ৩: The court examined the evidence and blank the innocent man of all charges. শূন্যস্থানে কোন শব্দটি বসবে? উত্তর ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, absolved। Absolve of all charges মানে সব অভিযোগ থেকে নির্দোষ ঘোষণা বা বেখসুর খালাস দেওয়া।"
+      },
+      {
+        "type": 3,
+        "title": "🎉 পর্ব-০২ সম্পন্ন! চমৎকার রিভিশন!",
+        "sub1": "আজকের ১০টি শব্দ ও ৩টি কুইজের মধ্যে তোমার কতটি মনে আছে?",
+        "btn": "▶ SUBSCRIBE 🔔",
+        "sub2": "কমেন্টে তোমার স্কোর জানাও ও বন্ধুদের সাথে শেয়ার করো!",
+        "thank": "পর্ব-০৩ এ দেখা হবে পরবর্তী ১০টি শব্দ নিয়ে — ধন্যবাদ! 💚",
+        "dur": 9,
+        "script": "দারুণ! Word Smart পর্ব-০২ শেষ হলো। আজকের ১০টি শব্দ এবং ৩টি কুইজের মধ্যে তোমার স্কোর কত হলো কমেন্টে লিখে জানাও। এরকম প্রতিটি পর্ব নিয়মিত পেতে চ্যানেলটি এখনই সাবস্ক্রাইব করে রাখো। পর্ব-০৩ এ দেখা হবে পরবর্তী শব্দগুলো নিয়ে, সবাই ভালো থেকো!"
+      }
+    ]
   },
-  {
-    "type": 2,
-    "qNum": 2,
-    "totalQ": 3,
-    "question": "রাজার সিংহাসন বা ক্ষমতা ত্যাগ করা বোঝাতে কোন শব্দটি ব্যবহৃত হয়?",
-    "options": [
-      "Abet",
-      "Abhor",
-      "Abdicate",
-      "Abase"
-    ],
-    "ansIdx": 2,
-    "ansText": "✅ সঠিক উত্তর: (c) Abdicate",
-    "explain": "Abdicate অর্থ স্বেচ্ছায় পদ বা সিংহাসন ত্যাগ করা। (Abet = অপকর্মে সাহায্য, Abhor = ঘৃণা করা)।",
-    "trick": "Dictator ক্ষমতা ছেড়ে দিলে Abdicate করে!",
-    "dur": 14,
-    "script": "কুইজ ২: রাজার সিংহাসন বা ক্ষমতা ত্যাগ করা বোঝাতে কোন শব্দটি ব্যবহৃত হয়? অপশনগুলো দেখে নিন... আপনার সময় শুরু হচ্ছে এখন... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন সি, Abdicate। এর অর্থ স্বেচ্ছায় সিংহাসন বা ক্ষমতা ত্যাগ করা।"
-  },
-  {
-    "type": 2,
-    "qNum": 3,
-    "totalQ": 3,
-    "question": "\"The project was held in ____ until funds arrived.\"",
-    "options": [
-      "abeyance",
-      "abjure",
-      "aberration",
-      "abject"
-    ],
-    "ansIdx": 0,
-    "ansText": "✅ সঠিক উত্তর: (a) abeyance",
-    "explain": "\"Held in abeyance\" একটি সাধারণ প্রবচন (idiom), যার অর্থ স্থগিত বা সাময়িক বিরতিতে রাখা।",
-    "trick": "ফান্ড না থাকায় তীরে (Bay) আটকে রাখা হয়েছিল!",
-    "dur": 14,
-    "script": "কুইজ ৩: The project was held in blank until funds arrived. শূন্যস্থানে কোন শব্দটি বসবে? উত্তর ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন এ, abeyance। Held in abeyance মানে সাময়িকভাবে স্থগিত বা পেন্ডিং রাখা।"
-  },
-  {
-    "type": 3,
-    "title": "🎉 চমৎকার রিভিশন!",
-    "sub1": "১০টি শব্দ ও ৩টি কুইজের মধ্যে তোমার কতটি মনে আছে?",
-    "btn": "▶ SUBSCRIBE 🔔",
-    "sub2": "কমেন্টে তোমার স্কোর জানাও ও বন্ধুদের সাথে শেয়ার করো!",
-    "thank": "পরের পর্বে দেখা হবে নতুন ১০টি শব্দ নিয়ে — ধন্যবাদ! 💚",
-    "dur": 9,
-    "script": "ভিডিওটি দেখার জন্য ধন্যবাদ! আজকের ১০টি শব্দ এবং ৩টি কুইজের মধ্যে তোমার স্কোর কত হলো কমেন্টে জানাও। নিয়মিত এরকম শিক্ষণীয় ভিডিও পেতে এখনই চ্যানেলটি সাবস্ক্রাইব করে বেল আইকনে ক্লিক করে রাখো। পরের পর্বে দেখা হবে, সবাই ভালো থেকো!"
+  "3": {
+    "id": 3,
+    "title": "পর্ব-০৩: শব্দ ২১ থেকে ৩০ ও কুইজ",
+    "badge": "পর্ব-০৩ (২১-৩০)",
+    "wordsRange": "২১-৩০",
+    "thumb": {
+      "epBadge": "🔥 Word Smart ১ | পর্ব-০৩",
+      "cta": "শব্দ ২১-৩০ + ট্রিক + ৩টি কুইজ ▶",
+      "w1": "Abstruse",
+      "m1": "দুর্বোধ্য বা গূঢ় 🧠",
+      "w2": "Accolade",
+      "m2": "সম্মাননা বা বাহবা 🏆",
+      "portW": "Abstruse",
+      "portM": "দুর্বোধ্য বা গূঢ় সত্য"
+    },
+    "scenes": [
+      {
+        "type": 0,
+        "badge": "🔥 Word Smart ১ | ফুল লেকচার সিরিজ (পর্ব-০৩)",
+        "exams": [
+          "🎯 BCS প্রিলি ও লিখিত",
+          "🎯 Bank Officers",
+          "🎯 বিশ্ববিদ্যালয় ভর্তি (DU/IBA)",
+          "🎯 Job & Admission"
+        ],
+        "title1": "ভোকাবুলারিতে ফুল মার্কস নিশ্চিত করার",
+        "title2": "পর্ব-০৩: শব্দ ২১ থেকে ৩০ ও রিভিশন কুইজ!",
+        "feat": "✨ অর্থ • Synonyms • Antonyms • বাক্যে প্রয়োগ • ম্যাজিক ট্রিক 💡",
+        "chip": "🚀 চলুন শিখে ফেলি Word Smart-এর পরবর্তী ১০টি মাস্টার ওয়ার্ড!",
+        "dur": 11.5,
+        "script": "বিসিএস প্রিলিমিনারি ও লিখিত, ব্যাংক নিয়োগ পরীক্ষা কিংবা বিশ্ববিদ্যালয় ভর্তি—ভোকাবুলারিতে ভালো না করলে কোনো প্রতিযোগিতামূলক পরীক্ষাতেই এগিয়ে থাকা যায় না। আজ আমরা নিয়ে এলাম Word Smart পূর্ণাঙ্গ লেকচার সিরিজের তৃতীয় পর্ব। এই পর্বে আমরা শিখব ২১ নম্বর থেকে ৩০ নম্বর পর্যন্ত গুরুত্বপূর্ণ ১০টি শব্দ, এদের সিনোনিম, অ্যান্টনিম, বাক্যে প্রয়োগ ও জাদুকরী ট্রিক। চলুন শুরু করা যাক শব্দ ২১ দিয়ে..."
+      },
+      {
+        "type": 1,
+        "num": 21,
+        "word": "Abstract",
+        "pos": "Adjective / Noun",
+        "pron": "AB-strakt",
+        "meaning": "তাত্ত্বিক / বিমূর্ত / সরাসরি স্পর্শাতীত",
+        "syn": "Theoretical (তাত্ত্বিক), Conceptual (ধারণাগত), Intangible (বিমূর্ত), Non-concrete (অবাস্তব)",
+        "ant": "Concrete (বাস্তব/দৃঢ়), Tangible (স্পর্শযোগ্য), Real (প্রকৃত), Definite (সুনির্দিষ্ট)",
+        "exEn": "He liked chemistry in the abstract, but he hated doing lab experiments.",
+        "exBn": "তাত্ত্বিক বিষয় হিসেবে রসায়ন তার ভালো লাগলেও গবেষণাগারে ব্যবহারিক কাজ করতে সে অপছন্দ করত।",
+        "trick": "Ab (দূরে) + Tract (টানা) -> যা বাস্তব বা দৃশ্যমান রূপ থেকে দূরে টানা হয়েছে, অর্থাৎ বিমূর্ত ধারণা!",
+        "dur": 13.5,
+        "script": "২১ নম্বর শব্দ: Abstract. এটি Adjective এবং Noun উভয় হিসেবে ব্যবহৃত হয়। এর অর্থ তাত্ত্বিক, বিমূর্ত বা যা সরাসরি চোখে দেখা বা স্পর্শ করা যায় না। Synonyms হলো Theoretical, Conceptual এবং Intangible। Antonyms হলো Concrete, Tangible এবং Definite। বাক্যে ব্যবহার: He liked chemistry in the abstract, but he hated doing lab experiments. অর্থাৎ, তাত্ত্বিক বিষয় হিসেবে রসায়ন তার ভালো লাগলেও গবেষণাগারে ব্যবহারিক কাজ করতে সে অপছন্দ করত। মনে রাখার কৌশল: বাস্তব বা দৃশ্যমান রূপ থেকে যা দূরে টানা হয়েছে, তাই Abstract বা বিমূর্ত!"
+      },
+      {
+        "type": 1,
+        "num": 22,
+        "word": "Abstruse",
+        "pos": "Adjective",
+        "pron": "ab-STROOS",
+        "meaning": "দুর্বোধ্য / গূঢ় / জটিল ও সহজে অবোধ্য",
+        "syn": "Obscure (অস্পষ্ট/দুর্বোধ্য), Recondite (গূঢ়), Esoteric (রহস্যময়), Incomprehensible (অবোধ্য)",
+        "ant": "Lucid (সহজবোধ্য), Clear (পরিষ্কার), Transparent (স্বচ্ছ), Obvious (স্পষ্ট)",
+        "exEn": "The professor's lecture on quantum physics was so abstruse that very few students could follow.",
+        "exBn": "কোয়ান্টাম পদার্থবিজ্ঞানের ওপর অধ্যাপকের বক্তৃতাটি এতটাই দুর্বোধ্য ছিল যে খুব কম শিক্ষার্থীই তা বুঝতে পেরেছিল।",
+        "trick": "Abstruse শুনতে লাগে Obtuse বা Abstract Truth-এর মতো — যে গভীর রহস্য সহজে বোঝা যায় না, সেটাই Abstruse!",
+        "dur": 13.5,
+        "script": "২২ নম্বর শব্দ: Abstruse. এটি একটি Adjective. এর অর্থ দুর্বোধ্য, গূঢ় বা জটিল। Synonyms হলো Obscure, Recondite এবং Esoteric। Antonyms হলো Lucid, Clear এবং Transparent। বাক্যে ব্যবহার: The professor's lecture on quantum physics was so abstruse that very few students could follow. অর্থাৎ, কোয়ান্টাম পদার্থবিজ্ঞানের ওপর অধ্যাপকের বক্তৃতাটি এতটাই দুর্বোধ্য ছিল যে খুব কম শিক্ষার্থীই তা বুঝতে পেরেছিল। মনে রাখার কৌশল: যে সত্য সহজে মগজে ঢোকে না বা বোঝা কঠিন, সেটাই Abstruse বা দুর্বোধ্য!"
+      },
+      {
+        "type": 1,
+        "num": 23,
+        "word": "Abysmal",
+        "pos": "Adjective",
+        "pron": "uh-BIZ-mul",
+        "meaning": "অতলস্পর্শী / চরম শোচনীয় / অত্যন্ত খারাপ",
+        "syn": "Dreadful (ভয়াবহ), Terrible (ভীষণ খারাপ), Appalling (হতভম্বকর), Bottomless (অতল)",
+        "ant": "Superb (চমৎকার), Excellent (উৎকৃষ্ট), Outstanding (অসাধারণ), Splendid (शानदार)",
+        "exEn": "The quality of public transport in the city is abysmal during rush hours.",
+        "exBn": "ব্যস্ত সময়ে শহরের গণপরিবহনের মান অত্যন্ত শোচনীয় ও নিম্নমানের হয়ে পড়ে।",
+        "trick": "Abyss মানে অতল গহ্বর; যা অতল খাদের মতো তলানিতে ঠেকেছে, সেটাই Abysmal বা চরম শোচনীয়!",
+        "dur": 13.5,
+        "script": "২৩ নম্বর শব্দ: Abysmal. এটি একটি Adjective. এর অর্থ অতলস্পর্শী, চরম শোচনীয় বা জঘন্য। Synonyms হলো Dreadful, Terrible এবং Appalling। Antonyms হলো Superb, Excellent এবং Outstanding। বাক্যে ব্যবহার: The quality of public transport in the city is abysmal during rush hours. অর্থাৎ, ব্যস্ত সময়ে শহরের গণপরিবহনের মান অত্যন্ত শোচনীয় হয়ে পড়ে। মনে রাখার কৌশল: Abyss শব্দের অর্থ অতল খাদ বা গহ্বর; যা অতল খাদের মতো তলানিতে ঠেকেছে, সেটাই Abysmal বা চরম শোচনীয়!"
+      },
+      {
+        "type": 1,
+        "num": 24,
+        "word": "Accede",
+        "pos": "Verb",
+        "pron": "ak-SEED",
+        "meaning": "সম্মত হওয়া / মেনে নেওয়া / রাজি হওয়া",
+        "syn": "Consent (সম্মতি দেওয়া), Acquiesce (মেনে নেওয়া), Yield (নতি স্বীকার করা), Concede (স্বীকার করা)",
+        "ant": "Refuse (প্রত্যাখ্যান করা), Reject (বাতিল করা), Disagree (অসম্মত হওয়া), Dissent (ভিন্নমত পোষণ)",
+        "exEn": "The management finally acceded to the workers' reasonable demands.",
+        "exBn": "কর্তৃপক্ষ অবশেষে শ্রমিকদের যৌক্তিক দাবিগুলো মেনে নিতে সম্মত হয়েছিল।",
+        "trick": "কোনো অনুরোধ বা দাবি Accept করার নীতিগত সম্মতিই হলো Accede (মনে রাখবেন: Accede to)!",
+        "dur": 13.5,
+        "script": "২৪ নম্বর শব্দ: Accede. এটি একটি Verb. এর অর্থ সম্মত হওয়া, মেনে নেওয়া বা রাজি হওয়া। মনে রাখবে, এর সাথে এপ্রোপ্রিয়েট প্রিপজিশন to বসে — Accede to। Synonyms হলো Consent, Acquiesce এবং Yield। Antonyms হলো Refuse, Reject এবং Disagree। বাক্যে ব্যবহার: The management finally acceded to the workers' reasonable demands. অর্থাৎ, কর্তৃপক্ষ অবশেষে শ্রমিকদের যৌক্তিক দাবিগুলো মেনে নিতে সম্মত হয়েছিল। মনে রাখার টেকনিক: কোনো অনুরোধ Accept করার নীতিগত সম্মতিই হলো Accede করা!"
+      },
+      {
+        "type": 1,
+        "num": 25,
+        "word": "Accentuate",
+        "pos": "Verb",
+        "pron": "ak-SEN-choo-eyt",
+        "meaning": "জোর দেওয়া / সুস্পষ্ট করা / আকর্ষণীয় করে তোলা",
+        "syn": "Emphasize (জোর দেওয়া), Highlight (তুলে ধরা), Stress (গুরুত্ব দেওয়া), Underscore (চিহ্নিত করা)",
+        "ant": "Downplay (খাটো করে দেখা), Understate (কম করে বলা), Mask (লুকানো), Diminish (হ্রাস করা)",
+        "exEn": "The dark lighting was designed to accentuate the actors' facial expressions.",
+        "exBn": "অভিনেতাদের মুখের অভিব্যক্তি আরও সুস্পষ্ট ও জোরালোভাবে ফুটিয়ে তোলার জন্য হালকা আলো ব্যবহার করা হয়েছিল।",
+        "trick": "Accent (উচ্চারণে জোর বা টান) দেওয়া থেকেই এসেছে Accentuate — কোনো কিছুকে হাইলাইট বা জোর দেওয়া!",
+        "dur": 13.5,
+        "script": "২৫ নম্বর শব্দ: Accentuate. এটি একটি Verb. এর অর্থ জোর দেওয়া, সুস্পষ্ট বা আকর্ষণীয় করে তোলা। Synonyms হলো Emphasize, Highlight এবং Underscore। Antonyms হলো Downplay এবং Mask। বাক্যে ব্যবহার: The dark lighting was designed to accentuate the actors' facial expressions. অর্থাৎ, অভিনেতাদের মুখের অভিব্যক্তি আরও সুস্পষ্ট ও জোরালো করতে মৃদু আলো দেওয়া হয়েছিল। মনে রাখার কৌশল: Accent মানেই কোনো উচ্চারণে জোর দেওয়া, আর কোনো বিষয়কে বিশেষভাবে হাইলাইট করাই হলো Accentuate করা!"
+      },
+      {
+        "type": 1,
+        "num": 26,
+        "word": "Access",
+        "pos": "Noun / Verb",
+        "pron": "AK-ses",
+        "meaning": "প্রবেশাধিকার / পৌঁছানোর পথ / নাগাল পাওয়া",
+        "syn": "Entry (প্রবেশ), Admission (ভর্তি/প্রবেশ), Approach (নাগাল), Admittance (অনুমতি)",
+        "ant": "Prohibition (নিষেধাজ্ঞা), Exclusion (বহিষ্কার), Denial (প্রত্যাখ্যান), Restriction (সীমাবদ্ধতা)",
+        "exEn": "Every student should have equal access to quality educational resources.",
+        "exBn": "প্রত্যেক শিক্ষার্থীর মানসম্মত শিক্ষামূলক উপকরণের সমান প্রবেশাধিকার বা নাগাল পাওয়া উচিত।",
+        "trick": "Access কার্ড দিয়ে যেমন তালা খুলে প্রবেশ করা যায়, তেমনি নাগাল বা অধিকারই হলো Access!",
+        "dur": 13.5,
+        "script": "২৬ নম্বর শব্দ: Access. এটি Noun এবং Verb উভয় রূপেই ব্যবহৃত হয়। এর অর্থ প্রবেশাধিকার, নাগাল পাওয়া বা পৌঁছানোর সুযোগ। Synonyms হলো Entry, Admission এবং Approach। Antonyms হলো Restriction এবং Exclusion। বাক্যে ব্যবহার: Every student should have equal access to quality educational resources. অর্থাৎ, প্রত্যেক শিক্ষার্থীর মানসম্মত শিক্ষামূলক উপকরণের সমান প্রবেশাধিকার থাকা উচিত। মনে রাখার কৌশল: Access কার্ড সোয়াইপ করে ঘরে প্রবেশ করা যায়, অর্থাৎ প্রবেশের সুযোগ বা অধিকারই হলো Access!"
+      },
+      {
+        "type": 1,
+        "num": 27,
+        "word": "Acclaim",
+        "pos": "Verb / Noun",
+        "pron": "uh-KLEYM",
+        "meaning": "উচ্চ প্রশংসা করা / সাধুবাদ জানানো / বিপুল সংবর্ধনা",
+        "syn": "Praise (প্রশংসা করা), Applaud (সাধুবাদ দেওয়া), Commend (সুনাম করা), Extol (গুণগান গাওয়া)",
+        "ant": "Criticize (সমালোচনা করা), Condemn (নিন্দা করা), Denounce (অভিযুক্ত করা), Disapprove (অননুমোদন)",
+        "exEn": "The director's new film won widespread critical acclaim at the festival.",
+        "exBn": "চলচ্চিত্র উৎসবে পরিচালকের নতুন ছবিটি সমালোচকদের ব্যাপক প্রশংসা ও সাধুবাদ অর্জন করেছিল।",
+        "trick": "Claim মানে দাবি করা; কিন্তু সবাই যখন স্বতঃস্ফূর্ত চিৎকার করে কারও জয়গান গায়, সেটাই Acclaim!",
+        "dur": 13.5,
+        "script": "২৭ নম্বর শব্দ: Acclaim. এটি Verb ও Noun উভয় হিসেবে ব্যবহৃত হয়। এর অর্থ আন্তরিক সাধুবাদ, উচ্চ প্রশংসা বা অভিনন্দিত করা। Synonyms হলো Praise, Applaud এবং Extol। Antonyms হলো Criticize, Condemn এবং Denounce। বাক্যে ব্যবহার: The director's new film won widespread critical acclaim at the festival. অর্থাৎ, চলচ্চিত্র উৎসবে পরিচালকের নতুন সিনেমাটি সমালোচকদের বিপুল সাধুবাদ পেয়েছিল। মনে রাখার কৌশল: করতালিতে কারও জয়গান গাওয়া ও প্রকাশ্যে সম্মান জানানোই হলো Acclaim!"
+      },
+      {
+        "type": 1,
+        "num": 28,
+        "word": "Accolade",
+        "pos": "Noun",
+        "pron": "AK-uh-leyd",
+        "meaning": "সম্মাননা / রাষ্ট্রীয় পুরস্কার / বিশেষ স্বীকৃতি বা বাহবা",
+        "syn": "Honor (সম্মান), Award (পুরস্কার), Tribute (শ্রদ্ধাঞ্জলি), Citation (প্রশংসাপত্র), Laurels (যশ)",
+        "ant": "Rebuke (তিরস্কার), Censure (তীব্র নিন্দা), Criticism (সমালোচনা), Reprimand (ভর্ৎসনা)",
+        "exEn": "Winning the prestigious Nobel Prize is the highest accolade for a scientist.",
+        "exBn": "মর্যাদাপূর্ণ নোবেল পুরস্কার অর্জন যেকোনো বিজ্ঞানীর জন্য সর্বোচ্চ সম্মাননা ও স্বীকৃতি।",
+        "trick": "Accolade এসেছে বীর যোদ্ধাকে গলায় মেডেল পরিয়ে নাইটহুড উপাধিতে ভূষিত করার প্রথা থেকে!",
+        "dur": 13.5,
+        "script": "২৮ নম্বর শব্দ: Accolade. এটি একটি Noun. এর অর্থ আনুষ্ঠানিক সম্মাননা, রাষ্ট্রীয় পুরস্কার বা বিশেষ কাজের স্বীকৃতি। Synonyms হলো Honor, Award, Tribute এবং Laurels। Antonyms হলো Rebuke, Censure এবং Criticism। বাক্যে ব্যবহার: Winning the prestigious Nobel Prize is the highest accolade for a scientist. অর্থাৎ, সম্মানজনক নোবেল প্রাইজ অর্জন একজন বিজ্ঞানীর জীবনের সর্বোচ্চ স্বীকৃতি। মনে রাখার কৌশল: অসাধারণ অর্জনের জন্য গলায় মেডেল বা ট্রফি পরিয়ে দেওয়া বিশেষ সম্মাননাই হলো Accolade!"
+      },
+      {
+        "type": 1,
+        "num": 29,
+        "word": "Accommodate",
+        "pos": "Verb",
+        "pron": "uh-KOM-uh-deyt",
+        "meaning": "জায়গা দেওয়া / মানিয়ে নেওয়া / সংস্থান বা সহায়তা করা",
+        "syn": "Lodge (আবাস দেওয়া), House (স্থান দেওয়া), Adapt (মানিয়ে নেওয়া), Adjust (সমন্বয় করা), Oblige (উপকার করা)",
+        "ant": "Inconvenience (অসুবিধায় ফেলা), Reject (প্রত্যাখ্যান করা), Refuse (না করা), Obstruct (বাধা দেওয়া)",
+        "exEn": "The modern conference hall can comfortably accommodate more than five hundred guests.",
+        "exBn": "আধুনিক সম্মেলন কক্ষটি পাঁচ শতাধিক অতিথিকে স্বাচ্ছন্দ্যে জায়গা দিতে সক্ষম।",
+        "trick": "Accommodation মানে থাকার জায়গা; সেখান থেকেই Verb Accommodate — বাসস্থান বা জায়গা করে দেওয়া!",
+        "dur": 13.5,
+        "script": "২৯ নম্বর শব্দ: Accommodate. এটি একটি Verb. এর অর্থ জায়গা দেওয়া, সংস্থান করা কিংবা পরিস্থিতি অনুযায়ী মানিয়ে নেওয়া। বানানটি খুব গুরুত্বপূর্ণ — দুটি c এবং দুটি m (A-C-C-O-M-M-O-D-A-T-E)। Synonyms হলো Lodge, House, Adapt এবং Oblige। Antonyms হলো Refuse এবং Obstruct। বাক্যে ব্যবহার: The modern conference hall can comfortably accommodate more than five hundred guests. অর্থাৎ, আধুনিক সম্মেলন কক্ষটি পাঁচ শতাধিক অতিথিকে স্বাচ্ছন্দ্যে জায়গা দিতে পারে। মনে রাখার টেকনিক: বাসস্থান বা সুবিধামতো স্থান করে দেওয়ার কাজই হলো Accommodate!"
+      },
+      {
+        "type": 1,
+        "num": 30,
+        "word": "Accomplice",
+        "pos": "Noun",
+        "pron": "uh-KOM-plis",
+        "meaning": "অপরাধের সহযোগী / দুষ্কর্মের গোপন দোসর",
+        "syn": "Partner in crime (অপরাধের সঙ্গী), Abettor (সহায়তাকারী), Collaborator (সহযোগী), Accessory (সহায়ক)",
+        "ant": "Opponent (প্রতিপক্ষ), Adversary (শত্রু), Victim (শিকার), Bystander (দর্শক)",
+        "exEn": "The thief confessed that he had a corrupt accomplice inside the bank.",
+        "exBn": "চোরটি স্বীকার করেছিল যে ব্যাংকের ভেতরেই অপরাধে সাহায্যকারী তার এক অসৎ সহযোগী ছিল।",
+        "trick": "Accomplish মানে কাজ সফল করা; আর অসৎ মিশন Accomplish করতে যে দোসর সাহায্য করে সে-ই Accomplice!",
+        "dur": 13.5,
+        "script": "৩০ নম্বর শব্দ: Accomplice. এটি একটি Noun. এর অর্থ অপরাধের সহযোগী, দুষ্কর্মের সঙ্গী বা সহায়তাকারী। বিসিএস এবং চাকরির পরীক্ষায় শব্দটি বারবার আসে। Synonyms হলো Partner in crime, Abettor এবং Collaborator। Antonyms হলো Opponent, Adversary এবং Victim। বাক্যে ব্যবহার: The thief confessed that he had a corrupt accomplice inside the bank. অর্থাৎ, চোরটি স্বীকার করেছিল যে ব্যাংকের ভেতরেই তার এক অসৎ সহযোগী ছিল। মনে রাখার কৌশল: অপরাধের প্ল্যান Accomplish করতে যে দোসর সাহায্য করে, সে-ই হলো Accomplice!"
+      },
+      {
+        "type": 4,
+        "badge": "⚡ কুইজের আগে দ্রুত রিভিশন | Quick Recap",
+        "title": "এক নজরে আজকের ১০টি মাস্টার ওয়ার্ড",
+        "sub": "অর্থ ও শীর্ষ সমার্থক শব্দ (Master Summary Table)",
+        "words": [
+          {
+            "num": 21,
+            "word": "Abstract",
+            "pos": "adj.",
+            "bn": "তাত্ত্বিক / বিমূর্ত ধারণা",
+            "syn": "Theoretical"
+          },
+          {
+            "num": 22,
+            "word": "Abstruse",
+            "pos": "adj.",
+            "bn": "দুর্বোধ্য / গূঢ় / অবোধ্য",
+            "syn": "Obscure"
+          },
+          {
+            "num": 23,
+            "word": "Abysmal",
+            "pos": "adj.",
+            "bn": "চরম শোচনীয় / অতলস্পর্শী",
+            "syn": "Dreadful"
+          },
+          {
+            "num": 24,
+            "word": "Accede",
+            "pos": "v.",
+            "bn": "সম্মত হওয়া / মেনে নেওয়া",
+            "syn": "Consent"
+          },
+          {
+            "num": 25,
+            "word": "Accentuate",
+            "pos": "v.",
+            "bn": "জোর দেওয়া / সুস্পষ্ট করা",
+            "syn": "Emphasize"
+          },
+          {
+            "num": 26,
+            "word": "Access",
+            "pos": "n./v.",
+            "bn": "প্রবেশাধিকার / নাগাল পাওয়া",
+            "syn": "Entry"
+          },
+          {
+            "num": 27,
+            "word": "Acclaim",
+            "pos": "v./n.",
+            "bn": "উচ্চ প্রশংসা / সাধুবাদ",
+            "syn": "Applaud"
+          },
+          {
+            "num": 28,
+            "word": "Accolade",
+            "pos": "n.",
+            "bn": "সম্মাননা / পুরস্কার / স্বীকৃতি",
+            "syn": "Honor"
+          },
+          {
+            "num": 29,
+            "word": "Accommodate",
+            "pos": "v.",
+            "bn": "জায়গা দেওয়া / মানিয়ে নেওয়া",
+            "syn": "Lodge"
+          },
+          {
+            "num": 30,
+            "word": "Accomplice",
+            "pos": "n.",
+            "bn": "অপরাধের সহযোগী / দোসর",
+            "syn": "Partner in crime"
+          }
+        ],
+        "cta": "🎯 এবার চলুন দেখি ৩টি কুইজে আপনার রিভিশন স্কোর কত হয়!",
+        "dur": 15,
+        "script": "কুইজে যাওয়ার আগে চলুন এক নজরে আজকের ১০টি শব্দ চটজলদি রিভিশন দিয়ে নেওয়া যাক: Abstract—তাত্ত্বিক বা বিমূর্ত; Abstruse—দুর্বোধ্য বা গূঢ়; Abysmal—চরম শোচনীয়; Accede—সম্মত হওয়া বা মেনে নেওয়া; Accentuate—জোর দেওয়া বা সুস্পষ্ট করা; Access—প্রবেশাধিকার বা নাগাল; Acclaim—উচ্চ প্রশংসা বা সাধুবাদ; Accolade—সম্মাননা বা স্বীকৃতি; Accommodate—জায়গা দেওয়া বা সংস্থান করা; এবং Accomplice—অপরাধের সহযোগী। এবার চলুন শুরু করা যাক আজকের কুইজ রাউন্ড..."
+      },
+      {
+        "type": 2,
+        "qNum": 1,
+        "totalQ": 3,
+        "question": "\"Abstruse\" শব্দের সঠিক Synonym কোনটি?",
+        "options": [
+          "Simple ও সহজবোধ্য",
+          "Obscure বা দুর্বোধ্য",
+          "Transparent বা পরিষ্কার",
+          "Lucid বা স্পষ্ট"
+        ],
+        "ansIdx": 1,
+        "ansText": "✅ সঠিক উত্তর: (b) Obscure বা দুর্বোধ্য",
+        "explain": "Abstruse মানে যা বোঝা কঠিন বা গূঢ়। এর সমার্থক শব্দ হলো Obscure, Recondite এবং Esoteric।",
+        "trick": "Abstruse = Obscure (যা সহজে চোখে পড়ে না বা বোঝা যায় না)!",
+        "dur": 14,
+        "script": "কুইজ ১: Abstruse শব্দের সঠিক Synonym কোনটি? অপশন এ: Simple, অপশন বি: Obscure, অপশন সি: Transparent, নাকি অপশন ডি: Lucid? ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, Obscure। Abstruse শব্দের অর্থ দুর্বোধ্য বা গূঢ়, যার মূল সমার্থক হলো Obscure বা Recondite।"
+      },
+      {
+        "type": 2,
+        "qNum": 2,
+        "totalQ": 3,
+        "question": "অপরাধ বা অসৎ কাজে সাহায্যকারী দোসরকে এক কথায় কী বলে?",
+        "options": [
+          "Accomplice (অপরাধের সহযোগী)",
+          "Accolade (সম্মাননা)",
+          "Abstract (বিমূর্ত)",
+          "Accede (সম্মতি দেওয়া)"
+        ],
+        "ansIdx": 0,
+        "ansText": "✅ সঠিক উত্তর: (a) Accomplice",
+        "explain": "Accomplice হলো a partner in crime — যে ব্যক্তি কোনো অপরাধমূলক কাজে অন্যকে সহায়তা করে।",
+        "trick": "অপরাধের পরিকল্পনা Accomplish করতে সাহায্যকারী দোসরই Accomplice!",
+        "dur": 14,
+        "script": "কুইজ ২: অপরাধ বা অসৎ কাজে সাহায্যকারী দোসরকে এক কথায় কী বলে? অপশন এ: Accomplice, অপশন বি: Accolade, অপশন সি: Abstract, নাকি অপশন ডি: Accede? ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর অপশন এ, Accomplice। কোনো অপরাধ বা অবৈধ কাজের দোসরকে ইংরেজিতে Accomplice বা Partner in crime বলে।"
+      },
+      {
+        "type": 2,
+        "qNum": 3,
+        "totalQ": 3,
+        "question": "\"The young scientist received high ____ for her revolutionary discovery.\"",
+        "options": [
+          "abysmal",
+          "acclaim",
+          "abstruse",
+          "accomplice"
+        ],
+        "ansIdx": 1,
+        "ansText": "✅ সঠিক উত্তর: (b) acclaim",
+        "explain": "Acclaim মানে জনসম্মুখে বিপুল প্রশংসা বা সাধুবাদ (enthusiastic public praise)।",
+        "trick": "যুগান্তকারী আবিষ্কারের জন্য বিজ্ঞানী দেশজুড়ে সাধুবাদ বা Acclaim পেয়েছিলেন!",
+        "dur": 14,
+        "script": "কুইজ ৩: The young scientist received high blank for her revolutionary discovery. শূন্যস্থানে সঠিক শব্দ কোনটি বসবে? অপশন এ: abysmal, অপশন বি: acclaim, অপশন সি: abstruse, নাকি অপশন ডি: accomplice? ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, acclaim। বিপ্লবী আবিষ্কারের জন্য বিজ্ঞানী চারদিক থেকে বিপুল সাধুবাদ ও প্রশংসা অর্থাৎ Acclaim পেয়েছিলেন।"
+      },
+      {
+        "type": 3,
+        "title": "🎉 পর্ব-০৩ সম্পন্ন! চমৎকার রিভিশন!",
+        "sub1": "আজকের ২১ থেকে ৩০ নম্বর শব্দের ৩টি কুইজে তোমার স্কোর কত?",
+        "btn": "▶ SUBSCRIBE 🔔",
+        "sub2": "কমেন্টে তোমার স্কোর জানাও ও ভিডিওটি বন্ধুদের সাথে শেয়ার করো!",
+        "thank": "পর্ব-০৪ এ দেখা হবে পরবর্তী ১০টি শব্দ (৩১-৪০) নিয়ে — ধন্যবাদ! 💚",
+        "dur": 9,
+        "script": "দারুণ! Word Smart পর্ব-০৩ সম্পন্ন হলো। আজকের ১০টি শব্দ এবং ৩টি কুইজের মধ্যে তোমার স্কোর কত হলো কমেন্টে লিখে জানাও। প্রতিদিন এরকম ইন্টারেক্টিভ ভিডিও ক্লাস পেতে এখনই চ্যানেলটি সাবস্ক্রাইব করে বেল আইকন প্রেস করে রাখো। পর্ব-০৪ এ দেখা হবে ৩১ থেকে ৪০ নম্বর শব্দ নিয়ে, সবাই ভালো থেকো!"
+      }
+    ]
   }
-];
+};
 
+let currentEp = 1;
+// Read episode from URL (?ep=2 or #ep=2)
+(function checkUrlEp() {
+  const p = new URLSearchParams(window.location.search);
+  const qEp = parseInt(p.get('ep') || window.location.hash.replace('#ep=', ''), 10);
+  if (qEp && ALL_EPISODES[qEp]) {
+    currentEp = qEp;
+  }
+})();
+
+let SCENES_DATA = ALL_EPISODES[currentEp].scenes;
 function BN(n) {
   return String(n).replace(/\d/g, function(d) { return '০১২৩৪৫৬৭৮৯'[d]; });
 }
@@ -1163,10 +1850,13 @@ function BN(n) {
 /* =======================================================================
    2. DOM STAGE INJECTION & INTERACTIVE ANIMATIONS
    ======================================================================= */
-(function initStageDOM() {
+function rebuildStageDOM() {
   const stage = document.getElementById('stage');
   const bar = document.getElementById('bar');
   const L = ['a', 'b', 'c', 'd'];
+
+  // Remove existing scenes
+  stage.querySelectorAll('.scene').forEach(s => s.remove());
 
   SCENES_DATA.forEach(function(sc, i) {
     const s = document.createElement('section');
@@ -1185,11 +1875,11 @@ function BN(n) {
         <div class="intro-feat" style="--d:1.2s">${sc.feat}</div>
         <span class="chip pulse" style="--d:2.2s">${sc.chip}</span>
       `;
-        } else if (sc.type === 1) {
+    } else if (sc.type === 1) {
       // Word Lecture (Step-by-step sequential reveal)
       s.innerHTML = `
         <div class="slide-top-bar" style="display:flex;align-items:center;gap:1.5cqw;--d:.1s">
-          <span class="badge">শব্দ ${BN(sc.num)} / ১০</span>
+          <span class="badge">শব্দ ${BN(sc.num)} (${ALL_EPISODES[currentEp].badge})</span>
           <span class="pron">${sc.pron}</span>
         </div>
         <div class="word-head" style="--d:.4s">
@@ -1215,7 +1905,6 @@ function BN(n) {
           <span>💡 মনে রাখার কৌশল:</span> ${sc.trick}
         </div>
       `;
-    
     } else if (sc.type === 4) {
       // Quick Recap Slide (Summary Table)
       let itemsHtml = '';
@@ -1244,8 +1933,8 @@ function BN(n) {
           ${sc.cta}
         </div>
       `;
-        } else if (sc.type === 2) {
-      // Quiz / MCQ (Options sequence -> 5s Timer -> Answer Reveal at 7.5s)
+    } else if (sc.type === 2) {
+      // Quiz / MCQ
       const optDelays = [1.0, 1.35, 1.7, 2.05];
       let optHtml = '';
       sc.options.forEach((opt, k) => {
@@ -1285,7 +1974,43 @@ function BN(n) {
 
     stage.insertBefore(s, bar);
   });
-})();
+}
+
+function renderEpisodeNav() {
+  const container = document.getElementById('ep-nav-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  Object.keys(ALL_EPISODES).forEach(key => {
+    const epNum = parseInt(key, 10);
+    const ep = ALL_EPISODES[epNum];
+    const btn = document.createElement('button');
+    btn.className = 'ep-btn';
+    btn.dataset.ep = epNum;
+    btn.style.cssText = 'border-radius:20px;padding:6px 16px;font-size:13.5px;cursor:pointer;transition:all 0.25s ease;border:1px solid rgba(34,197,94,0.35);user-select:none;display:inline-flex;align-items:center;gap:6px;';
+    
+    if (epNum === currentEp) {
+      btn.style.background = '#22c55e';
+      btn.style.color = '#04210f';
+      btn.style.fontWeight = '700';
+      btn.style.boxShadow = '0 0 14px rgba(34,197,94,0.6)';
+      btn.innerHTML = `🔥 ${ep.badge} [সক্রিয়]`;
+    } else {
+      btn.style.background = 'rgba(255,255,255,0.08)';
+      btn.style.color = '#f4fff8';
+      btn.style.fontWeight = '600';
+      btn.style.boxShadow = 'none';
+      btn.innerHTML = `▶ ${ep.badge}`;
+    }
+
+    btn.onclick = () => window.switchEpisode(epNum);
+    container.appendChild(btn);
+  });
+}
+
+// Initial stage DOM and episode nav
+rebuildStageDOM();
+renderEpisodeNav();
 
 /* =======================================================================
    3. CORE 2D CANVAS RENDERER (OFFSCREEN & EXPORT ENGINE)
@@ -1294,7 +2019,7 @@ const Core = (function() {
   const FAM = '"Hind Siliguri", "Noto Sans Bengali", sans-serif';
   const EN_FAM = '"Inter", "Hind Siliguri", sans-serif';
 
-  const SC = SCENES_DATA.map((sc, i) => ({
+  let SC = SCENES_DATA.map((sc, i) => ({
     name: 'scene_' + ('0' + (i + 1)).slice(-2),
     t: sc.dur,
     data: sc
@@ -1307,6 +2032,15 @@ const Core = (function() {
     DUR = acc;
   }
   relayout();
+
+  function reload(newScenes) {
+    SC = newScenes.map((sc, i) => ({
+      name: 'scene_' + ('0' + (i + 1)).slice(-2),
+      t: sc.dur,
+      data: sc
+    }));
+    relayout();
+  }
 
   function bez(x1, y1, x2, y2) {
     const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
@@ -1468,7 +2202,7 @@ const Core = (function() {
       // Word Lecture Slide
       // Top header (badge + pron)
       anim(c, s, lt, 0.1, W / 2, H * 0.13, () => {
-        drawPill(c, `শব্দ ${BN(sc.num)} / ১০`, W * 0.42, H * 0.13, u, '#facc15', '#1a1a1a');
+        drawPill(c, `শব্দ ${BN(sc.num)} / ২০`, W * 0.42, H * 0.13, u, '#facc15', '#1a1a1a');
         drawPill(c, sc.pron, W * 0.58, H * 0.13, u, 'rgba(255,255,255,0.1)', 'rgba(244,255,248,0.85)');
       });
 
@@ -1829,7 +2563,8 @@ const Core = (function() {
     setCap: function(fn) { capFn = fn; },
     at,
     zip,
-    still: i => SC[i].a + Math.min(SC[i].t * 0.7, 6)
+    still: i => SC[i].a + Math.min(SC[i].t * 0.7, 6),
+    reload
   };
 })();
 
@@ -1838,9 +2573,9 @@ const Core = (function() {
    ======================================================================= */
 (function initVoiceAndPlayer() {
   const $ = id => document.getElementById(id);
-  const sc = [].slice.call(document.querySelectorAll('.scene'));
+  let sc = [].slice.call(document.querySelectorAll('.scene'));
   const bar = $('bar'), playBtn = $('play'), cap = $('cap');
-  const BASE_DURS = Core.SC.map(s => s.t);
+  let BASE_DURS = Core.SC.map(s => s.t);
 
   // Initialize scripts from data
   let scripts = SCENES_DATA.map(s => s.script);
@@ -1848,6 +2583,18 @@ const Core = (function() {
   let au = sc.map(() => null);
   let curAudio = null, curIdx = 0, playing = true, timer = null, t0 = 0, tok = 0;
   let voiceObj = null;
+
+  window.reloadPlayerData = function(newScenes) {
+    stopAllSpeech();
+    clearTimeout(timer);
+    sc = [].slice.call(document.querySelectorAll('.scene'));
+    BASE_DURS = Core.SC.map(s => s.t);
+    scripts = newScenes.map(s => s.script);
+    au = sc.map(() => null);
+    syncDurations();
+    renderStudio();
+    setPlay(true);
+  };
 
   function pickVoice() {
     if ('speechSynthesis' in window) {
@@ -1926,6 +2673,40 @@ const Core = (function() {
     playBtn.textContent = p ? '⏸ থামান' : '▶ চালান';
     showSlide(curIdx);
   }
+
+  
+  window.switchEpisode = function(epNum) {
+    if (!ALL_EPISODES[epNum]) return;
+    currentEp = epNum;
+    SCENES_DATA = ALL_EPISODES[currentEp].scenes;
+
+    // 1. Rebuild DOM
+    rebuildStageDOM();
+
+    // 2. Reload Core canvas
+    Core.reload(SCENES_DATA);
+
+    // 3. Reload Voice & Player
+    window.reloadPlayerData(SCENES_DATA);
+
+    // 4. Update Nav Buttons
+    renderEpisodeNav();
+
+    // 5. Update Document Title
+    document.title = `Word Smart 1 | ভোকাবুলারি মাস্টারক্লাস (${ALL_EPISODES[currentEp].badge})`;
+
+    // 6. Update URL query param
+    try {
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.set('ep', currentEp);
+      window.history.replaceState({}, '', newUrl);
+    } catch(e) {}
+
+    // 7. Update thumbnail if modal open
+    if (window.updateThumbnail) {
+      window.updateThumbnail();
+    }
+  };
 
   playBtn.onclick = () => setPlay(!playing);
   $('prev').onclick = () => showSlide(curIdx - 1);
@@ -2227,7 +3008,7 @@ const Core = (function() {
       c.fillStyle = '#facc15'; c.fill();
       c.font = '700 ' + (2.5 * u) + 'px ' + FAM;
       c.fillStyle = '#111'; c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.fillText('🔥 Word Smart ১ | পর্ব-০১', W * 0.05 + bw / 2, H * 0.08 + bh / 2);
+      c.fillText('🔥 Word Smart ১ | পর্ব-০২', W * 0.05 + bw / 2, H * 0.08 + bh / 2);
 
       // Main Bengali/English Title
       c.textAlign = 'left';
@@ -2252,7 +3033,7 @@ const Core = (function() {
       c.fillStyle = '#dc2626'; c.fill();
       c.font = '700 ' + (3 * u) + 'px ' + FAM;
       c.fillStyle = '#fff'; c.textAlign = 'center'; c.textBaseline = 'middle';
-      c.fillText('অর্থ + ট্রিক + ৩টি কুইজ ▶', W * 0.05 + cw / 2, H * 0.72 + ch / 2);
+      c.fillText('শব্দ ১১-২০ + ট্রিক + ৩টি কুইজ ▶', W * 0.05 + cw / 2, H * 0.72 + ch / 2);
 
       // Right Column: Teaser Comparison Cards
       const rx = W * 0.54, rw = W * 0.41;
@@ -2265,10 +3046,10 @@ const Core = (function() {
       c.textAlign = 'center'; c.textBaseline = 'middle';
       c.font = '700 ' + (5.5 * u) + 'px ' + EN_FAM;
       c.fillStyle = '#ffffff';
-      c.fillText('Abate', rx + rw / 2, H * 0.25);
+      c.fillText('Abridge', rx + rw / 2, H * 0.25);
       c.font = '600 ' + (3.2 * u) + 'px ' + FAM;
       c.fillStyle = '#22c55e';
-      c.fillText('তীব্রতা কমে যাওয়া 📉', rx + rw / 2, H * 0.38);
+      c.fillText('সংক্ষিপ্ত করা ✂️', rx + rw / 2, H * 0.38);
 
       // VS Separator
       c.font = '700 ' + (3.2 * u) + 'px ' + EN_FAM;
@@ -2283,10 +3064,10 @@ const Core = (function() {
 
       c.font = '700 ' + (5.5 * u) + 'px ' + EN_FAM;
       c.fillStyle = '#ffffff';
-      c.fillText('Intensify', rx + rw / 2, H * 0.67);
+      c.fillText('Abrogate', rx + rw / 2, H * 0.67);
       c.font = '600 ' + (3.2 * u) + 'px ' + FAM;
       c.fillStyle = '#38bdf8';
-      c.fillText('তীব্রতর হওয়া 📈', rx + rw / 2, H * 0.80);
+      c.fillText('বাতিল বা রদ করা 🚫', rx + rw / 2, H * 0.80);
 
     } else {
       // Portrait / Square Layout (Stacked)
@@ -2297,7 +3078,7 @@ const Core = (function() {
 
       c.font = '700 ' + (5.0 * u) + 'px ' + FAM;
       c.fillStyle = '#22c55e';
-      c.fillText('ভোকাবুলারি পর্ব-০১', W / 2, H * 0.26);
+      c.fillText('ভোকাবুলারি পর্ব-০২', W / 2, H * 0.26);
 
       // Teaser Cards
       const cw = W * 0.86, cx = W * 0.07;
@@ -2328,7 +3109,7 @@ const Core = (function() {
     }
   }
 
-  async function updateThumbnail() {
+  window.updateThumbnail = async function updateThumbnail() {
     $('thmsg').textContent = 'Rendering High-Resolution Thumbnail…';
     const [W, H] = dims();
     const cv = document.createElement('canvas');

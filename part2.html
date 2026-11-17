@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word Smart 1 | ভোকাবুলারি টিউটোরিয়াল (পর্ব-০২)</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b1f17;
+  --bg-gradient: radial-gradient(circle at 20% 10%, #14532d 0, #0b1f17 60%);
+  --g: #22c55e;
+  --r: #ef4444;
+  --y: #facc15;
+  --t: #f4fff8;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --border-c: rgba(34, 197, 94, 0.3);
+  box-sizing: border-box;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; overflow-x: hidden; }
+body {
+  background: #050f0a;
+  color: var(--t);
+  font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px;
+}
+
+/* Series Switcher Nav */
+.series-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 5px 16px;
+  border-radius: 30px;
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Stage & Container */
+#stage {
+  container-type: inline-size;
+  width: min(100%, calc((100vh - 100px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--bg-gradient);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.08);
+  animation: float 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes float { 50% { transform: translateY(-4cqw); } }
+
+/* Scene Styles */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.2cqw 4.2cqw 3cqw 4.2cqw;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  box-sizing: border-box;
+}
+.scene.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Animations & Sequential Reveals */
+.scene > *, .card, .u, .ex-box, .trick-box, .slide-top-bar, .quiz-timer, .recap-card {
+  opacity: 0;
+}
+.row, .recap-grid, .word-head {
+  opacity: 1 !important;
+  animation: none !important;
+}
+.active > *, .active .card, .active .u, .active .ex-box, .active .trick-box, .active .slide-top-bar, .active .recap-card {
+  animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes in {
+  from { opacity: 0; transform: translateY(2.5cqw) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Quiz Feedback (Hidden until timer ends at 7.5s) */
+.quiz-feedback {
+  opacity: 1 !important;
+  animation: none !important;
+}
+.quiz-feedback > p {
+  opacity: 0;
+}
+.active .quiz-feedback > p {
+  animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards;
+  animation-delay: var(--d, 7.5s);
+}
+
+/* Badges & Header Elements */
+.slide-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5cqw;
+  width: 100%;
+}
+.badge {
+  background: var(--y);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 1.8cqw;
+  padding: 0.3cqw 1.5cqw;
+  border-radius: 99px;
+  display: inline-block;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.pron {
+  font-size: 1.8cqw;
+  color: rgba(244, 255, 248, 0.85);
+  font-family: 'Inter', sans-serif;
+  background: rgba(255, 255, 255, 0.09);
+  padding: 0.22cqw 1.1cqw;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Main Word Head (Balanced & Compact) */
+.word-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1.2cqw;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.word-title {
+  font-size: 4.4cqw;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.word-pos {
+  font-size: 2.0cqw;
+  font-weight: 600;
+  color: var(--y);
+  font-style: italic;
+}
+.meaning-bar {
+  font-size: 2.2cqw;
+  font-weight: 700;
+  color: var(--g);
+  text-shadow: 0 0 16px rgba(34, 197, 94, 0.4);
+}
+
+/* Comparison Cards (Synonyms & Antonyms - Large & Prominent) */
+.row {
+  display: flex;
+  gap: 1.8cqw;
+  width: 98%;
+  justify-content: center;
+}
+.card {
+  flex: 1;
+  max-width: 48cqw;
+  border-radius: 1.2cqw;
+  padding: 1cqw 1.8cqw;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.22cqw solid;
+  text-align: left;
+  backdrop-filter: blur(8px);
+}
+.card.syn {
+  border-color: var(--g);
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.16);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(255, 255, 255, 0.03));
+}
+.card.ant {
+  border-color: #38bdf8;
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.16);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(255, 255, 255, 0.03));
+}
+.card h3 {
+  font-size: 2.1cqw;
+  margin-bottom: 0.4cqw;
+  display: flex;
+  align-items: center;
+  gap: 0.6cqw;
+  font-weight: 700;
+}
+.card.syn h3 { color: var(--g); }
+.card.ant h3 { color: #38bdf8; }
+.card .v {
+  font-size: 1.95cqw;
+  line-height: 1.45;
+  color: #f8fafc;
+  font-weight: 500;
+}
+
+/* Example & Mnemonic Boxes (Large Notes View) */
+.ex-box {
+  width: 98%;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 0.6cqw solid var(--y);
+  border-radius: 0.9cqw;
+  padding: 0.85cqw 1.8cqw;
+  text-align: left;
+}
+.ex-en {
+  font-size: 2.05cqw;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 0.25cqw;
+  line-height: 1.35;
+}
+.ex-bn {
+  font-size: 1.95cqw;
+  color: #a7f3d0;
+  opacity: 0.98;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.trick-box {
+  width: 98%;
+  background: rgba(250, 204, 21, 0.1);
+  border: 0.22cqw dashed var(--y);
+  border-radius: 0.9cqw;
+  padding: 0.75cqw 1.8cqw;
+  font-size: 2.0cqw;
+  color: #fef08a;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.8cqw;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Quick Recap Summary Table Styles */
+.recap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  gap: 0.6cqw 1.8cqw;
+  width: 98%;
+}
+.recap-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.16cqw solid rgba(34, 197, 94, 0.35);
+  border-left: 0.45cqw solid var(--g);
+  border-radius: 0.8cqw;
+  padding: 0.55cqw 1.2cqw;
+  gap: 0.8cqw;
+  backdrop-filter: blur(8px);
+  text-align: left;
+}
+.rc-num {
+  background: #facc15;
+  color: #1a1a1a;
+  font-weight: 800;
+  font-size: 1.4cqw;
+  padding: 0.15cqw 0.65cqw;
+  border-radius: 99px;
+  min-width: 2.2cqw;
+  text-align: center;
+  flex-shrink: 0;
+}
+.rc-word-box {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3cqw;
+  min-width: 13.5cqw;
+  flex-shrink: 0;
+}
+.rc-word {
+  font-size: 1.95cqw;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+.rc-pos {
+  font-size: 1.35cqw;
+  font-weight: 600;
+  color: #facc15;
+  font-style: italic;
+}
+.rc-meaning {
+  font-size: 1.5cqw;
+  color: #a7f3d0;
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rc-syn {
+  font-size: 1.35cqw;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 0.1cqw solid rgba(56, 189, 248, 0.35);
+  padding: 0.15cqw 0.6cqw;
+  border-radius: 0.5cqw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Quiz Option Grid */
+.grid.q2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2cqw;
+  width: 96%;
+}
+.u {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 0.7cqw solid var(--g);
+  border-radius: 1.2cqw;
+  padding: 1.1cqw 1.6cqw;
+  font-size: 2.3cqw;
+  text-align: left;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+.u em { color: var(--y); font-style: normal; font-weight: 700; }
+@keyframes okc { to { background: rgba(34, 197, 94, 0.38); transform: scale(1.03); border-color: #22c55e; } }
+@keyframes dim { to { opacity: 0.35; } }
+.active .u.ok { animation: in 0.55s forwards var(--d, 0s), okc 0.5s ease forwards 7.5s; }
+.active .u.no { animation: in 0.55s forwards var(--d, 0s), dim 0.5s ease forwards 7.5s; }
+
+/* Quiz Countdown Timer */
+.quiz-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2cqw;
+  background: rgba(0, 0, 0, 0.5);
+  border: 0.22cqw solid rgba(250, 204, 21, 0.5);
+  padding: 0.5cqw 2cqw;
+  border-radius: 99px;
+  font-size: 2.1cqw;
+  color: var(--y);
+  font-weight: 600;
+}
+.timer-bar {
+  width: 14cqw;
+  height: 0.75cqw;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+.timer-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--y);
+  border-radius: 99px;
+}
+.active .timer-fill { animation: timerDrain 5s linear forwards 2.4s; }
+.active .quiz-timer { animation: in 0.5s ease forwards 2.4s, fadeOutTimer 0.4s ease forwards 7.5s; }
+@keyframes fadeOutTimer { to { opacity: 0; transform: scale(0.9); visibility: hidden; } }
+
+@keyframes timerDrain {
+  0% { width: 100%; background: var(--y); }
+  65% { background: #f97316; }
+  100% { width: 0%; background: var(--r); }
+}
+
+/* Intro and Outro Elements */
+.chip {
+  border: 0.22cqw solid var(--g);
+  color: var(--g);
+  padding: 0.5cqw 2cqw;
+  border-radius: 99px;
+  font-size: 2.6cqw;
+  font-weight: 600;
+  background: rgba(34, 197, 94, 0.08);
+}
+.exam-chips {
+  display: flex;
+  gap: 1cqw;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0.2cqw 0;
+}
+.exam-chip {
+  background: rgba(34, 197, 94, 0.12);
+  border: 0.2cqw solid rgba(34, 197, 94, 0.45);
+  color: #86efac;
+  padding: 0.35cqw 1.4cqw;
+  border-radius: 99px;
+  font-size: 1.8cqw;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.intro-feat {
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.18cqw solid rgba(250, 204, 21, 0.35);
+  border-radius: 1cqw;
+  padding: 0.6cqw 1.8cqw;
+  font-size: 2.1cqw;
+  color: #fef08a;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8cqw;
+  font-weight: 600;
+}
+h1 { font-size: 5.4cqw; line-height: 1.22; font-weight: 700; }
+h2 { font-size: 3.6cqw; font-weight: 700; line-height: 1.25; }
+p, .sub { font-size: 2.3cqw; opacity: 0.95; line-height: 1.4; }
+.sub-btn {
+  background: #dc2626;
+  color: #fff;
+  font-weight: 700;
+  font-size: 3cqw;
+  padding: 1cqw 3.2cqw;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 1cqw;
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse { 50% { transform: scale(1.05); } }
+.bell { display: inline-block; animation: ring 1.5s infinite ease-in-out; }
+@keyframes ring { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(15deg); } 40% { transform: rotate(-15deg); } 60% { transform: rotate(10deg); } }
+
+/* Progress Bar */
+#bar {
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #22c55e, #facc15);
+  width: 0%;
+  transition: width 0.1s linear;
+  z-index: 20;
+}
+
+/* =======================================================================
+   BOTTOM CONTROLS BAR (#ctl) & BUTTONS
+   ======================================================================= */
+#ctl {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+button {
+  font: inherit;
+  background: #14532d;
+  color: #ffffff;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 8px;
+  padding: 7px 15px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+button:hover {
+  background: #166534;
+  border-color: #22c55e;
+}
+button:active {
+  transform: scale(0.97);
+}
+#dlb {
+  background: #22c55e;
+  color: #04210f;
+  font-weight: 700;
+  border-color: #22c55e;
+}
+#dlb:hover {
+  background: #16a34a;
+}
+#hint {
+  font-size: 12px;
+  color: #fde68a;
+}
+
+/* =======================================================================
+   MODALS: CRITICAL [hidden] RULE & DIALOG STYLES
+   ======================================================================= */
+[hidden] {
+  display: none !important;
+}
+
+#dl, #vo, #thm {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  z-index: 9999;
+}
+
+#dl .modal-box, #vo .modal-box, #thm .modal-box,
+#dl .box, #vo .box, #thm .box {
+  background: #0b1f17;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 14px;
+  padding: 20px;
+  width: min(760px, 96vw);
+  max-height: 92vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+}
+
+#dl h3, #vo h3, #thm h3 {
+  font-size: 19px;
+  color: var(--y);
+  font-weight: 700;
+}
+
+.lab {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.seg {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.seg button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 12.5px;
+  padding: 6px 12px;
+}
+.seg button[aria-pressed=true] {
+  background: #22c55e;
+  color: #04210f;
+  font-weight: 700;
+  border-color: #22c55e;
+}
+
+#info {
+  font-size: 13px;
+  background: rgba(20, 83, 45, 0.4);
+  border-radius: 8px;
+  padding: 8px 12px;
+  line-height: 1.5;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.acts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.acts button {
+  flex: 1 1 auto;
+}
+.pri {
+  background: #22c55e !important;
+  color: #04210f !important;
+  font-weight: 700 !important;
+}
+.pri:hover {
+  background: #16a34a !important;
+}
+.dng {
+  background: #7f1d1d !important;
+  color: #fff !important;
+}
+.dng:hover {
+  background: #991b1b !important;
+}
+
+.msg {
+  font-size: 13px;
+  min-height: 1.2em;
+}
+.msg.err { color: #fca5a5; }
+.msg.ok { color: #86efac; }
+
+#xc {
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+}
+#pbar {
+  height: 8px;
+  background: #14532d;
+  border-radius: 99px;
+  overflow: hidden;
+}
+#pfill {
+  height: 100%;
+  width: 0%;
+  background: #22c55e;
+}
+#pv video, #pv > img {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #000;
+}
+#pv .th {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+#pv .th img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* Studio modal elements */
+#vo .r {
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#vo textarea {
+  width: 100%;
+  min-height: 72px;
+  background: #06140d;
+  color: #f4fff8;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 8px;
+  padding: 8px;
+  font: inherit;
+  font-size: 13.5px;
+  resize: vertical;
+}
+#vo .st {
+  font-size: 12px;
+  opacity: 0.85;
+}
+#vo .opts {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  align-items: center;
+}
+#vo label.up {
+  background: #14532d;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rec {
+  background: #b91c1c !important;
+}
+</style>
+</head>
+<body>
+
+
+  <div class="series-nav" style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(34,197,94,0.3);padding:6px 16px;border-radius:30px;font-size:14px;font-weight:600;margin-bottom:6px;box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+    <span style="color:#facc15;">📚 Word Smart 1 Series:</span>
+    <a href="index.html" style="text-decoration:none;padding:5px 14px;border-radius:20px;color:#f4fff8;background:rgba(255,255,255,0.08);transition:all 0.2s;">◀ পর্ব-০১ (১-১০)</a>
+    <a href="part2.html" style="text-decoration:none;padding:5px 14px;border-radius:20px;color:#050f0a;background:#22c55e;font-weight:700;box-shadow:0 0 10px rgba(34,197,94,0.5);">🔥 পর্ব-০২ (১১-২০) [বর্তমান]</a>
+    <a href="part3.html" style="text-decoration:none;padding:5px 14px;border-radius:20px;color:#f4fff8;background:rgba(255,255,255,0.08);transition:all 0.2s;">▶ পর্ব-০৩ (২১-৩০)</a>
+  </div>
+
+  <div id="stage">
+  <div class="bubble" style="width:20cqw;height:20cqw;left:-5cqw;top:55%"></div>
+  <div class="bubble" style="width:14cqw;height:14cqw;right:4cqw;top:10%;animation-delay:-3.5s"></div>
+  <div id="bar"></div>
+  <div id="cap"></div>
+</div>
+
+<div id="ctl">
+  <button id="prev" aria-label="আগের">⏮ আগে</button>
+  <button id="play">⏸ থামান</button>
+  <button id="next" aria-label="পরের">পরের ⏭</button>
+  <button id="re">↻ শুরু থেকে</button>
+  <button id="vob">🎙 VOICE &amp; SCRIPT</button>
+  <button id="thb">🖼 THUMBNAIL</button>
+  <button id="dlb">⬇ DOWNLOAD VIDEO</button>
+  <span id="hint" style="font-size:12px;color:#fde68a;" hidden>🔇 অডিও শুনতে একবার স্ক্রিনে ট্যাপ করুন</span>
+</div>
+
+<!-- Modal: Video Download -->
+<div id="dl" class="modal-overlay" hidden role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <h3>⬇ Export Video / Slides</h3>
+    <div id="v-opt">
+      <div class="lab">Aspect Ratio</div>
+      <div class="seg" id="s-ar"></div>
+      <div class="lab" style="margin-top:8px">Resolution (Up to 4K Ultra HD)</div>
+      <div class="seg" id="s-res"></div>
+      <div class="lab" style="margin-top:8px">Frame Rate</div>
+      <div class="seg" id="s-fps"></div>
+      <div id="info" style="margin:10px 0"></div>
+      <div class="msg" id="omsg" role="status"></div>
+      <div class="acts" style="margin-top:10px">
+        <button class="pri" id="b-mp4">🎬 EXPORT MP4 VIDEO</button>
+        <button id="b-png">🖼 PNG (CURRENT SCENE)</button>
+        <button id="b-zip">📦 ALL PNGs (ZIP)</button>
+        <button class="dng" id="b-ocancel">CANCEL</button>
+      </div>
+    </div>
+    <div id="v-prog" hidden>
+      <div class="msg" id="pst" role="status">Starting…</div>
+      <canvas id="xc" width="480" height="270"></canvas>
+      <div id="pbar" style="margin:8px 0"><div id="pfill"></div></div>
+      <div class="msg" id="pnote"></div>
+      <div class="acts"><button class="dng" id="b-xcancel">CANCEL EXPORT</button></div>
+    </div>
+    <div id="v-res" hidden>
+      <div id="pv"></div>
+      <div class="msg" id="rmsg" role="status"></div>
+      <div class="msg" id="tip" hidden>Direct file saving is not supported in this browser. Right-click or long-press the preview above to save.</div>
+      <div class="acts">
+        <button class="pri" id="b-save">💾 SAVE FILE</button>
+        <button id="b-back">NEW EXPORT</button>
+        <button class="dng" id="b-close">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Thumbnail Generator -->
+<div id="thm" class="modal-overlay" hidden role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <h3>🖼 High-Res Thumbnail Generator</h3>
+    <div class="lab">Aspect Ratio</div>
+    <div class="seg" id="th-ar"></div>
+    <div class="lab" style="margin-top:8px">Resolution</div>
+    <div class="seg" id="th-res"></div>
+    <div id="thv" style="margin:10px 0; min-height:140px;"></div>
+    <div class="msg" id="thmsg" role="status"></div>
+    <div class="acts">
+      <button class="pri" id="thsave">💾 SAVE PNG THUMBNAIL</button>
+      <button class="dng" id="thx">CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Script & Voice-over Studio -->
+<div id="vo" class="modal-overlay" hidden role="dialog" aria-modal="true">
+  <div class="modal-box" style="max-width:760px;">
+    <h3>🎙 Script &amp; Voice-over Studio</h3>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:13.5px;background:rgba(20,83,45,.3);padding:10px;border-radius:8px;">
+      <label><input type="checkbox" id="o-voice"> Voice-over On</label>
+      <label><input type="checkbox" id="o-tts"> Auto Voice (TTS)</label>
+      <label>Speed <input type="range" id="o-rate" min="0.7" max="1.3" step="0.05" style="width:90px;vertical-align:middle;"></label>
+    </div>
+    <div class="msg" id="vinfo"></div>
+
+    <!-- Full Audio Sync Tool -->
+    <div class="r" id="full">
+      <b>🎚 Full Voice-over: Sync One Audio Across All Slides</b>
+      <div style="display:flex;gap:8px;align-items:center;font-size:13px;">
+        Slides: <input type="number" id="f-from" min="1" value="1" style="width:52px;background:#06140d;color:#fff;border:1px solid #14532d;padding:4px;border-radius:4px;"> 
+        to <input type="number" id="f-to" min="1" style="width:52px;background:#06140d;color:#fff;border:1px solid #14532d;padding:4px;border-radius:4px;">
+      </div>
+      <div class="acts">
+        <label class="up"><input type="file" id="f-file" accept="audio/*" hidden> ⬆ Upload Full Audio</label>
+        <button id="f-rec">⏺ Record Full Audio</button>
+        <button id="f-next" class="pri" hidden>NEXT SLIDE ▶</button>
+        <button id="f-clr" class="dng">🗑 Clear All Voice</button>
+      </div>
+      <div class="st" id="f-st">No full audio loaded yet.</div>
+      <div id="f-ed" hidden>
+        <div class="acts">
+          <button id="f-auto">✂ Auto-split by Pauses</button>
+          <button id="f-tap">👆 Tap-sync</button>
+          <button id="f-prev">▶ Play Full Audio</button>
+        </div>
+        <div class="lab" style="margin-top:6px;">Slide Start Timestamps (in seconds, comma separated):</div>
+        <textarea id="f-marks" style="min-height:50px;font-family:monospace;"></textarea>
+        <div class="acts"><button class="pri" id="f-apply">✔ APPLY TIMESTAMPS TO SLIDES</button></div>
+      </div>
+    </div>
+
+    <!-- Individual Slide Rows -->
+    <div id="rows" style="display:flex;flex-direction:column;gap:10px;"></div>
+    <div class="msg" id="vmsg" role="status"></div>
+    <div class="acts"><button class="pri" id="vdone">DONE &amp; PLAY</button></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mp4-muxer@5.1.3/build/mp4-muxer.js"></script>
+
+<script>
+/* =======================================================================
+   1. SLIDE DATA DEFINITION (Extracted from Full Bengali Script)
+   ======================================================================= */
+// Scene types: 
+// 0 = Intro/Hook
+// 1 = Word Lecture Slide
+// 2 = MCQ Quiz Slide
+// 3 = Outro Slide
+
+const SCENES_DATA = [
+  {
+    "type": 0,
+    "badge": "🔥 Word Smart ১ | ফুল লেকচার সিরিজ (পর্ব-০২)",
+    "exams": [
+      "🎯 BCS প্রিলি ও লিখিত",
+      "🎯 Bank Officers",
+      "🎯 বিশ্ববিদ্যালয় ভর্তি (DU/IBA)",
+      "🎯 Job & Admission"
+    ],
+    "title1": "ভোকাবুলারিতে ফুল মার্কস নিশ্চিত করার",
+    "title2": "পর্ব-০২: শব্দ ১১ থেকে ২০ ও রিভিশন কুইজ!",
+    "feat": "✨ অর্থ • Synonyms • Antonyms • বাক্যে প্রয়োগ • ম্যাজিক ট্রিক 💡",
+    "chip": "🚀 চলুন শিখে ফেলি Word Smart-এর পরবর্তী ১০টি মাস্টার ওয়ার্ড!",
+    "dur": 11.5,
+    "script": "বিসিএস প্রিলিমিনারি ও লিখিত, ব্যাংক নিয়োগ পরীক্ষা কিংবা বিশ্ববিদ্যালয় ভর্তি—ভোকাবুলারিতে ভালো না করলে কোনো প্রতিযোগিতামূলক পরীক্ষাতেই এগিয়ে থাকা যায় না। আজ আমরা নিয়ে এলাম Word Smart পূর্ণাঙ্গ লেকচার সিরিজের দ্বিতীয় পর্ব। এই পর্বে আমরা শিখব ১১ নম্বর থেকে ২০ নম্বর পর্যন্ত গুরুত্বপূর্ণ ১০টি শব্দ, এদের সিনোনিম, অ্যান্টনিম, বাক্যে প্রয়োগ ও জাদুকরী ট্রিক। চলুন শুরু করা যাক শব্দ ১১ দিয়ে..."
+  },
+  {
+    "type": 1,
+    "num": 11,
+    "word": "Abnegate",
+    "pos": "Verb",
+    "pron": "ab-ni-geyt",
+    "meaning": "নিজের স্বার্থ বা অধিকার ত্যাগ করা / প্রত্যাখ্যান করা",
+    "syn": "Renounce (পরিহার করা), Relinquish (ছেড়ে দেওয়া), Surrender (ত্যাগ করা), Deny (অস্বীকার করা)",
+    "ant": "Claim (দাবি করা), Assert (প্রতিষ্ঠা করা), Embrace (গ্রহণ করা), Indulge (লিপ্ত হওয়া)",
+    "exEn": "She abnegated her personal desires to serve the poor.",
+    "exBn": "দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন।",
+    "trick": "‘Negate’ মানে বাতিল করা; নিজের ভোগবিলাস বা স্বার্থ Negate করাই হলো Abnegate!",
+    "dur": 13.5,
+    "script": "১১ নম্বর শব্দ: Abnegate. এটি একটি Verb. এর অর্থ নিজের স্বার্থ বা অধিকার ত্যাগ করা অথবা প্রত্যাখ্যান করা। Synonyms হলো Renounce, Relinquish এবং Deny। Antonyms হলো Claim, Assert এবং Embrace। বাক্যে ব্যবহার: She abnegated her personal desires to serve the poor. অর্থাৎ, দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন। মনে রাখার কৌশল: Negate মানে বাতিল করা; নিজের স্বার্থ বা ভোগবিলাস Negate করাই হলো Abnegate!"
+  },
+  {
+    "type": 1,
+    "num": 12,
+    "word": "Abomination",
+    "pos": "Noun",
+    "pron": "uh-bom-uh-NAY-shun",
+    "meaning": "চরম ঘৃণা / ঘৃণ্য বস্তু / অতি জঘন্য কাজ",
+    "syn": "Anathema (অভিশাপ/ঘৃণ্য বস্তু), Atrocity (নৃশংসতা), Disgrace (কলঙ্ক), Abhorrence (তীব্র ঘৃণা)",
+    "ant": "Delight (আনন্দ), Blessing (আশীর্বাদ), Treasure (সম্পদ), Adoration (শ্রদ্ধা)",
+    "exEn": "War is an abomination that destroys countless innocent lives.",
+    "exBn": "যুদ্ধ হলো একটি চরম ঘৃণ্য ও ধ্বংসাত্মক বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়।",
+    "trick": "Ab + Ominous (অশুভ) কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বা অভিশপ্ত বিষয় হলো Abomination!",
+    "dur": 13.5,
+    "script": "১২ নম্বর শব্দ: Abomination. এটি একটি Noun. এর অর্থ চরম ঘৃণা, ঘৃণ্য বস্তু বা অতি জঘন্য কাজ। Synonyms হলো Anathema, Atrocity এবং Abhorrence। Antonyms হলো Delight, Blessing এবং Adoration। বাক্যে ব্যবহার: War is an abomination that destroys countless innocent lives. অর্থাৎ, যুদ্ধ হলো একটি চরম ঘৃণ্য বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়। মনে রাখার কৌশল: Ominous বা অশুভ কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বিষয়ই হলো Abomination!"
+  },
+  {
+    "type": 1,
+    "num": 13,
+    "word": "Aboriginal",
+    "pos": "Adjective / Noun",
+    "pron": "ab-uh-RIJ-uh-nul",
+    "meaning": "আদিবাসী / দেশীয় অধিবাসী / আদিম",
+    "syn": "Native (দেশীয়/স্থানীয়), Indigenous (ভূমিপুত্র/আদিবাসী), Original (আদি), Earliest (প্রাচীনতম)",
+    "ant": "Immigrant (অভিবাসী), Foreign (বিদেশি), Alien (বহিরাগত), Modern (আধুনিক)",
+    "exEn": "The aboriginal people have lived on this continent for thousands of years.",
+    "exBn": "আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে।",
+    "trick": "‘Origin’ (উৎপত্তি) থেকে মনে রাখুন; ভূমির মূল বা শুরু থেকে যারা আছে তারাই Aboriginal!",
+    "dur": 13.5,
+    "script": "১৩ নম্বর শব্দ: Aboriginal. এটি Adjective এবং Noun উভয় হিসেবেই ব্যবহৃত হয়। এর অর্থ আদিবাসী, স্থানীয় অধিবাসী বা আদিম। Synonyms হলো Native, Indigenous এবং Original। Antonyms হলো Immigrant, Foreign এবং Alien। বাক্যে ব্যবহার: The aboriginal people have lived on this continent for thousands of years. অর্থাৎ, আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে। মনে রাখার কৌশল: Origin বা উৎপত্তি থেকে মনে রাখুন, ভূমির শুরু থেকে যারা বসবাস করছে তারাই Aboriginal!"
+  },
+  {
+    "type": 1,
+    "num": 14,
+    "word": "Abortive",
+    "pos": "Adjective",
+    "pron": "uh-BOR-tiv",
+    "meaning": "ব্যর্থ / অসফল / অঙ্কুরেই বিনষ্ট",
+    "syn": "Unsuccessful (ব্যর্থ), Failed (অসফল), Futile (নিষ্ফল), Fruitless (পণ্ডশ্রম)",
+    "ant": "Successful (সফল), Fruitful (ফলপ্রসূ), Effective (কার্যকর), Productive (উৎপাদনশীল)",
+    "exEn": "Their abortive attempt to escape ended in immediate capture.",
+    "exBn": "পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল।",
+    "trick": "‘Abort’ (মাঝপথে বন্ধ করা) থেকে Abortive; সফল না হয়ে অঙ্কুরেই বিনষ্ট বা ব্যর্থ হওয়া!",
+    "dur": 13.5,
+    "script": "১৪ নম্বর শব্দ: Abortive. এটি একটি Adjective. এর অর্থ ব্যর্থ, অসফল বা অঙ্কুরেই বিনষ্ট। Synonyms হলো Unsuccessful, Failed এবং Futile। Antonyms হলো Successful, Fruitful এবং Effective। বাক্যে ব্যবহার: Their abortive attempt to escape ended in immediate capture. অর্থাৎ, পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল। মনে রাখার কৌশল: কোনো মিশন Abort করা মানে মাঝপথে বাতিল হওয়া, সেখান থেকেই Abortive মানে ব্যর্থ বা নিষ্ফল!"
+  },
+  {
+    "type": 1,
+    "num": 15,
+    "word": "Abound",
+    "pos": "Verb",
+    "pron": "uh-BOWND",
+    "meaning": "প্রচুর পরিমাণে থাকা / উপচে পড়া / ভরপুর থাকা",
+    "syn": "Teem (ভরপুর থাকা), Plentiful (প্রচুর), Overflow (উথলে ওঠা), Flourish (সমৃদ্ধ হওয়া)",
+    "ant": "Lack (অভাব থাকা), Dearth (ঘাটতি), Deficient (অপর্যাপ্ত), Scarce (দুষ্প্রাপ্য)",
+    "exEn": "Fish abound in the fresh rivers of Bangladesh during the monsoon.",
+    "exBn": "বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়।",
+    "trick": "সীমানা বা ‘Bound’ উপচে পড়ার মতো কোনো এলাকায় প্রচুর থাকা মানেই Abound!",
+    "dur": 13.5,
+    "script": "১৫ নম্বর শব্দ: Abound. এটি একটি Verb. এর অর্থ প্রচুর পরিমাণে থাকা বা ভরপুর থাকা। Synonyms হলো Teem, Plentiful এবং Overflow। Antonyms হলো Lack, Dearth এবং Scarce। বাক্যে ব্যবহার: Fish abound in the fresh rivers of Bangladesh during the monsoon. অর্থাৎ, বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়। মনে রাখার কৌশল: বাউন্ডারি বা সীমানা উপচে পড়ার মতো কোনো কিছু প্রচুর থাকাই হলো Abound!"
+  },
+  {
+    "type": 1,
+    "num": 16,
+    "word": "Abridge",
+    "pos": "Verb",
+    "pron": "uh-BRIJ",
+    "meaning": "সংক্ষিপ্ত করা / ছোট করা",
+    "syn": "Shorten (ছোট করা), Condense (সংক্ষিপ্ত করা), Curtail (ছাঁটাই করা), Abbreviate (সংক্ষেপ করা)",
+    "ant": "Expand (প্রসারিত করা), Lengthen (দীর্ঘ করা), Extend (বাড়ানো), Elaborate (বিস্তারিত করা)",
+    "exEn": "The editor abridged the massive novel to fit the magazine format.",
+    "exBn": "সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন।",
+    "trick": "নদীর দুই তীরের দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, লেখার দৈর্ঘ্য ছোট করা হলো Abridge!",
+    "dur": 13.5,
+    "script": "১৬ নম্বর শব্দ: Abridge. এটি একটি Verb. এর অর্থ সংক্ষিপ্ত করা বা ছোট করা। Synonyms হলো Shorten, Condense এবং Curtail। Antonyms হলো Expand, Lengthen এবং Extend। বাক্যে ব্যবহার: The editor abridged the massive novel to fit the magazine format. অর্থাৎ, সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন। মনে রাখার কৌশল: নদীর দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, তেমনি লেখার দৈর্ঘ্য ছোট করা হলো Abridge!"
+  },
+  {
+    "type": 1,
+    "num": 17,
+    "word": "Abrogate",
+    "pos": "Verb",
+    "pron": "AB-ruh-gayt",
+    "meaning": "আইন বা চুক্তি আনুষ্ঠানিকভাবে বাতিল করা / রদ করা",
+    "syn": "Repeal (বাতিল করা), Nullify (অকার্যকর করা), Revoke (প্রত্যাহার করা), Rescind (রদ করা)",
+    "ant": "Enact (আইন প্রণয়ন করা), Ratify (অনুমোদন করা), Establish (প্রতিষ্ঠা করা), Enforce (বলবৎ করা)",
+    "exEn": "The government voted to abrogate the outdated colonial law.",
+    "exBn": "সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল।",
+    "trick": "কোনো পুরনো আইন বা নীতিকে Gate বন্ধ করে চিরতরে বাতিল (Nullify) করাই হলো Abrogate!",
+    "dur": 13.5,
+    "script": "১৭ নম্বর শব্দ: Abrogate. এটি একটি Verb. এর অর্থ আনুষ্ঠানিকভাবে আইন বা চুক্তি বাতিল বা রদ করা। Synonyms হলো Repeal, Nullify এবং Revoke। Antonyms হলো Enact, Ratify এবং Enforce। বাক্যে ব্যবহার: The government voted to abrogate the outdated colonial law. অর্থাৎ, সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল। মনে রাখার কৌশল: পুরনো নীতিকে গেট-আউট করে চিরতরে বাতিল করাই হলো Abrogate!"
+  },
+  {
+    "type": 1,
+    "num": 18,
+    "word": "Absolute",
+    "pos": "Adjective",
+    "pron": "AB-suh-loot",
+    "meaning": "সম্পূর্ণ / নিরঙ্কুশ / শর্তহীন / অসীম",
+    "syn": "Total (সম্পূর্ণ), Complete (পূর্ণাঙ্গ), Unconditional (শর্তহীন), Supreme (সর্বোচ্চ)",
+    "ant": "Limited (সীমিত), Conditional (শর্তাধীন), Partial (আংশিক), Incomplete (অসম্পূর্ণ)",
+    "exEn": "The monarch ruled with absolute power over the entire kingdom.",
+    "exBn": "সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ও অসীম ক্ষমতা নিয়ে রাজত্ব করেছিলেন।",
+    "trick": "Absolute মানে যেখানে কোনো ‘If’ বা ‘But’ নেই—সম্পূর্ণ নিরঙ্কুশ ও চূড়ান্ত!",
+    "dur": 13.5,
+    "script": "১৮ নম্বর শব্দ: Absolute. এটি একটি Adjective. এর অর্থ সম্পূর্ণ, নিরঙ্কুশ বা শর্তহীন। Synonyms হলো Total, Complete এবং Supreme। Antonyms হলো Limited, Conditional এবং Partial। বাক্যে ব্যবহার: The monarch ruled with absolute power over the entire kingdom. অর্থাৎ, সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ক্ষমতা নিয়ে রাজত্ব করেছিলেন। মনে রাখার কৌশল: Absolute মানে যেখানে কোনো যদি বা কিন্তু নেই—পুরোপুরি নিরঙ্কুশ ও চূড়ান্ত!"
+  },
+  {
+    "type": 1,
+    "num": 19,
+    "word": "Absolve",
+    "pos": "Verb",
+    "pron": "ab-ZOLV",
+    "meaning": "অপরাধ বা দায় থেকে মুক্তি দেওয়া / নির্দোষ ঘোষণা করা",
+    "syn": "Acquit (খালাস দেওয়া), Exonerate (দায়মুক্ত করা), Pardon (ক্ষমা করা), Clear (দোষমুক্ত করা)",
+    "ant": "Blame (দোষারোপ করা), Accuse (অভিযুক্ত করা), Condemn (দণ্ডিত করা), Convict (দোষী সাব্যস্ত করা)",
+    "exEn": "The court examined the evidence and absolved him of all criminal charges.",
+    "exBn": "আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল।",
+    "trick": "রহস্য Solve হয়ে যাওয়ার পর আদালত নির্দোষ ব্যক্তিকে দায়মুক্ত (Absolve) করে!",
+    "dur": 13.5,
+    "script": "১৯ নম্বর শব্দ: Absolve. এটি একটি Verb. এর অর্থ অপরাধ বা দায় থেকে মুক্তি দেওয়া বা নির্দোষ ঘোষণা করা। Synonyms হলো Acquit, Exonerate এবং Pardon। Antonyms হলো Blame, Accuse এবং Condemn। বাক্যে ব্যবহার: The court examined the evidence and absolved him of all criminal charges. অর্থাৎ, আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল। মনে রাখার কৌশল: কেস Solve হওয়ার পর নির্দোষ ব্যক্তিকে দায়মুক্ত করাই হলো Absolve!"
+  },
+  {
+    "type": 1,
+    "num": 20,
+    "word": "Abstinent",
+    "pos": "Adjective",
+    "pron": "AB-stuh-nunt",
+    "meaning": "স্বেচ্ছায় বিরত থাকা / সংযমী / মিতাচারী",
+    "syn": "Temperate (সংযমী/পরিমিত), Moderate (পরিমিত), Restrained (সংযত), Abstemious (মিতাচারী)",
+    "ant": "Self-indulgent (আত্মভোগী), Gluttonous (পেটুক/লোভী), Intemperate (অসংযমী)",
+    "exEn": "He remained abstinent from unhealthy habits to maintain peak athletic fitness.",
+    "exBn": "শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন।",
+    "trick": "লোভনীয় কিন্তু ক্ষতিকর জিনিস থেকে নিজে ‘Absent’ বা দূরে থাকাই হলো Abstinent!",
+    "dur": 13.5,
+    "script": "২০ নম্বর শব্দ: Abstinent. এটি একটি Adjective. এর অর্থ স্বেচ্ছায় কোনো কিছু থেকে বিরত থাকা বা সংযমী। Synonyms হলো Temperate, Moderate এবং Restrained। Antonyms হলো Self-indulgent, Gluttonous এবং Intemperate। বাক্যে ব্যবহার: He remained abstinent from unhealthy habits to maintain peak athletic fitness. অর্থাৎ, শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন। মনে রাখার কৌশল: ক্ষতিকর আকর্ষণ থেকে নিজেকে দূরে বা Absent রাখাই হলো Abstinent!"
+  },
+  {
+    "type": 4,
+    "badge": "⚡ কুইজের আগে দ্রুত রিভিশন | Quick Recap",
+    "title": "এক নজরে আজকের ১০টি মাস্টার ওয়ার্ড",
+    "sub": "অর্থ ও শীর্ষ সমার্থক শব্দ (Master Summary Table)",
+    "words": [
+      {
+        "num": 11,
+        "word": "Abnegate",
+        "pos": "v.",
+        "bn": "স্বার্থ বা অধিকার ত্যাগ করা",
+        "syn": "Renounce"
+      },
+      {
+        "num": 12,
+        "word": "Abomination",
+        "pos": "n.",
+        "bn": "চরম ঘৃণা / ঘৃণ্য বস্তু বা কাজ",
+        "syn": "Anathema"
+      },
+      {
+        "num": 13,
+        "word": "Aboriginal",
+        "pos": "adj.",
+        "bn": "আদিবাসী / স্থানীয় অধিবাসী",
+        "syn": "Native"
+      },
+      {
+        "num": 14,
+        "word": "Abortive",
+        "pos": "adj.",
+        "bn": "ব্যর্থ / অঙ্কুরেই বিনষ্ট",
+        "syn": "Unsuccessful"
+      },
+      {
+        "num": 15,
+        "word": "Abound",
+        "pos": "v.",
+        "bn": "প্রচুর পরিমাণে থাকা / ভরপুর",
+        "syn": "Teem"
+      },
+      {
+        "num": 16,
+        "word": "Abridge",
+        "pos": "v.",
+        "bn": "সংক্ষিপ্ত করা / সংক্ষেপ করা",
+        "syn": "Shorten"
+      },
+      {
+        "num": 17,
+        "word": "Abrogate",
+        "pos": "v.",
+        "bn": "আইন বা চুক্তি বাতিল/রদ করা",
+        "syn": "Repeal"
+      },
+      {
+        "num": 18,
+        "word": "Absolute",
+        "pos": "adj.",
+        "bn": "সম্পূর্ণ / নিরঙ্কুশ / অসীম",
+        "syn": "Total"
+      },
+      {
+        "num": 19,
+        "word": "Absolve",
+        "pos": "v.",
+        "bn": "অভিযোগ থেকে দায়মুক্ত ঘোষণা",
+        "syn": "Exonerate"
+      },
+      {
+        "num": 20,
+        "word": "Abstinent",
+        "pos": "adj.",
+        "bn": "স্বেচ্ছায় বিরত থাকা / সংযমী",
+        "syn": "Temperate"
+      }
+    ],
+    "cta": "🎯 এবার চলুন দেখি ৩টি কুইজে আপনার রিভিশন স্কোর কত হয়!",
+    "dur": 15,
+    "script": "কুইজে যাওয়ার আগে চলুন এক নজরে আজকের ১০টি শব্দ চটজলদি রিভিশন দিয়ে নেওয়া যাক: Abnegate—স্বার্থ বা অধিকার ত্যাগ করা; Abomination—চরম ঘৃণা বা ঘৃণ্য কাজ; Aboriginal—আদিবাসী বা স্থানীয় অধিবাসী; Abortive—ব্যর্থ বা অঙ্কুরেই বিনষ্ট; Abound—প্রচুর পরিমাণে থাকা; Abridge—সংক্ষিপ্ত করা; Abrogate—আইন বাতিল বা রদ করা; Absolute—নিরঙ্কুশ বা সম্পূর্ণ; Absolve—অভিযোগ থেকে দায়মুক্ত ঘোষণা করা; এবং Abstinent—স্বেচ্ছায় বিরত থাকা বা সংযমী। এবার চলুন শুরু করা যাক আজকের কুইজ রাউন্ড..."
+  },
+  {
+    "type": 2,
+    "qNum": 1,
+    "totalQ": 3,
+    "question": "\"Abridge\" শব্দের সঠিক Synonym কোনটি?",
+    "options": [
+      "Expand",
+      "Condense",
+      "Elaborate",
+      "Prolong"
+    ],
+    "ansIdx": 1,
+    "ansText": "✅ সঠিক উত্তর: (b) Condense",
+    "explain": "Abridge অর্থ সংক্ষেপ বা সংক্ষিপ্ত করা; তাই এর সঠিক সমার্থক শব্দ হলো Condense (ঘনীভূত/ছোট করা)।",
+    "trick": "Bridge যেমন নদী পারাপারের দূরত্ব কমায়, তেমনি লেখার দৈর্ঘ্য ছোট করা হলো Abridge!",
+    "dur": 14,
+    "script": "কুইজ ১: Abridge শব্দের সঠিক Synonym কোনটি? অপশনগুলো হলো: এ Expand, বি Condense, সি Elaborate, ডি Prolong... উত্তর ভাবার জন্য সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, Condense। কারণ Abridge অর্থ সংক্ষিপ্ত বা সংক্ষেপ করা, আর Condense অর্থও সংক্ষেপ করা।"
+  },
+  {
+    "type": 2,
+    "qNum": 2,
+    "totalQ": 3,
+    "question": "আইন বা পুরনো চুক্তি আনুষ্ঠানিকভাবে বাতিল (Nullify/Repeal) করা বোঝাতে কোনটি সঠিক?",
+    "options": [
+      "Abrogate",
+      "Abound",
+      "Absolve",
+      "Abortive"
+    ],
+    "ansIdx": 0,
+    "ansText": "✅ সঠিক উত্তর: (a) Abrogate",
+    "explain": "Abrogate অর্থ আইনি প্রক্রিয়ায় কোনো আইন বা চুক্তি আনুষ্ঠানিকভাবে বাতিল বা রদ করা (Repeal/Nullify)।",
+    "trick": "পুরনো আইনকে চিরতরে Gate বন্ধ করে বাতিল করাই হলো Abrogate!",
+    "dur": 14,
+    "script": "কুইজ ২: আইন বা কোনো পুরনো চুক্তি আনুষ্ঠানিকভাবে বাতিল বা রদ করা বোঝাতে কোন শব্দটি সঠিক? অপশনগুলো লক্ষ্য করুন... উত্তর চিন্তা করার সময় শুরু হচ্ছে এখন... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন এ, Abrogate। এর অর্থ আনুষ্ঠানিকভাবে কোনো আইন বা চুক্তি বাতিল বা রদ করা।"
+  },
+  {
+    "type": 2,
+    "qNum": 3,
+    "totalQ": 3,
+    "question": "\"The court examined the evidence and ____ the innocent man of all charges.\"",
+    "options": [
+      "abrogated",
+      "absolved",
+      "abnegated",
+      "abounded"
+    ],
+    "ansIdx": 1,
+    "ansText": "✅ সঠিক উত্তর: (b) absolved",
+    "explain": "Absolve of/from মানে কোনো অপরাধ বা অভিযোগ থেকে খালাস দেওয়া বা নির্দোষ ঘোষণা করা।",
+    "trick": "সত্য Solve হয়ে যাওয়ার পর আদালত নির্দোষ ব্যক্তিকে দায়মুক্ত (Absolve) করে!",
+    "dur": 14,
+    "script": "কুইজ ৩: The court examined the evidence and blank the innocent man of all charges. শূন্যস্থানে কোন শব্দটি বসবে? উত্তর ভাবার সময় পাঁচ সেকেন্ড... পাঁচ... চার... তিন... দুই... এক... সময় শেষ! সঠিক উত্তর হলো অপশন বি, absolved। Absolve of all charges মানে সব অভিযোগ থেকে নির্দোষ ঘোষণা বা বেখসুর খালাস দেওয়া।"
+  },
+  {
+    "type": 3,
+    "title": "🎉 পর্ব-০২ সম্পন্ন! চমৎকার রিভিশন!",
+    "sub1": "আজকের ১০টি শব্দ ও ৩টি কুইজের মধ্যে তোমার কতটি মনে আছে?",
+    "btn": "▶ SUBSCRIBE 🔔",
+    "sub2": "কমেন্টে তোমার স্কোর জানাও ও বন্ধুদের সাথে শেয়ার করো!",
+    "thank": "পর্ব-০৩ এ দেখা হবে পরবর্তী ১০টি শব্দ নিয়ে — ধন্যবাদ! 💚",
+    "dur": 9,
+    "script": "দারুণ! Word Smart পর্ব-০২ শেষ হলো। আজকের ১০টি শব্দ এবং ৩টি কুইজের মধ্যে তোমার স্কোর কত হলো কমেন্টে লিখে জানাও। এরকম প্রতিটি পর্ব নিয়মিত পেতে চ্যানেলটি এখনই সাবস্ক্রাইব করে রাখো। পর্ব-০৩ এ দেখা হবে পরবর্তী শব্দগুলো নিয়ে, সবাই ভালো থেকো!"
+  }
+];
+
+function BN(n) {
+  return String(n).replace(/\d/g, function(d) { return '০১২৩৪৫৬৭৮৯'[d]; });
+}
+
+/* =======================================================================
+   2. DOM STAGE INJECTION & INTERACTIVE ANIMATIONS
+   ======================================================================= */
+(function initStageDOM() {
+  const stage = document.getElementById('stage');
+  const bar = document.getElementById('bar');
+  const L = ['a', 'b', 'c', 'd'];
+
+  SCENES_DATA.forEach(function(sc, i) {
+    const s = document.createElement('section');
+    s.className = 'scene';
+    s.dataset.idx = i;
+    s.dataset.t = sc.dur * 1000;
+
+    if (sc.type === 0) {
+      // Hook
+      s.innerHTML = `
+        <span class="badge" style="--d:.1s">${sc.badge}</span>
+        <div class="exam-chips" style="--d:.25s">
+          ${sc.exams.map(e => `<span class="exam-chip">${e}</span>`).join('')}
+        </div>
+        <h1 style="--d:.45s;font-size:4.8cqw;">${sc.title1}<br><span style="color:var(--y)">${sc.title2}</span></h1>
+        <div class="intro-feat" style="--d:1.2s">${sc.feat}</div>
+        <span class="chip pulse" style="--d:2.2s">${sc.chip}</span>
+      `;
+        } else if (sc.type === 1) {
+      // Word Lecture (Step-by-step sequential reveal)
+      s.innerHTML = `
+        <div class="slide-top-bar" style="display:flex;align-items:center;gap:1.5cqw;--d:.1s">
+          <span class="badge">শব্দ ${BN(sc.num)} / ২০</span>
+          <span class="pron">${sc.pron}</span>
+        </div>
+        <div class="word-head" style="--d:.4s">
+          <span class="word-title">${sc.word}</span>
+          <span class="word-pos">(${sc.pos})</span>
+          <span class="meaning-bar">— ${sc.meaning}</span>
+        </div>
+        <div class="row">
+          <div class="card syn" style="--d:3.5s">
+            <h3><span>🟢</span> Synonyms (সমার্থক)</h3>
+            <div class="v">${sc.syn}</div>
+          </div>
+          <div class="card ant" style="--d:6.2s">
+            <h3><span>🔵</span> Antonyms (বিপরীত)</h3>
+            <div class="v">${sc.ant}</div>
+          </div>
+        </div>
+        <div class="ex-box" style="--d:8.8s">
+          <div class="ex-en">💬 "${sc.exEn}"</div>
+          <div class="ex-bn">বাংলা: ${sc.exBn}</div>
+        </div>
+        <div class="trick-box" style="--d:11.2s">
+          <span>💡 মনে রাখার কৌশল:</span> ${sc.trick}
+        </div>
+      `;
+    
+    } else if (sc.type === 4) {
+      // Quick Recap Slide (Summary Table)
+      let itemsHtml = '';
+      sc.words.forEach((w, k) => {
+        itemsHtml += `
+          <div class="recap-card" style="--d:${0.4 + k * 0.08}s">
+            <span class="rc-num">${BN(w.num)}</span>
+            <div class="rc-word-box">
+              <span class="rc-word">${w.word}</span>
+              <span class="rc-pos">(${w.pos})</span>
+            </div>
+            <span class="rc-meaning">${w.bn}</span>
+            <span class="rc-syn">≈ ${w.syn}</span>
+          </div>
+        `;
+      });
+
+      s.innerHTML = `
+        <span class="badge" style="--d:.1s">${sc.badge}</span>
+        <div style="--d:.25s">
+          <h2 style="font-size:3.6cqw;font-weight:700;line-height:1.2;color:#f4fff8;margin:0;">${sc.title}</h2>
+          <p style="font-size:1.75cqw;color:#86efac;margin-top:0.2cqw;">${sc.sub}</p>
+        </div>
+        <div class="recap-grid">${itemsHtml}</div>
+        <div class="chip" style="--d:1.5s;font-size:1.8cqw;padding:0.4cqw 1.8cqw;border-color:#facc15;color:#fef08a;background:rgba(250,204,21,0.1)">
+          ${sc.cta}
+        </div>
+      `;
+        } else if (sc.type === 2) {
+      // Quiz / MCQ (Options sequence -> 5s Timer -> Answer Reveal at 7.5s)
+      const optDelays = [1.0, 1.35, 1.7, 2.05];
+      let optHtml = '';
+      sc.options.forEach((opt, k) => {
+        const isCorrect = k === sc.ansIdx;
+        optHtml += `
+          <div class="u ${isCorrect ? 'ok' : 'no'}" style="--d:${optDelays[k]}s">
+            <em>(${L[k]})</em> <span>${opt}</span>
+          </div>
+        `;
+      });
+
+      s.innerHTML = `
+        <span class="badge" style="--d:.1s">কুইজ ${BN(sc.qNum)} / ${BN(sc.totalQ)}</span>
+        <h2 style="--d:.3s">${sc.question}</h2>
+        <div class="grid q2">${optHtml}</div>
+        <div class="quiz-timer" style="--d:2.4s">
+          <span>⏱️ উত্তর ভাবার সময়:</span>
+          <div class="timer-bar"><div class="timer-fill"></div></div>
+          <span style="font-weight:700;">৫ সেকেন্ড</span>
+        </div>
+        <div class="quiz-feedback" style="display:flex;flex-direction:column;gap:0.4cqw;align-items:center;width:100%;">
+          <p style="--d:7.5s;color:var(--g);font-weight:700;font-size:2.6cqw">${sc.ansText}</p>
+          <p style="--d:8.6s;font-size:2.1cqw">${sc.explain}</p>
+          <p style="--d:9.8s;font-size:2.0cqw;color:var(--y);font-weight:600">💡 ${sc.trick}</p>
+        </div>
+      `;
+    } else if (sc.type === 3) {
+      // Outro
+      s.innerHTML = `
+        <h1 style="--d:.15s">${sc.title}</h1>
+        <p style="--d:.9s;font-size:2.8cqw">${sc.sub1}</p>
+        <span class="sub-btn" style="--d:1.8s">${sc.btn} <span class="bell">🔔</span></span>
+        <p style="--d:2.8s;font-size:2.5cqw">${sc.sub2}</p>
+        <p style="--d:3.8s;font-size:2.6cqw;color:var(--y);font-weight:600">${sc.thank}</p>
+      `;
+    }
+
+    stage.insertBefore(s, bar);
+  });
+})();
+
+/* =======================================================================
+   3. CORE 2D CANVAS RENDERER (OFFSCREEN & EXPORT ENGINE)
+   ======================================================================= */
+const Core = (function() {
+  const FAM = '"Hind Siliguri", "Noto Sans Bengali", sans-serif';
+  const EN_FAM = '"Inter", "Hind Siliguri", sans-serif';
+
+  const SC = SCENES_DATA.map((sc, i) => ({
+    name: 'scene_' + ('0' + (i + 1)).slice(-2),
+    t: sc.dur,
+    data: sc
+  }));
+
+  let DUR = 0, capFn = null;
+  function relayout() {
+    let acc = 0;
+    SC.forEach(s => { s.a = acc; acc += s.t; });
+    DUR = acc;
+  }
+  relayout();
+
+  function bez(x1, y1, x2, y2) {
+    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+    const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+    const X = t => ((ax * t + bx) * t + cx) * t;
+    const Y = t => ((ay * t + by) * t + cy) * t;
+    const D = t => (3 * ax * t + 2 * bx) * t + cx;
+    return function(x) {
+      if (x <= 0) return 0; if (x >= 1) return 1;
+      let t = x;
+      for (let k = 0; k < 8; k++) {
+        const e = X(t) - x; if (Math.abs(e) < 1e-6) return Y(t);
+        const d = D(t); if (Math.abs(d) < 1e-6) break;
+        t -= e / d;
+      }
+      let lo = 0, hi = 1; t = x;
+      for (let k = 0; k < 30; k++) {
+        const e = X(t); if (Math.abs(e - x) < 1e-6) break;
+        if (e < x) lo = t; else hi = t; t = (lo + hi) / 2;
+      }
+      return Y(t);
+    };
+  }
+
+  const EIN = bez(.2, .9, .3, 1.2);
+  const EE = bez(.25, .1, .25, 1);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  function wrap(c, font, text, maxW) {
+    c.font = font;
+    const words = text.split(' ');
+    const lines = [];
+    let cur = '';
+    for (let i = 0; i < words.length; i++) {
+      const t = cur ? cur + ' ' + words[i] : words[i];
+      if (cur && c.measureText(t).width > maxW) {
+        lines.push(cur);
+        cur = words[i];
+      } else {
+        cur = t;
+      }
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  }
+
+  function rr(c, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    c.beginPath();
+    c.moveTo(x + r, y);
+    c.arcTo(x + w, y, x + w, y + h, r);
+    c.arcTo(x + w, y + h, x, y + h, r);
+    c.arcTo(x, y + h, x, y, r);
+    c.arcTo(x, y, x + w, y, r);
+    c.closePath();
+  }
+
+  function anim(c, s, lt, delay, cx, cy, fn) {
+    if (lt <= delay) return;
+    const p = EIN(clamp((lt - delay) / 0.65, 0, 1));
+    c.save();
+    c.globalAlpha *= p;
+    c.translate(cx, cy + (1 - p) * 2.5 * s.u);
+    const k = 0.94 + 0.06 * p;
+    c.scale(k, k);
+    c.translate(-cx, -cy);
+    fn();
+    c.restore();
+  }
+
+  function drawPill(c, txt, x, y, u, bg, fg, border) {
+    c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+    const tw = c.measureText(txt).width;
+    const pw = tw + 3.6 * u, ph = 3.6 * u;
+    const rx = x - pw / 2, ry = y - ph / 2;
+    rr(c, rx, ry, pw, ph, ph / 2);
+    if (bg) { c.fillStyle = bg; c.fill(); }
+    if (border) { c.lineWidth = 0.25 * u; c.strokeStyle = border; c.stroke(); }
+    c.fillStyle = fg;
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillText(txt, x, y);
+  }
+
+  function renderSceneCanvas(c, s, sc, lt) {
+    const W = s.W, H = s.H, u = s.u;
+
+    if (sc.type === 0) {
+      // Intro Hook
+      // Top Series Badge
+      anim(c, s, lt, 0.1, W / 2, H * 0.14, () => {
+        drawPill(c, sc.badge, W / 2, H * 0.14, u, '#facc15', '#1a1a1a');
+      });
+
+      // Target Exam Chips Row
+      anim(c, s, lt, 0.25, W / 2, H * 0.25, () => {
+        const totalChips = sc.exams.length;
+        const pillGap = 1.6 * u;
+        c.font = '600 ' + (1.8 * u) + 'px ' + FAM;
+        const widths = sc.exams.map(e => c.measureText(e).width + 3.2 * u);
+        const totalW = widths.reduce((a, b) => a + b, 0) + (totalChips - 1) * pillGap;
+        let startX = W / 2 - totalW / 2;
+
+        sc.exams.forEach((exam, idx) => {
+          const pw = widths[idx], ph = 3.2 * u;
+          const rx = startX, ry = H * 0.25 - ph / 2;
+          rr(c, rx, ry, pw, ph, ph / 2);
+          c.fillStyle = 'rgba(34,197,94,0.12)'; c.fill();
+          c.lineWidth = 0.2 * u; c.strokeStyle = 'rgba(34,197,94,0.45)'; c.stroke();
+
+          c.fillStyle = '#86efac';
+          c.textAlign = 'center';
+          c.textBaseline = 'middle';
+          c.fillText(exam, rx + pw / 2, H * 0.25);
+          startX += pw + pillGap;
+        });
+      });
+
+      // Main Heading (2 lines)
+      anim(c, s, lt, 0.45, W / 2, H * 0.44, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '700 ' + (4.8 * u) + 'px ' + FAM;
+        c.fillStyle = '#f4fff8';
+        c.fillText(sc.title1, W / 2, H * 0.39);
+        c.font = '700 ' + (5.0 * u) + 'px ' + FAM;
+        c.fillStyle = '#facc15';
+        c.fillText(sc.title2, W / 2, H * 0.48);
+      });
+
+      // Feature bar
+      anim(c, s, lt, 1.2, W / 2, H * 0.65, () => {
+        c.font = '600 ' + (2.1 * u) + 'px ' + FAM;
+        const tw = c.measureText(sc.feat).width;
+        const pw = tw + 4 * u, ph = 3.8 * u;
+        const px = W / 2 - pw / 2, py = H * 0.65 - ph / 2;
+        rr(c, px, py, pw, ph, u);
+        c.fillStyle = 'rgba(255,255,255,0.06)'; c.fill();
+        c.lineWidth = 0.18 * u; c.strokeStyle = 'rgba(250,204,21,0.35)'; c.stroke();
+
+        c.fillStyle = '#fef08a';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.fillText(sc.feat, W / 2, H * 0.65);
+      });
+
+      // Bottom Pulsing Chip
+      anim(c, s, lt, 2.0, W / 2, H * 0.81, () => {
+        const ph = ((lt - 2.0) % 1.6) / 1.6;
+        const scale = 1 + 0.05 * Math.sin(ph * Math.PI * 2);
+        c.save();
+        c.translate(W / 2, H * 0.81);
+        c.scale(scale, scale);
+        drawPill(c, sc.chip, 0, 0, u, 'rgba(34,197,94,0.1)', '#22c55e', '#22c55e');
+        c.restore();
+      });
+
+    } else if (sc.type === 1) {
+      // Word Lecture Slide
+      // Top header (badge + pron)
+      anim(c, s, lt, 0.1, W / 2, H * 0.13, () => {
+        drawPill(c, `শব্দ ${BN(sc.num)} / ২০`, W * 0.42, H * 0.13, u, '#facc15', '#1a1a1a');
+        drawPill(c, sc.pron, W * 0.58, H * 0.13, u, 'rgba(255,255,255,0.1)', 'rgba(244,255,248,0.85)');
+      });
+
+      // Word title, POS, meaning
+      anim(c, s, lt, 0.4, W / 2, H * 0.24, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '700 ' + (4.4 * u) + 'px ' + EN_FAM;
+        c.fillStyle = '#f4fff8';
+        const wTitle = sc.word + ' ';
+        const wWidth = c.measureText(wTitle).width;
+        
+        c.font = '600 ' + (2.0 * u) + 'px ' + FAM;
+        const posText = `(${sc.pos}) — `;
+        const pWidth = c.measureText(posText).width;
+
+        c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+        const mWidth = c.measureText(sc.meaning).width;
+        const totalW = wWidth + pWidth + mWidth;
+
+        let curX = W / 2 - totalW / 2;
+        c.font = '700 ' + (4.4 * u) + 'px ' + EN_FAM;
+        c.fillStyle = '#f4fff8';
+        c.textAlign = 'left';
+        c.fillText(wTitle, curX, H * 0.24);
+        curX += wWidth;
+
+        c.font = '600 ' + (2.0 * u) + 'px ' + FAM;
+        c.fillStyle = '#facc15';
+        c.fillText(posText, curX, H * 0.24);
+        curX += pWidth;
+
+        c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+        c.fillStyle = '#22c55e';
+        c.fillText(sc.meaning, curX, H * 0.24);
+      });
+
+      // Comparison Cards (Synonyms & Antonyms)
+      const cardW = W * 0.45, cardH = H * 0.2, cardY = H * 0.35;
+      // Syn Card
+      anim(c, s, lt, 3.5, W * 0.26, cardY + cardH / 2, () => {
+        const x = W * 0.04;
+        rr(c, x, cardY, cardW, cardH, 1.4 * u);
+        c.fillStyle = 'rgba(255,255,255,0.06)'; c.fill();
+        c.lineWidth = 0.25 * u; c.strokeStyle = '#22c55e'; c.stroke();
+
+        c.textAlign = 'left'; c.textBaseline = 'top';
+        c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+        c.fillStyle = '#22c55e';
+        c.fillText('🟢 Synonyms (সমার্থক)', x + 1.8 * u, cardY + 1.2 * u);
+
+        c.font = '500 ' + (1.95 * u) + 'px ' + FAM;
+        c.fillStyle = '#f8fafc';
+        const lines = wrap(c, c.font, sc.syn, cardW - 3.2 * u);
+        lines.forEach((l, idx) => c.fillText(l, x + 1.6 * u, cardY + 4.2 * u + idx * 2.6 * u));
+      });
+
+      // Ant Card
+      anim(c, s, lt, 6.2, W * 0.74, cardY + cardH / 2, () => {
+        const x = W * 0.51;
+        rr(c, x, cardY, cardW, cardH, 1.4 * u);
+        c.fillStyle = 'rgba(255,255,255,0.06)'; c.fill();
+        c.lineWidth = 0.25 * u; c.strokeStyle = '#38bdf8'; c.stroke();
+
+        c.textAlign = 'left'; c.textBaseline = 'top';
+        c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+        c.fillStyle = '#38bdf8';
+        c.fillText('🔵 Antonyms (বিপরীত)', x + 1.8 * u, cardY + 1.2 * u);
+
+        c.font = '500 ' + (1.95 * u) + 'px ' + FAM;
+        c.fillStyle = '#f8fafc';
+        const lines = wrap(c, c.font, sc.ant, cardW - 3.2 * u);
+        lines.forEach((l, idx) => c.fillText(l, x + 1.6 * u, cardY + 4.2 * u + idx * 2.6 * u));
+      });
+
+      // Example sentence box
+      anim(c, s, lt, 8.8, W / 2, H * 0.68, () => {
+        const ew = W * 0.92, eh = H * 0.17, ex = W * 0.04, ey = H * 0.58;
+        rr(c, ex, ey, ew, eh, 1.2 * u);
+        c.fillStyle = 'rgba(255,255,255,0.05)'; c.fill();
+        c.fillStyle = '#facc15'; c.fillRect(ex, ey, 0.6 * u, eh);
+
+        c.textAlign = 'left'; c.textBaseline = 'top';
+        c.font = '600 ' + (2.05 * u) + 'px ' + EN_FAM;
+        c.fillStyle = '#ffffff';
+        c.fillText('💬 "' + sc.exEn + '"', ex + 2 * u, ey + 1.2 * u);
+
+        c.font = '500 ' + (1.95 * u) + 'px ' + FAM;
+        c.fillStyle = '#d1fae5';
+        c.fillText('বাংলা: ' + sc.exBn, ex + 2 * u, ey + 4.6 * u);
+      });
+
+      // Mnemonic Trick box
+      anim(c, s, lt, 11.2, W / 2, H * 0.86, () => {
+        const tw = W * 0.92, th = H * 0.11, tx = W * 0.04, ty = H * 0.79;
+        rr(c, tx, ty, tw, th, u);
+        c.fillStyle = 'rgba(250,204,21,0.09)'; c.fill();
+        c.lineWidth = 0.2 * u; c.strokeStyle = '#facc15'; c.stroke();
+
+        c.textAlign = 'left'; c.textBaseline = 'middle';
+        c.font = '600 ' + (1.95 * u) + 'px ' + FAM;
+        c.fillStyle = '#fef08a';
+        c.fillText('💡 মনে রাখার কৌশল: ' + sc.trick, tx + 1.8 * u, ty + th / 2);
+      });
+
+    } else if (sc.type === 2) {
+      // Quiz MCQ Slide
+      anim(c, s, lt, 0.1, W / 2, H * 0.13, () => {
+        drawPill(c, `কুইজ ${BN(sc.qNum)} / ${BN(sc.totalQ)}`, W / 2, H * 0.13, u, '#facc15', '#1a1a1a');
+      });
+
+      anim(c, s, lt, 0.3, W / 2, H * 0.25, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '700 ' + (3.6 * u) + 'px ' + FAM;
+        c.fillStyle = '#f4fff8';
+        c.fillText(sc.question, W / 2, H * 0.25);
+      });
+
+      // 2x2 Grid Options
+      const rv = EE(clamp((lt - 7.5) / 0.5, 0, 1));
+      const L = ['(a)', '(b)', '(c)', '(d)'];
+      const gw = W * 0.92, gh = H * 0.26, gy = H * 0.36;
+      const cwl = (gw - 2 * u) / 2, rh = (gh - 1.5 * u) / 2;
+
+      sc.options.forEach((opt, k) => {
+        const col = k % 2, row = Math.floor(k / 2);
+        const ox = W * 0.04 + col * (cwl + 2 * u);
+        const oy = gy + row * (rh + 1.5 * u);
+        const isCorrect = k === sc.ansIdx;
+
+        anim(c, s, lt, 1.0 + 0.35 * k, ox + cwl / 2, oy + rh / 2, () => {
+          let bg = 'rgba(255,255,255,0.08)';
+          let barCol = '#22c55e';
+          let alpha = 1;
+
+          if (rv > 0) {
+            if (isCorrect) bg = `rgba(34,197,94,${0.08 + 0.3 * rv})`;
+            else alpha = 1 - 0.65 * rv;
+          }
+
+          c.save();
+          c.globalAlpha *= alpha;
+          rr(c, ox, oy, cwl, rh, 1.2 * u);
+          c.fillStyle = bg; c.fill();
+          c.fillStyle = barCol; c.fillRect(ox, oy, 0.7 * u, rh);
+
+          c.textAlign = 'left';
+          c.textBaseline = 'middle';
+          c.font = '700 ' + (2.5 * u) + 'px ' + FAM;
+          c.fillStyle = '#facc15';
+          c.fillText(L[k], ox + 2 * u, oy + rh / 2);
+
+          c.fillStyle = '#ffffff';
+          c.fillText(opt, ox + 6 * u, oy + rh / 2);
+          c.restore();
+        });
+      });
+
+      // Countdown Timer Bar (visible between 1.5s and 6.8s)
+      if (lt >= 2.4 && lt < 7.5) {
+        anim(c, s, lt, 2.4, W / 2, H * 0.65, () => {
+          const remSec = Math.max(1, Math.ceil(7.4 - lt));
+          const tProg = clamp((lt - 2.4) / 5.0, 0, 1);
+          const pw = 36 * u, ph = 4 * u, px = W / 2 - pw / 2, py = H * 0.65 - ph / 2;
+          
+          rr(c, px, py, pw, ph, ph / 2);
+          c.fillStyle = 'rgba(0,0,0,0.55)'; c.fill();
+          c.lineWidth = 0.22 * u; c.strokeStyle = 'rgba(250,204,21,0.5)'; c.stroke();
+
+          c.textAlign = 'left'; c.textBaseline = 'middle';
+          c.font = '600 ' + (2.1 * u) + 'px ' + FAM;
+          c.fillStyle = '#facc15';
+          c.fillText('⏱️ সময় বাকি: ' + remSec + 's', px + 2 * u, py + ph / 2);
+
+          // Timer Bar
+          const barW = 14 * u, barH = 0.8 * u, barX = px + 19 * u, barY = py + (ph - barH) / 2;
+          rr(c, barX, barY, barW, barH, barH / 2);
+          c.fillStyle = 'rgba(255,255,255,0.15)'; c.fill();
+
+          const fillW = Math.max(0, barW * (1 - tProg));
+          if (fillW > 0) {
+            rr(c, barX, barY, fillW, barH, barH / 2);
+            c.fillStyle = tProg > 0.65 ? '#ef4444' : '#facc15';
+            c.fill();
+          }
+        });
+      }
+
+      // Answer reveal text (appears after countdown ends at 6.8s)
+      anim(c, s, lt, 7.5, W / 2, H * 0.68, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '700 ' + (2.9 * u) + 'px ' + FAM;
+        c.fillStyle = '#22c55e';
+        c.fillText(sc.ansText, W / 2, H * 0.68);
+      });
+
+      anim(c, s, lt, 8.6, W / 2, H * 0.76, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '400 ' + (2.2 * u) + 'px ' + FAM;
+        c.fillStyle = '#d1fae5';
+        c.fillText(sc.explain, W / 2, H * 0.76);
+      });
+
+      anim(c, s, lt, 9.8, W / 2, H * 0.84, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '600 ' + (2.1 * u) + 'px ' + FAM;
+        c.fillStyle = '#facc15';
+        c.fillText('💡 ' + sc.trick, W / 2, H * 0.84);
+      });
+
+    } else if (sc.type === 3) {
+      // Outro Slide
+      anim(c, s, lt, 0.15, W / 2, H * 0.22, () => {
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '700 ' + (5.4 * u) + 'px ' + FAM;
+        c.fillStyle = '#f4fff8';
+        c.fillText(sc.title, W / 2, H * 0.22);
+      });
+
+      anim(c, s, lt, 0.9, W / 2, H * 0.36, () => {
+        c.textAlign = 'center';
+        c.font = '400 ' + (2.8 * u) + 'px ' + FAM;
+        c.fillStyle = '#d1fae5';
+        c.fillText(sc.sub1, W / 2, H * 0.36);
+      });
+
+      anim(c, s, lt, 1.8, W / 2, H * 0.54, () => {
+        drawPill(c, '▶ SUBSCRIBE 🔔', W / 2, H * 0.54, u, '#dc2626', '#ffffff');
+      });
+
+      anim(c, s, lt, 2.8, W / 2, H * 0.7, () => {
+        c.textAlign = 'center';
+        c.font = '400 ' + (2.5 * u) + 'px ' + FAM;
+        c.fillStyle = '#f4fff8';
+        c.fillText(sc.sub2, W / 2, H * 0.7);
+      });
+
+      anim(c, s, lt, 3.8, W / 2, H * 0.82, () => {
+        c.textAlign = 'center';
+        c.font = '600 ' + (2.6 * u) + 'px ' + FAM;
+        c.fillStyle = '#facc15';
+        c.fillText(sc.thank, W / 2, H * 0.82);
+      });
+    }
+  }
+
+  function at(c, W, H, t) {
+    t = clamp(t, 0, DUR - 1e-6);
+    const f = Math.sqrt((H / W) / (9 / 16));
+    const u = (W / 100) * f;
+    const s = { W, H, u };
+
+    c.save();
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.clearRect(0, 0, W, H);
+
+    // Emerald Gradient Background
+    const g = c.createRadialGradient(0.2 * W, 0.1 * H, 0, 0.2 * W, 0.1 * H, Math.hypot(0.8 * W, 0.9 * H));
+    g.addColorStop(0, '#14532d');
+    g.addColorStop(0.6, '#0b1f17');
+    g.addColorStop(1, '#050f0a');
+    c.fillStyle = g;
+    c.fillRect(0, 0, W, H);
+
+    // Floating Bubbles
+    const drawBubble = (bx, by, r, delay) => {
+      const ph = ((((t - delay) % 9) + 9) % 9) / 9;
+      const k = ph < 0.5 ? bez(.42, 0, .58, 1)(ph / 0.5) : 1 - bez(.42, 0, .58, 1)((ph - 0.5) / 0.5);
+      c.beginPath();
+      c.arc(bx, by - 4 * u * k, r, 0, Math.PI * 2);
+      c.fillStyle = 'rgba(34,197,94,0.08)';
+      c.fill();
+    };
+    drawBubble(W * 0.05, H * 0.7, 9 * u, 0);
+    drawBubble(W * 0.92, H * 0.18, 6.5 * u, -3.5);
+
+    // Identify current scene
+    let k = 0;
+    for (let q = 0; q < SC.length; q++) {
+      if (SC[q].a <= t) k = q;
+    }
+
+    const localT = t - SC[k].a;
+    renderSceneCanvas(c, s, SC[k].data, localT);
+
+    // Captions if enabled
+    if (capFn) {
+      const tx = capFn(k, localT);
+      if (tx) {
+        c.font = '600 ' + (2.3 * u) + 'px ' + FAM;
+        const tw = c.measureText(tx).width;
+        const pw = Math.min(W * 0.92, tw + 3.6 * u), ph = 3.6 * u;
+        const cx = (W - pw) / 2, cy = H - ph - 2 * u;
+        rr(c, cx, cy, pw, ph, u);
+        c.fillStyle = 'rgba(0,0,0,0.75)'; c.fill();
+        c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+        c.fillText(tx, W / 2, cy + ph / 2);
+      }
+    }
+
+    c.restore();
+  }
+
+  // Pure JS Zero-dependency CRC32 & ZIP Builder
+  const CT = (() => {
+    const t = new Uint32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1;
+      t[n] = c >>> 0;
+    }
+    return t;
+  })();
+  function crc32(u8) {
+    let c = 0xFFFFFFFF;
+    for (let i = 0; i < u8.length; i++) c = CT[(c ^ u8[i]) & 255] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+  function zip(files) {
+    const enc = new TextEncoder(), parts = [], cen = [];
+    let off = 0;
+    const d = new Date(),
+          dt = ((d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1)) & 0xFFFF,
+          dd = (((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate()) & 0xFFFF;
+    files.forEach(f => {
+      const nm = enc.encode(f.name), crc = crc32(f.data), sz = f.data.length;
+      const l = new DataView(new ArrayBuffer(30));
+      l.setUint32(0, 0x04034b50, true); l.setUint16(4, 20, true); l.setUint16(6, 0x0800, true);
+      l.setUint16(8, 0, true); l.setUint16(10, dt, true); l.setUint16(12, dd, true);
+      l.setUint32(14, crc, true); l.setUint32(18, sz, true); l.setUint32(22, sz, true);
+      l.setUint16(26, nm.length, true); l.setUint16(28, 0, true);
+      parts.push(new Uint8Array(l.buffer), nm, f.data);
+
+      const h = new DataView(new ArrayBuffer(46));
+      h.setUint32(0, 0x02014b50, true); h.setUint16(4, 20, true); h.setUint16(6, 20, true);
+      h.setUint16(8, 0x0800, true); h.setUint16(10, 0, true); h.setUint16(12, dt, true);
+      h.setUint16(14, dd, true); h.setUint32(16, crc, true); h.setUint32(20, sz, true);
+      h.setUint32(24, sz, true); h.setUint16(28, nm.length, true); h.setUint32(42, off, true);
+      cen.push(new Uint8Array(h.buffer), nm);
+      off += 30 + nm.length + sz;
+    });
+    let cs = 0; cen.forEach(x => { cs += x.length; });
+    const e = new DataView(new ArrayBuffer(22));
+    e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true);
+    e.setUint16(10, files.length, true); e.setUint32(12, cs, true); e.setUint32(16, off, true);
+    return new Blob(parts.concat(cen, [new Uint8Array(e.buffer)]), { type: 'application/zip' });
+  }
+
+  return {
+    SC,
+    get DUR() { return DUR; },
+    setT: function(arr) { arr.forEach((v, i) => { SC[i].t = v; }); relayout(); },
+    setCap: function(fn) { capFn = fn; },
+    at,
+    zip,
+    still: i => SC[i].a + Math.min(SC[i].t * 0.7, 6)
+  };
+})();
+
+/* =======================================================================
+   4. AUDIO & SCRIPT STUDIO CONTROLLER (TTS, PER-SLIDE & FULL VOICE-OVER)
+   ======================================================================= */
+(function initVoiceAndPlayer() {
+  const $ = id => document.getElementById(id);
+  const sc = [].slice.call(document.querySelectorAll('.scene'));
+  const bar = $('bar'), playBtn = $('play'), cap = $('cap');
+  const BASE_DURS = Core.SC.map(s => s.t);
+
+  // Initialize scripts from data
+  let scripts = SCENES_DATA.map(s => s.script);
+  let o = { voice: true, tts: true, rate: 1.0 };
+  let au = sc.map(() => null);
+  let curAudio = null, curIdx = 0, playing = true, timer = null, t0 = 0, tok = 0;
+  let voiceObj = null;
+
+  function pickVoice() {
+    if ('speechSynthesis' in window) {
+      voiceObj = speechSynthesis.getVoices().find(v => /^bn/i.test(v.lang)) || null;
+    }
+  }
+  if ('speechSynthesis' in window) {
+    pickVoice();
+    speechSynthesis.onvoiceschanged = pickVoice;
+  }
+
+  function estNarration(k) {
+    return scripts[k].replace(/\s/g, '').length / (11 * o.rate);
+  }
+  function slideDur(k) {
+    if (au[k]) return Math.max(BASE_DURS[k], au[k].dur + 0.6);
+    if (o.voice && o.tts && scripts[k].trim()) return Math.max(BASE_DURS[k], estNarration(k) + 0.8);
+    return BASE_DURS[k];
+  }
+  function syncDurations() {
+    const arr = BASE_DURS.map((_, k) => slideDur(k));
+    Core.setT(arr);
+    arr.forEach((v, k) => { sc[k].dataset.t = Math.round(v * 1000); });
+  }
+  syncDurations();
+
+  function stopAllSpeech() {
+    tok++;
+    if (curAudio) { curAudio.pause(); curAudio = null; }
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+  }
+
+  function playNarration(k) {
+    if (!o.voice) return;
+    const myTok = ++tok;
+    setTimeout(() => {
+      if (myTok !== tok) return;
+      if (au[k]) {
+        curAudio = new Audio(au[k].url);
+        curAudio.play().then(() => $('hint').hidden = true, () => $('hint').hidden = false);
+      } else if (o.tts && 'speechSynthesis' in window && scripts[k].trim()) {
+        const u = new SpeechSynthesisUtterance(scripts[k]);
+        u.lang = 'bn-BD';
+        if (voiceObj) u.voice = voiceObj;
+        u.rate = o.rate;
+        speechSynthesis.speak(u);
+      }
+    }, 350);
+  }
+
+  function showSlide(n) {
+    curIdx = (n + sc.length) % sc.length;
+    stopAllSpeech();
+    clearTimeout(timer);
+
+    sc.forEach((s, k) => s.classList.toggle('active', k === curIdx));
+    syncDurations();
+
+    const d = Core.SC[curIdx].t * 1000;
+    t0 = performance.now();
+
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    void bar.offsetWidth;
+
+    if (playing) {
+      bar.style.transition = `width ${d}ms linear`;
+      bar.style.width = '100%';
+      timer = setTimeout(() => showSlide(curIdx + 1), d);
+      playNarration(curIdx);
+    }
+  }
+
+  function setPlay(p) {
+    playing = p;
+    playBtn.textContent = p ? '⏸ থামান' : '▶ চালান';
+    showSlide(curIdx);
+  }
+
+  playBtn.onclick = () => setPlay(!playing);
+  $('prev').onclick = () => showSlide(curIdx - 1);
+  $('next').onclick = () => showSlide(curIdx + 1);
+  $('re').onclick = () => { playing = true; playBtn.textContent = '⏸ থামান'; showSlide(0); };
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight') showSlide(curIdx + 1);
+    if (e.key === 'ArrowLeft') showSlide(curIdx - 1);
+    if (e.key === ' ') { e.preventDefault(); setPlay(!playing); }
+  });
+
+  // UI Studio Builder
+  const rows = $('rows');
+  function renderStudio() {
+    rows.innerHTML = '';
+    sc.forEach((_, k) => {
+      const r = document.createElement('div');
+      r.className = 'r';
+      r.dataset.k = k;
+      r.innerHTML = `
+        <div style="display:flex;justify-content:space-between;font-weight:700;">
+          <span>Slide ${k + 1}: ${SCENES_DATA[k].word || (SCENES_DATA[k].type === 0 ? 'Hook' : SCENES_DATA[k].type === 4 ? 'Quick Recap' : (SCENES_DATA[k].type === 2 ? 'Quiz ' + SCENES_DATA[k].qNum : 'Outro'))}</span>
+          <span class="st">${au[k] ? '🎧 অডিও ' + au[k].dur.toFixed(1) + 's' : (o.tts ? '🤖 TTS ≈ ' + estNarration(k).toFixed(1) + 's' : '🔇 No Voice')}</span>
+        </div>
+        <textarea>${scripts[k]}</textarea>
+        <div class="acts">
+          <button data-a="rec">⏺ Record</button>
+          <label class="up"><input type="file" accept="audio/*" hidden> ⬆ Upload</label>
+          <button data-a="test">▶ Test</button>
+          <button data-a="clr" class="dng">🗑 Clear</button>
+        </div>
+      `;
+      rows.appendChild(r);
+    });
+  }
+
+  $('vob').onclick = () => {
+    setPlay(false);
+    $('o-voice').checked = o.voice;
+    $('o-tts').checked = o.tts;
+    $('o-rate').value = o.rate;
+    $('f-to').value = sc.length;
+    renderStudio();
+    $('vo').hidden = false;
+  };
+  $('vdone').onclick = () => {
+    $('vo').hidden = true;
+    setPlay(true);
+  };
+
+  rows.addEventListener('input', e => {
+    if (e.target.tagName !== 'TEXTAREA') return;
+    const k = +e.target.closest('.r').dataset.k;
+    scripts[k] = e.target.value;
+    syncDurations();
+  });
+
+  rows.addEventListener('change', async e => {
+    if (e.target.type !== 'file' || !e.target.files[0]) return;
+    const k = +e.target.closest('.r').dataset.k;
+    const file = e.target.files[0];
+    try {
+      const ac = new (window.AudioContext || window.webkitAudioContext)();
+      const buf = await ac.decodeAudioData(await file.arrayBuffer());
+      ac.close();
+      if (au[k]) URL.revokeObjectURL(au[k].url);
+      au[k] = { url: URL.createObjectURL(file), dur: buf.duration, buf };
+      renderStudio();
+      syncDurations();
+    } catch (err) { alert('Could not decode audio file.'); }
+  });
+
+  rows.addEventListener('click', async e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const k = +btn.closest('.r').dataset.k;
+    const act = btn.dataset.a;
+    if (act === 'test') {
+      stopAllSpeech();
+      if (au[k]) new Audio(au[k].url).play();
+      else if (o.tts && 'speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(scripts[k]);
+        u.lang = 'bn-BD';
+        if (voiceObj) u.voice = voiceObj;
+        speechSynthesis.speak(u);
+      }
+    } else if (act === 'clr') {
+      if (au[k]) { URL.revokeObjectURL(au[k].url); au[k] = null; }
+      renderStudio();
+      syncDurations();
+    }
+  });
+
+  // Full Audio Sync Tool Handlers
+  let FA = null, fUrl = null, fMarks = [];
+  $('f-file').onchange = async function() {
+    if (!this.files[0]) return;
+    try {
+      const ac = new (window.AudioContext || window.webkitAudioContext)();
+      const b = await ac.decodeAudioData(await this.files[0].arrayBuffer());
+      ac.close();
+      const n = b.length, m = new Float32Array(n);
+      for (let c = 0; c < b.numberOfChannels; c++) {
+        const chData = b.getChannelData(c);
+        for (let j = 0; j < n; j++) m[j] += chData[j] / b.numberOfChannels;
+      }
+      FA = { d: m, sr: b.sampleRate, dur: b.duration };
+      if (fUrl) URL.revokeObjectURL(fUrl);
+      fUrl = URL.createObjectURL(this.files[0]);
+      $('f-ed').hidden = false;
+      $('f-st').textContent = 'Full audio loaded: ' + FA.dur.toFixed(1) + ' s';
+    } catch (err) { alert('Error loading full audio.'); }
+  };
+
+  $('f-auto').onclick = () => {
+    if (!FA) return;
+    const need = Math.max(1, +$('f-to').value - +$('f-from').value);
+    const w = Math.round(FA.sr * 0.05), n = Math.floor(FA.d.length / w);
+    const rms = [];
+    for (let a = 0; a < n; a++) {
+      let q = 0; for (let b = a * w; b < (a + 1) * w; b++) q += FA.d[b] * FA.d[b];
+      rms.push(Math.sqrt(q / w));
+    }
+    const srt = rms.slice().sort((x, y) => x - y);
+    const thr = Math.max(0.005, srt[Math.floor(n * 0.95)] * 0.1);
+    const runs = []; let s0 = -1;
+    for (let a = 0; a <= n; a++) {
+      const sil = a < n && rms[a] < thr;
+      if (sil && s0 < 0) s0 = a;
+      if (!sil && s0 >= 0) {
+        if ((a - s0) * 0.05 >= 0.3) runs.push({ t: (s0 + a) / 2 * 0.05, l: (a - s0) * 0.05 });
+        s0 = -1;
+      }
+    }
+    const pick = runs.filter(x => x.t > 0.5 && x.t < FA.dur - 0.5).sort((x, y) => y.l - x.l).slice(0, need).sort((x, y) => x.t - y.t);
+    fMarks = [0].concat(pick.map(x => x.t));
+    $('f-marks').value = fMarks.map(x => x.toFixed(2)).join(', ');
+  };
+
+  function createWavBlob(d, sr) {
+    const n = d.length, bf = new ArrayBuffer(44 + n * 2), v = new DataView(bf);
+    const writeString = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    writeString(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); writeString(8, 'WAVEfmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true);
+    v.setUint16(34, 16, true); writeString(36, 'data'); v.setUint32(40, n * 2, true);
+    for (let j = 0; j < n; j++) {
+      const x = Math.max(-1, Math.min(1, d[j]));
+      v.setInt16(44 + j * 2, x < 0 ? x * 32768 : x * 32767, true);
+    }
+    return new Blob([bf], { type: 'audio/wav' });
+  }
+
+  $('f-apply').onclick = () => {
+    if (!FA) return;
+    const from = Math.max(0, +$('f-from').value - 1);
+    const to = Math.min(sc.length - 1, +$('f-to').value - 1);
+    const marks = $('f-marks').value.split(',').map(Number).filter(x => isFinite(x) && x >= 0).sort((a, b) => a - b);
+    if (!marks.length) return;
+
+    for (let j = 0; j <= to - from && j < marks.length; j++) {
+      const k = from + j;
+      const startSec = marks[j];
+      const endSec = (j + 1 < marks.length) ? marks[j + 1] : FA.dur;
+      const a0 = Math.floor(startSec * FA.sr), b0 = Math.floor(endSec * FA.sr);
+      const seg = FA.d.slice(a0, b0);
+      const ab = new OfflineAudioContext(1, 1, FA.sr).createBuffer(1, seg.length, FA.sr);
+      ab.copyToChannel(seg, 0);
+      if (au[k]) URL.revokeObjectURL(au[k].url);
+      const blob = createWavBlob(seg, FA.sr);
+      au[k] = { url: URL.createObjectURL(blob), dur: seg.length / FA.sr, buf: ab };
+    }
+    renderStudio();
+    syncDurations();
+    alert('Applied timestamps and split audio across slides successfully!');
+  };
+
+  $('f-clr').onclick = () => {
+    au.forEach(a => { if (a) URL.revokeObjectURL(a.url); });
+    au = sc.map(() => null);
+    renderStudio();
+    syncDurations();
+  };
+
+  window.VoiceSys = {
+    audioFor: async function() {
+      if (!o.voice || !au.some(Boolean) || typeof AudioEncoder === 'undefined') return null;
+      try {
+        const sr = 48000;
+        const off = new OfflineAudioContext(2, Math.ceil(Core.DUR * sr), sr);
+        au.forEach((a, k) => {
+          if (!a) return;
+          const s = off.createBufferSource();
+          s.buffer = a.buf;
+          s.connect(off.destination);
+          s.start(Core.SC[k].a + 0.35);
+        });
+        return await off.startRendering();
+      } catch (e) { return null; }
+    },
+    encodeAudio: async function(buf, mux) {
+      const sr = buf.sampleRate;
+      let err = null;
+      const enc = new AudioEncoder({
+        output: (c, m) => mux.addAudioChunk(c, m),
+        error: e => { err = e; }
+      });
+      enc.configure({ codec: 'mp4a.40.2', sampleRate: sr, numberOfChannels: 2, bitrate: 128000 });
+      const L = buf.getChannelData(0), R = buf.getChannelData(1), N = buf.length, C = 9600;
+      for (let p = 0; p < N; p += C) {
+        const n = Math.min(C, N - p), d = new Float32Array(2 * n);
+        d.set(L.subarray(p, p + n), 0);
+        d.set(R.subarray(p, p + n), n);
+        const ad = new AudioData({
+          format: 'f32-planar',
+          sampleRate: sr,
+          numberOfFrames: n,
+          numberOfChannels: 2,
+          timestamp: Math.round(p / sr * 1e6),
+          data: d
+        });
+        enc.encode(ad);
+        ad.close();
+        while (enc.encodeQueueSize > 8) {
+          await new Promise(r => setTimeout(r, 4));
+          if (err) throw err;
+        }
+      }
+      await enc.flush();
+      if (err) throw err;
+      enc.close();
+    }
+  };
+
+  showSlide(0);
+})();
+
+/* =======================================================================
+   5. BUILT-IN HIGH-RESOLUTION THUMBNAIL GENERATOR (1080p, 2K, 4K)
+   ======================================================================= */
+(function initThumbnailGenerator() {
+  const $ = id => document.getElementById(id);
+  const FAM = '"Hind Siliguri", "Noto Sans Bengali", sans-serif';
+  const EN_FAM = '"Inter", sans-serif';
+
+  let thAr = '16:9', thRes = 1080, thBlob = null, thUrl = null;
+
+  const dims = () => {
+    const r = thRes;
+    if (thAr === '16:9') return [Math.round(r * 16 / 9), r];
+    if (thAr === '9:16') return [r, Math.round(r * 16 / 9)];
+    if (thAr === '1:1') return [r, r];
+    return [r, Math.round(r * 5 / 4)];
+  };
+
+  function seg(id, vals, curVal, onSelect, lab) {
+    const el = $(id); el.innerHTML = '';
+    vals.forEach(v => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = lab ? lab(v) : v;
+      b.setAttribute('aria-pressed', String(v === curVal));
+      b.onclick = () => {
+        onSelect(v);
+        Array.from(el.children).forEach(c => c.setAttribute('aria-pressed', String(c === b)));
+      };
+      el.appendChild(b);
+    });
+  }
+
+  function renderThumbnailCanvas(cv, W, H) {
+    const c = cv.getContext('2d');
+    const u = (W / 100) * Math.sqrt((H / W) / (9 / 16));
+
+    // Deep Emerald Gradient Background
+    const g = c.createRadialGradient(0.2 * W, 0.15 * H, 0, 0.2 * W, 0.15 * H, W);
+    g.addColorStop(0, '#166534');
+    g.addColorStop(0.55, '#0b1f17');
+    g.addColorStop(1, '#050f0a');
+    c.fillStyle = g;
+    c.fillRect(0, 0, W, H);
+
+    // Glowing Circles
+    c.fillStyle = 'rgba(34,197,94,0.12)';
+    [[W * 0.9, H * 0.15, 12 * u], [W * 0.1, H * 0.85, 15 * u], [W * 0.6, H * 0.9, 8 * u]].forEach(([bx, by, r]) => {
+      c.beginPath(); c.arc(bx, by, r, 0, Math.PI * 2); c.fill();
+    });
+
+    const isLandscape = (W / H) >= 1.25;
+
+    if (isLandscape) {
+      // Left Column: Branding & Titles
+      // Top Yellow Badge
+      const bw = 32 * u, bh = 5.2 * u;
+      c.beginPath();
+      c.roundRect(W * 0.05, H * 0.08, bw, bh, bh / 2);
+      c.fillStyle = '#facc15'; c.fill();
+      c.font = '700 ' + (2.5 * u) + 'px ' + FAM;
+      c.fillStyle = '#111'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText('🔥 Word Smart ১ | পর্ব-০২', W * 0.05 + bw / 2, H * 0.08 + bh / 2);
+
+      // Main Bengali/English Title
+      c.textAlign = 'left';
+      c.font = '700 ' + (6.5 * u) + 'px ' + FAM;
+      c.fillStyle = '#f4fff8';
+      c.fillText('Word Smart 1', W * 0.05, H * 0.28);
+
+      c.font = '700 ' + (5.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#22c55e';
+      c.shadowColor = 'rgba(34,197,94,0.6)'; c.shadowBlur = 25;
+      c.fillText('ভোকাবুলারি মাস্টারক্লাস', W * 0.05, H * 0.42);
+      c.shadowBlur = 0;
+
+      c.font = '700 ' + (2.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#fef08a';
+      c.fillText('BCS • Bank • Admission • IBA', W * 0.05, H * 0.56);
+
+      // Bottom CTA Pill
+      const cw = 32 * u, ch = 6.2 * u;
+      c.beginPath();
+      c.roundRect(W * 0.05, H * 0.72, cw, ch, ch / 2);
+      c.fillStyle = '#dc2626'; c.fill();
+      c.font = '700 ' + (3 * u) + 'px ' + FAM;
+      c.fillStyle = '#fff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText('শব্দ ১১-২০ + ট্রিক + ৩টি কুইজ ▶', W * 0.05 + cw / 2, H * 0.72 + ch / 2);
+
+      // Right Column: Teaser Comparison Cards
+      const rx = W * 0.54, rw = W * 0.41;
+      // Card 1
+      c.beginPath();
+      c.roundRect(rx, H * 0.14, rw, H * 0.34, 2 * u);
+      c.fillStyle = 'rgba(255,255,255,0.07)'; c.fill();
+      c.lineWidth = 0.3 * u; c.strokeStyle = '#22c55e'; c.stroke();
+
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '700 ' + (5.5 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText('Abridge', rx + rw / 2, H * 0.25);
+      c.font = '600 ' + (3.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#22c55e';
+      c.fillText('সংক্ষিপ্ত করা ✂️', rx + rw / 2, H * 0.38);
+
+      // VS Separator
+      c.font = '700 ' + (3.2 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#facc15';
+      c.fillText('VS', rx + rw / 2, H * 0.52);
+
+      // Card 2
+      c.beginPath();
+      c.roundRect(rx, H * 0.56, rw, H * 0.34, 2 * u);
+      c.fillStyle = 'rgba(255,255,255,0.07)'; c.fill();
+      c.lineWidth = 0.3 * u; c.strokeStyle = '#38bdf8'; c.stroke();
+
+      c.font = '700 ' + (5.5 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#ffffff';
+      c.fillText('Abrogate', rx + rw / 2, H * 0.67);
+      c.font = '600 ' + (3.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#38bdf8';
+      c.fillText('বাতিল বা রদ করা 🚫', rx + rw / 2, H * 0.80);
+
+    } else {
+      // Portrait / Square Layout (Stacked)
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.font = '700 ' + (6.2 * u) + 'px ' + FAM;
+      c.fillStyle = '#f4fff8';
+      c.fillText('Word Smart 1', W / 2, H * 0.16);
+
+      c.font = '700 ' + (5.0 * u) + 'px ' + FAM;
+      c.fillStyle = '#22c55e';
+      c.fillText('ভোকাবুলারি পর্ব-০২', W / 2, H * 0.26);
+
+      // Teaser Cards
+      const cw = W * 0.86, cx = W * 0.07;
+      c.beginPath();
+      c.roundRect(cx, H * 0.36, cw, H * 0.22, 2 * u);
+      c.fillStyle = 'rgba(255,255,255,0.07)'; c.fill();
+      c.lineWidth = 0.3 * u; c.strokeStyle = '#22c55e'; c.stroke();
+
+      c.font = '700 ' + (6 * u) + 'px ' + EN_FAM;
+      c.fillStyle = '#fff';
+      c.fillText('Abdicate', W / 2, H * 0.43);
+      c.font = '600 ' + (3.4 * u) + 'px ' + FAM;
+      c.fillStyle = '#22c55e';
+      c.fillText('ক্ষমতা বা সিংহাসন ত্যাগ করা', W / 2, H * 0.51);
+
+      c.font = '700 ' + (3.5 * u) + 'px ' + FAM;
+      c.fillStyle = '#facc15';
+      c.fillText('কোনটি এর Antonym? 🤔', W / 2, H * 0.65);
+
+      // CTA Pill
+      const pw = W * 0.75, ph = 7 * u;
+      c.beginPath();
+      c.roundRect(W / 2 - pw / 2, H * 0.78, pw, ph, ph / 2);
+      c.fillStyle = '#dc2626'; c.fill();
+      c.font = '700 ' + (3.6 * u) + 'px ' + FAM;
+      c.fillStyle = '#fff';
+      c.fillText('১০ মিনিটে সব মনে রাখুন ▶', W / 2, H * 0.78 + ph / 2);
+    }
+  }
+
+  async function updateThumbnail() {
+    $('thmsg').textContent = 'Rendering High-Resolution Thumbnail…';
+    const [W, H] = dims();
+    const cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    renderThumbnailCanvas(cv, W, H);
+
+    thBlob = await new Promise(r => cv.toBlob(r, 'image/png'));
+    if (thUrl) URL.revokeObjectURL(thUrl);
+    thUrl = URL.createObjectURL(thBlob);
+
+    const thv = $('thv'); thv.innerHTML = '';
+    const img = new Image();
+    img.src = thUrl;
+    img.alt = 'Thumbnail Preview';
+    thv.appendChild(img);
+
+    $('thmsg').textContent = `Ready: ${W}×${H} px (${(thBlob.size / 1048576).toFixed(2)} MB)`;
+  }
+
+  $('thb').onclick = () => {
+    seg('th-ar', ['16:9', '9:16', '1:1', '4:5'], thAr, v => { thAr = v; updateThumbnail(); });
+    seg('th-res', [1080, 1440, 2160], thRes, v => { thRes = v; updateThumbnail(); }, v => v === 1080 ? '1080p (FHD)' : v === 1440 ? '2K (QHD)' : '4K (UHD)');
+    $('thm').hidden = false;
+    updateThumbnail();
+  };
+
+  $('thx').onclick = () => {
+    $('thm').hidden = true;
+    if (thUrl) { URL.revokeObjectURL(thUrl); thUrl = null; }
+  };
+
+  $('thsave').onclick = () => {
+    if (!thBlob) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(thBlob);
+    a.download = `wordsmart-thumbnail-${thAr.replace(':', 'x')}-${thRes}p.png`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+})();
+
+/* =======================================================================
+   6. 4K CLIENT-SIDE VIDEO & ZIP EXPORT ENGINE (WebCodecs + mp4-muxer)
+   ======================================================================= */
+(function initVideoExporter() {
+  const $ = id => document.getElementById(id);
+  let st = { ar: '16:9', res: 1080, fps: 30 };
+  let busy = false, cancel = false, expResult = null, expUrls = [];
+
+  const ev = n => Math.max(2, Math.round(n / 2) * 2);
+  const dims = () => {
+    const r = st.res;
+    if (st.ar === '16:9') return [ev(r * 16 / 9), r];
+    if (st.ar === '9:16') return [r, ev(r * 16 / 9)];
+    if (st.ar === '1:1') return [r, r];
+    return [r, ev(r * 5 / 4)];
+  };
+
+  const bitrate = (W, H, f) => Math.round(W * H * f * 0.08);
+
+  function seg(id, vals, key, lab) {
+    const el = $(id); el.innerHTML = '';
+    vals.forEach(v => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = lab ? lab(v) : v;
+      b.setAttribute('aria-pressed', String(st[key] === v));
+      b.onclick = () => {
+        st[key] = v;
+        Array.from(el.children).forEach(c => c.setAttribute('aria-pressed', String(c === b)));
+        updateInfo();
+      };
+      el.appendChild(b);
+    });
+  }
+
+  function updateInfo() {
+    const d = dims(), f = st.fps;
+    const n = Math.round(Core.DUR * f);
+    const mb = bitrate(d[0], d[1], f) * Core.DUR / 8 / 1048576;
+    $('info').textContent = `Resolution: ${d[0]}×${d[1]} px · Duration: ${Core.DUR.toFixed(1)}s · Total: ${n} frames @ ${f} fps · Est. Size: ≈ ${mb.toFixed(1)} MB`;
+  }
+
+  function view(v) {
+    ['v-opt', 'v-prog', 'v-res'].forEach(id => $(id).hidden = (id !== v));
+  }
+
+  async function pickEncoderConfig(W, H, f0) {
+    if (typeof VideoEncoder === 'undefined') return null;
+    // High Profile up to Level 5.2 for 4K video encoding
+    const codecs = ['avc1.640034', 'avc1.640033', 'avc1.64002A', 'avc1.4D4034', 'avc1.42E034'];
+    const rates = f0 === 60 ? [60, 30] : [30];
+    for (const rate of rates) {
+      for (const codec of codecs) {
+        const cfg = { codec, width: W, height: H, bitrate: bitrate(W, H, rate), framerate: rate, avc: { format: 'avc' } };
+        try {
+          const r = await VideoEncoder.isConfigSupported(cfg);
+          if (r && r.supported) return { cfg, fps: rate, codec };
+        } catch (e) {}
+      }
+    }
+    return null;
+  }
+
+  async function exportMP4(W, H, f0) {
+    const pk = await pickEncoderConfig(W, H, f0);
+    if (!pk) throw new Error('WebCodecs H.264 is not supported for this resolution in this browser.');
+    if (typeof Mp4Muxer === 'undefined') throw new Error('mp4-muxer library failed to load.');
+
+    const fps = pk.fps;
+    const cv = (typeof OffscreenCanvas !== 'undefined') ? new OffscreenCanvas(W, H) : document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    const ctx = cv.getContext('2d');
+
+    const ab = await window.VoiceSys.audioFor();
+    const muxOpt = {
+      target: new Mp4Muxer.ArrayBufferTarget(),
+      video: { codec: 'avc', width: W, height: H },
+      fastStart: 'in-memory',
+      firstTimestampBehavior: 'offset'
+    };
+    if (ab) muxOpt.audio = { codec: 'aac', numberOfChannels: 2, sampleRate: ab.sampleRate };
+    const mux = new Mp4Muxer.Muxer(muxOpt);
+
+    let err = null;
+    const enc = new VideoEncoder({
+      output: (chunk, meta) => mux.addVideoChunk(chunk, meta),
+      error: e => { err = e; }
+    });
+    enc.configure(pk.cfg);
+
+    const N = Math.round(Core.DUR * fps);
+    try {
+      for (let i = 0; i < N; i++) {
+        if (cancel) throw 'cancelled';
+        if (err) throw err;
+
+        Core.at(ctx, W, H, i / fps);
+        const fr = new VideoFrame(cv, { timestamp: Math.round(i * 1e6 / fps), duration: Math.round(1e6 / fps) });
+        enc.encode(fr, { keyFrame: i % (fps * 2) === 0 });
+        fr.close();
+
+        while (enc.encodeQueueSize > 4) {
+          await new Promise(r => setTimeout(r, 4));
+          if (cancel || err) break;
+        }
+
+        if (i % 6 === 0) {
+          const prog = i / N * 0.95;
+          $('pfill').style.width = Math.round(prog * 100) + '%';
+          $('pst').textContent = `Encoding Frame ${i + 1} / ${N} (${Math.round(prog * 100)}%)`;
+          if (i % 24 === 0) {
+            const x = $('xc');
+            x.width = 480; x.height = Math.round(480 * H / W);
+            x.getContext('2d').drawImage(cv, 0, 0, x.width, x.height);
+          }
+          await new Promise(r => setTimeout(r, 0));
+        }
+      }
+
+      if (cancel) throw 'cancelled';
+      $('pst').textContent = 'Finalizing video stream…';
+      await enc.flush();
+      if (err) throw err;
+
+      if (ab) {
+        $('pst').textContent = 'Encoding synchronized AAC audio…';
+        await window.VoiceSys.encodeAudio(ab, mux);
+      }
+      mux.finalize();
+    } finally {
+      try { enc.close(); } catch (e) {}
+    }
+
+    return { blob: new Blob([mux.target.buffer], { type: 'video/mp4' }), ext: 'mp4', fps };
+  }
+
+  async function renderPNGs(W, H, singleIdx) {
+    const list = [];
+    for (let i = 0; i < Core.SC.length; i++) {
+      if (singleIdx != null && i !== singleIdx) continue;
+      if (cancel) throw 'cancelled';
+      const cv = document.createElement('canvas');
+      cv.width = W; cv.height = H;
+      Core.at(cv.getContext('2d'), W, H, Core.still(i));
+      const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+      list.push({ i, name: `slide-${('0' + (i + 1)).slice(-2)}.png`, blob });
+    }
+    return list;
+  }
+
+  async function runExport(kind) {
+    const [W, H] = dims();
+    busy = true; cancel = false;
+    view('v-prog');
+    $('pfill').style.width = '0%';
+    $('pst').textContent = 'Preparing export…';
+
+    try {
+      let res;
+      if (kind === 'mp4') {
+        res = await exportMP4(W, H, st.fps);
+        res.name = `wordsmart-vocab-${W}x${H}.${res.ext}`;
+        res.kind = 'video';
+      } else if (kind === 'png') {
+        const cur = document.querySelector('.scene.active');
+        const idx = cur ? +cur.dataset.idx : 0;
+        const p = await renderPNGs(W, H, idx);
+        res = { blob: p[0].blob, name: `wordsmart-slide-${idx + 1}-${W}x${H}.png`, kind: 'png' };
+      } else {
+        const p = await renderPNGs(W, H, null);
+        const fl = [];
+        for (const it of p) fl.push({ name: it.name, data: new Uint8Array(await it.blob.arrayBuffer()) });
+        res = { blob: Core.zip(fl), name: `wordsmart-all-slides-${W}x${H}.zip`, kind: 'zip', thumbs: p };
+      }
+
+      if (cancel) throw 'cancelled';
+      showExportResult(res);
+    } catch (e) {
+      if (e === 'cancelled' || cancel) {
+        $('omsg').textContent = 'Export was cancelled.';
+      } else {
+        $('omsg').textContent = 'Export error: ' + (e.message || e);
+      }
+      view('v-opt');
+    } finally {
+      busy = false;
+    }
+  }
+
+  function showExportResult(res) {
+    expResult = res;
+    const pv = $('pv'); pv.innerHTML = '';
+    const u = URL.createObjectURL(res.blob);
+    expUrls.push(u);
+
+    if (res.kind === 'video') {
+      const v = document.createElement('video');
+      v.controls = true; v.playsInline = true; v.src = u;
+      pv.appendChild(v);
+    } else if (res.kind === 'png') {
+      const img = new Image(); img.src = u; pv.appendChild(img);
+    } else {
+      const g = document.createElement('div'); g.className = 'th';
+      res.thumbs.slice(0, 6).forEach(t => {
+        const tu = URL.createObjectURL(t.blob);
+        expUrls.push(tu);
+        const im = new Image(); im.src = tu; g.appendChild(im);
+      });
+      pv.appendChild(g);
+    }
+
+    $('rmsg').textContent = `Ready: ${(res.blob.size / 1048576).toFixed(2)} MB (${res.name})`;
+    view('v-res');
+  }
+
+  $('dlb').onclick = () => {
+    seg('s-ar', ['16:9', '9:16', '1:1', '4:5'], 'ar');
+    seg('s-res', [720, 1080, 1440, 2160], 'res', v => v === 720 ? '720p (HD)' : v === 1080 ? '1080p (FHD)' : v === 1440 ? '2K (QHD)' : '4K (UHD)');
+    seg('s-fps', [30, 60], 'fps', v => v + ' fps');
+    updateInfo();
+    view('v-opt');
+    $('dl').hidden = false;
+  };
+
+  $('b-mp4').onclick = () => runExport('mp4');
+  $('b-png').onclick = () => runExport('png');
+  $('b-zip').onclick = () => runExport('zip');
+  $('b-ocancel').onclick = () => { $('dl').hidden = true; };
+  $('b-xcancel').onclick = () => { cancel = true; };
+  $('b-back').onclick = () => view('v-opt');
+  $('b-close').onclick = () => {
+    expUrls.forEach(u => URL.revokeObjectURL(u));
+    expUrls = [];
+    $('dl').hidden = true;
+  };
+
+  $('b-save').onclick = () => {
+    if (!expResult) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(expResult.blob);
+    a.download = expResult.name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+})();
+</script>
+</body>
+</html>

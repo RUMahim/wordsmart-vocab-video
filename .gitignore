@@ -1,0 +1,8 @@
+# Dependencies & build artifacts
+node_modules/
+.firebase/
+.netlify/
+
+# Local OS files
+Thumbs.db
+.DS_Store

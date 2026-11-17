@@ -99,8 +99,23 @@ body {
   animation-delay: var(--d, 0s);
 }
 @keyframes in {
-  from { opacity: 0; transform: translateY(2.5cqw) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(2.2cqw) scale(0.97);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.trick-box {
+  animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards, trickGlow 3s ease-in-out infinite 17.5s !important;
+}
+@keyframes trickGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.15); }
+  50% { box-shadow: 0 0 35px rgba(250, 204, 21, 0.35); }
 }
 
 /* Quiz Feedback (Hidden until timer ends at 7.5s) */
@@ -889,8 +904,8 @@ const ALL_EPISODES = {
         "exEn": "A true leader never tries to abase his subordinates to show his power.",
         "exBn": "একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না।",
         "trick": "কোনো কিছুকে একদম Base (নিচে) নামিয়ে আনা মানেই কাউকে হেয় বা অপমান করা।",
-        "dur": 13.5,
-        "script": "১ নম্বর শব্দ: Abase. এটি একটি Verb. এর বাংলা অর্থ হলো অপমান করা বা নীচু করা। Synonyms হলো Humiliate, Degrade এবং Belittle। Antonyms হলো Exalt, Praise এবং Honor। বাক্যে ব্যবহার: A true leader never tries to abase his subordinates to show his power. অর্থাৎ, একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না। মনে রাখার কৌশল: কোনো কিছুকে একদম Base বা নিচে নামিয়ে আনা মানেই অপমান করা।"
+        "dur": 22.5,
+        "script": "1 নম্বর শব্দ: Abase। এটি একটি Verb, যার অর্থ অপমান করা / নীচু করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Humiliate অর্থাৎ অপমান করা, Degrade অর্থাৎ মর্যাদাহানি করা, Belittle অর্থাৎ ছোট করা। আর Antonyms বা বিপরীত শব্দ হলো: Exalt অর্থাৎ গৌরবান্বিত করা, Praise অর্থাৎ প্রশংসা করা, Honor অর্থাৎ সম্মান করা। বাক্যে চমৎকার প্রয়োগ: A true leader never tries to abase his subordinates to show his power. — অর্থাৎ, একজন প্রকৃত নেতা কখনোই নিজের ক্ষমতা দেখানোর জন্য অধীনস্থদের অপমান করেন না। মনে রাখার দারুণ কৌশল: কোনো কিছুকে একদম Base (নিচে) নামিয়ে আনা মানেই কাউকে হেয় বা অপমান করা।"
       },
       {
         "type": 1,
@@ -904,8 +919,8 @@ const ALL_EPISODES = {
         "exEn": "She was abashed when she forgot her speech on stage.",
         "exBn": "মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল।",
         "trick": "সবার সামনে কেউ কাউকে Bash (তীব্র সমালোচনা) দিলে সে স্বাভাবিকভাবেই লজ্জিত (Abash) হবে।",
-        "dur": 13.5,
-        "script": "২ নম্বর শব্দ: Abash. এটি একটি Verb. এর অর্থ বিব্রত করা বা লজ্জিত করা। Synonyms হলো Embarrass, Fluster এবং Mortify। Antonyms হলো Embolden, Reassure এবং Encourage। বাক্যে ব্যবহার: She was abashed when she forgot her speech on stage. অর্থাৎ, মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল। মনে রাখার কৌশল: কারো তীব্র সমালোচনা বা Bash করলে সে স্বাভাবিকভাবেই লজ্জিত বা Abash হবে।"
+        "dur": 22.5,
+        "script": "2 নম্বর শব্দ: Abash। এটি একটি Verb, যার অর্থ বিব্রত করা / লজ্জিত করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Embarrass অর্থাৎ বিব্রত করা, Fluster অর্থাৎ অপ্রস্তুত করা, Mortify অর্থাৎ লজ্জায় ফেলা। আর Antonyms বা বিপরীত শব্দ হলো: Embolden অর্থাৎ সাহস জোগানো, Reassure অর্থাৎ আশ্বস্ত করা, Encourage অর্থাৎ উৎসাহিত করা। বাক্যে চমৎকার প্রয়োগ: She was abashed when she forgot her speech on stage. — অর্থাৎ, মঞ্চে উঠে নিজের বক্তব্য ভুলে যাওয়ায় সে ভীষণ বিব্রত ও লজ্জিত হয়েছিল। মনে রাখার দারুণ কৌশল: সবার সামনে কেউ কাউকে Bash (তীব্র সমালোচনা) দিলে সে স্বাভাবিকভাবেই লজ্জিত (Abash) হবে।"
       },
       {
         "type": 1,
@@ -919,8 +934,8 @@ const ALL_EPISODES = {
         "exEn": "The storm finally abated after three days.",
         "exBn": "টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল।",
         "trick": "Weight (ওজন) কমানোর মতো কোনো কিছুর জোর বা তীব্রতা কমে যাওয়াকে Abate বলে।",
-        "dur": 13,
-        "script": "৩ নম্বর শব্দ: Abate. এটি একটি Verb. এর অর্থ হ্রাস করা, কমানো বা তীব্রতা কমে যাওয়া। Synonyms হলো Subside, Diminish এবং Lessen। Antonyms হলো Intensify, Escalate এবং Aggravate। বাক্যে ব্যবহার: The storm finally abated after three days. অর্থাৎ, টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল। মনে রাখার কৌশল: Weight বা ওজন কমানোর মতো তীব্রতা কমে যাওয়া হলো Abate।"
+        "dur": 22.5,
+        "script": "3 নম্বর শব্দ: Abate। এটি একটি Verb, যার অর্থ হ্রাস করা / তীব্রতা কমে যাওয়া। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Subside অর্থাৎ প্রশমিত হওয়া, Diminish অর্থাৎ হ্রাস পাওয়া, Lessen অর্থাৎ কমে যাওয়া। আর Antonyms বা বিপরীত শব্দ হলো: Intensify অর্থাৎ তীব্রতর হওয়া, Escalate অর্থাৎ বেড়ে যাওয়া, Aggravate অর্থাৎ খারাপ হওয়া। বাক্যে চমৎকার প্রয়োগ: The storm finally abated after three days. — অর্থাৎ, টানা তিন দিন পর অবশেষে ঝড়ের তীব্রতা কমে এল। মনে রাখার দারুণ কৌশল: Weight (ওজন) কমানোর মতো কোনো কিছুর জোর বা তীব্রতা কমে যাওয়াকে Abate বলে।"
       },
       {
         "type": 1,
@@ -934,8 +949,8 @@ const ALL_EPISODES = {
         "exEn": "The king abdicated his throne to marry a commoner.",
         "exBn": "একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন।",
         "trick": "যখন কোনো Dictator (স্বৈরশাসক) তার ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।",
-        "dur": 13.5,
-        "script": "৪ নম্বর শব্দ: Abdicate. এটি একটি Verb. এর অর্থ ক্ষমতা ছেড়ে দেওয়া বা পদত্যাগ করা। Synonyms হলো Renounce, Relinquish এবং Resign। Antonyms হলো Usurp, Claim এবং Retain। বাক্যে ব্যবহার: The king abdicated his throne to marry a commoner. অর্থাৎ, একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন। মনে রাখার কৌশল: Dictator যখন ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।"
+        "dur": 22.5,
+        "script": "4 নম্বর শব্দ: Abdicate। এটি একটি Verb, যার অর্থ ক্ষমতা ছেড়ে দেওয়া / পদত্যাগ করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Renounce অর্থাৎ ত্যাগ করা, Relinquish অর্থাৎ ছেড়ে দেওয়া, Resign অর্থাৎ পদত্যাগ করা। আর Antonyms বা বিপরীত শব্দ হলো: Usurp অর্থাৎ ক্ষমতা দখল করা, Claim অর্থাৎ দাবি করা, Retain অর্থাৎ ধরে রাখা। বাক্যে চমৎকার প্রয়োগ: The king abdicated his throne to marry a commoner. — অর্থাৎ, একজন সাধারণ মানুষকে বিয়ে করার জন্য রাজা তার সিংহাসন ত্যাগ করেছিলেন। মনে রাখার দারুণ কৌশল: যখন কোনো Dictator (স্বৈরশাসক) তার ক্ষমতা ছেড়ে দেয়, তখন সে Abdicate করে।"
       },
       {
         "type": 1,
@@ -949,8 +964,8 @@ const ALL_EPISODES = {
         "exEn": "His rude behavior was an aberration from his usual kindness.",
         "exBn": "তার এই অভদ্র আচরণটি ছিল স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম।",
         "trick": "স্বাভাবিক পথে চলার সময় কোনো Error (ত্রুটি) ঘটার বিচ্যুতিই হলো Aberration।",
-        "dur": 13.5,
-        "script": "৫ নম্বর শব্দ: Aberration. এটি একটি Noun. এর অর্থ স্বাভাবিকের ব্যতিক্রম বা বিচ্যুতি। Synonyms হলো Anomaly, Deviation এবং Oddity। Antonyms হলো Normality, Conformity এবং Regularity। বাক্যে ব্যবহার: His rude behavior was an aberration from his usual kindness. অর্থাৎ, তার এই অভদ্র আচরণটি ছিল তার স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম। মনে রাখার কৌশল: স্বাভাবিক পথে Error বা ত্রুটি ঘটাই হলো Aberration।"
+        "dur": 22.5,
+        "script": "5 নম্বর শব্দ: Aberration। এটি একটি Noun, যার অর্থ স্বাভাবিকের ব্যতিক্রম / বিচ্যুতি। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Anomaly অর্থাৎ অনিয়ম, Deviation অর্থাৎ বিচ্যুতি, Oddity অর্থাৎ অদ্ভুত বিষয়। আর Antonyms বা বিপরীত শব্দ হলো: Normality অর্থাৎ স্বাভাবিকতা, Conformity অর্থাৎ অনুরূপতা, Regularity অর্থাৎ নিয়মানুবর্তিতা। বাক্যে চমৎকার প্রয়োগ: His rude behavior was an aberration from his usual kindness. — অর্থাৎ, তার এই অভদ্র আচরণটি ছিল স্বাভাবিক দয়ালু স্বভাবের একটি সাময়িক ব্যতিক্রম। মনে রাখার দারুণ কৌশল: স্বাভাবিক পথে চলার সময় কোনো Error (ত্রুটি) ঘটার বিচ্যুতিই হলো Aberration।"
       },
       {
         "type": 1,
@@ -964,8 +979,8 @@ const ALL_EPISODES = {
         "exEn": "Anyone who aids and abets a thief is equally guilty under the law.",
         "exBn": "যে চোরকে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী।",
         "trick": "কোনো খারাপ কাজে Bet (বাজি) ধরে কাউকে উসকে দেওয়া বা সাহায্য করাই Abet।",
-        "dur": 13.5,
-        "script": "৬ নম্বর শব্দ: Abet. এটি একটি Verb. এর অর্থ কোনো খারাপ বা অপরাধমূলক কাজে সহায়তা করা বা উৎসাহিত করা। Synonyms হলো Instigate, Incite এবং Assist। Antonyms হলো Deter, Hinder এবং Discourage। বাক্যে ব্যবহার: Anyone who aids and abets a thief is equally guilty under the law. অর্থাৎ, যে কেউ চোরকে খারাপ কাজে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী। মনে রাখার কৌশল: খারাপ কাজে Bet ধরে কাউকে উসকে দেওয়াই হলো Abet।"
+        "dur": 22.5,
+        "script": "6 নম্বর শব্দ: Abet। এটি একটি Verb, যার অর্থ অপকর্মে সহায়তা করা / উৎসাহিত করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Instigate অর্থাৎ উসকানি দেওয়া, Incite অর্থাৎ প্ররোচিত করা, Assist অর্থাৎ অপকর্মে সাহায্য। আর Antonyms বা বিপরীত শব্দ হলো: Deter অর্থাৎ নিরুৎসাহিত করা, Hinder অর্থাৎ বাধা দেওয়া, Discourage অর্থাৎ দমিয়ে দেওয়া। বাক্যে চমৎকার প্রয়োগ: Anyone who aids and abets a thief is equally guilty under the law. — অর্থাৎ, যে চোরকে সাহায্য ও উৎসাহিত করে, আইনের চোখে সেও সমান অপরাধী। মনে রাখার দারুণ কৌশল: কোনো খারাপ কাজে Bet (বাজি) ধরে কাউকে উসকে দেওয়া বা সাহায্য করাই Abet।"
       },
       {
         "type": 1,
@@ -979,8 +994,8 @@ const ALL_EPISODES = {
         "exEn": "The project was held in abeyance until funds arrived.",
         "exBn": "তহবিল (ফান্ড) না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল।",
         "trick": "কোনো কাজ শুরু হওয়ার আগেই যখন Bay (তীরে) আটকে থাকে বা থেমে যায়, সেটাই Abeyance।",
-        "dur": 13.5,
-        "script": "৭ নম্বর শব্দ: Abeyance. এটি একটি Noun. এর অর্থ স্থগিত অবস্থা বা সাময়িক বিরতি। Synonyms হলো Suspension, Dormancy এবং Intermission। Antonyms হলো Continuation, Resumption এবং Operation। বাক্যে ব্যবহার: The project was held in abeyance until funds arrived. অর্থাৎ, তহবিল বা ফান্ড না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল। মনে রাখার কৌশল: তীরে বা Bay-তে আটকে থাকা অবস্থাই হলো Abeyance।"
+        "dur": 22.5,
+        "script": "7 নম্বর শব্দ: Abeyance। এটি একটি Noun, যার অর্থ স্থগিত অবস্থা / সাময়িক বিরতি। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Suspension অর্থাৎ স্থগিতাদেশ, Dormancy অর্থাৎ সুপ্তাবস্থা, Intermission অর্থাৎ বিরতি। আর Antonyms বা বিপরীত শব্দ হলো: Continuation অর্থাৎ ধারাবাহিকতা, Resumption অর্থাৎ পুনরায় শুরু, Operation অর্থাৎ চালু থাকা। বাক্যে চমৎকার প্রয়োগ: The project was held in abeyance until funds arrived. — অর্থাৎ, তহবিল (ফান্ড) না আসা পর্যন্ত প্রকল্পটির কাজ সাময়িকভাবে স্থগিত রাখা হয়েছিল। মনে রাখার দারুণ কৌশল: কোনো কাজ শুরু হওয়ার আগেই যখন Bay (তীরে) আটকে থাকে বা থেমে যায়, সেটাই Abeyance।"
       },
       {
         "type": 1,
@@ -994,8 +1009,8 @@ const ALL_EPISODES = {
         "exEn": "An honest public servant must abhor corruption in all its forms.",
         "exBn": "একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে।",
         "trick": "Horror (ভয়ঙ্কর) জিনিসকে আমরা যেভাবে তীব্রভাবে অপছন্দ বা ঘৃণা করি, সেটাই হলো Abhor।",
-        "dur": 13.5,
-        "script": "৮ নম্বর শব্দ: Abhor. এটি একটি Verb. এর অর্থ তীব্র ঘৃণা করা বা বিদ্বেষ পোষণ করা। Synonyms হলো Detest, Loathe এবং Despise। Antonyms হলো Adore, Cherish এবং Admire। বাক্যে ব্যবহার: An honest public servant must abhor corruption in all its forms. অর্থাৎ, একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে। মনে রাখার কৌশল: Horror জিনিসকে আমরা যেভাবে তীব্র ঘৃণা করি, সেভাবেই মনে রাখুন Abhor।"
+        "dur": 22.5,
+        "script": "8 নম্বর শব্দ: Abhor। এটি একটি Verb, যার অর্থ তীব্র ঘৃণা করা / বিদ্বেষ পোষণ করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Detest অর্থাৎ তীব্র ঘৃণা করা, Loathe অর্থাৎ অপছন্দ করা, Despise অর্থাৎ তুচ্ছ ও ঘৃণা করা। আর Antonyms বা বিপরীত শব্দ হলো: Adore অর্থাৎ গভীরভাবে ভালোবাসা, Cherish অর্থাৎ লালন করা, Admire অর্থাৎ প্রশংসা করা। বাক্যে চমৎকার প্রয়োগ: An honest public servant must abhor corruption in all its forms. — অর্থাৎ, একজন সৎ সরকারি কর্মকর্তাকে অবশ্যই সব ধরনের দুর্নীতিকে মনেপ্রাণে ঘৃণা করতে হবে। মনে রাখার দারুণ কৌশল: Horror (ভয়ঙ্কর) জিনিসকে আমরা যেভাবে তীব্রভাবে অপছন্দ বা ঘৃণা করি, সেটাই হলো Abhor।"
       },
       {
         "type": 1,
@@ -1009,8 +1024,8 @@ const ALL_EPISODES = {
         "exEn": "The refugees lived in abject poverty in the camp.",
         "exBn": "শরণার্থীরা ক্যাম্পে চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল।",
         "trick": "বারবার Reject হতে থাকলে মানুষের অবস্থা যেমন শোচনীয় বা চরম হতাশাজনক হয়, সেটাই Abject।",
-        "dur": 13.5,
-        "script": "৯ নম্বর শব্দ: Abject. এটি একটি Adjective. এর অর্থ চরম হতাশ, শোচনীয় বা দুর্দশাগ্রস্ত। Synonyms হলো Miserable, Wretched এবং Hopeless। Antonyms হলো Prosperous, Noble এবং Exalted। বাক্যে ব্যবহার: The refugees lived in abject poverty. অর্থাৎ, শরণার্থীরা চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল। মনে রাখার কৌশল: বারবার Reject হয়ে মানুষের শোচনীয় অবস্থা হওয়াই হলো Abject।"
+        "dur": 22.5,
+        "script": "9 নম্বর শব্দ: Abject। এটি একটি Adjective, যার অর্থ চরম হতাশ / শোচনীয় / দুর্দশাগ্রস্ত। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Miserable অর্থাৎ দুর্দশাগ্রস্ত, Wretched অর্থাৎ শোচনীয়, Hopeless অর্থাৎ হতাশাজনক। আর Antonyms বা বিপরীত শব্দ হলো: Prosperous অর্থাৎ সমৃদ্ধ, Noble অর্থাৎ মহৎ, Exalted অর্থাৎ উন্নত। বাক্যে চমৎকার প্রয়োগ: The refugees lived in abject poverty in the camp. — অর্থাৎ, শরণার্থীরা ক্যাম্পে চরম ও শোচনীয় দারিদ্র্যের মধ্যে বসবাস করছিল। মনে রাখার দারুণ কৌশল: বারবার Reject হতে থাকলে মানুষের অবস্থা যেমন শোচনীয় বা চরম হতাশাজনক হয়, সেটাই Abject।"
       },
       {
         "type": 1,
@@ -1024,8 +1039,8 @@ const ALL_EPISODES = {
         "exEn": "He abjured violence and chose a peaceful path.",
         "exBn": "তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন।",
         "trick": "Jury (বিচারক)-এর সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই Abjure।",
-        "dur": 13.5,
-        "script": "১০ নম্বর শব্দ: Abjure. এটি একটি Verb. এর অর্থ শপথ করে ত্যাগ করা বা পরিহার করা। Synonyms হলো Renounce, Forsake এবং Disavow। Antonyms হলো Embrace, Espouse এবং Adopt। বাক্যে ব্যবহার: He abjured violence and chose a peaceful path. অর্থাৎ, তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন। মনে রাখার কৌশল: Jury বা বিচারকের সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই হলো Abjure।"
+        "dur": 22.5,
+        "script": "10 নম্বর শব্দ: Abjure। এটি একটি Verb, যার অর্থ শপথ করে ত্যাগ করা / পরিহার করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Renounce অর্থাৎ পরিহার করা, Forsake অর্থাৎ পরিত্যাগ করা, Disavow অর্থাৎ অস্বীকার করা। আর Antonyms বা বিপরীত শব্দ হলো: Embrace অর্থাৎ গ্রহণ করা, Espouse অর্থাৎ সমর্থন করা, Adopt অর্থাৎ গ্রহণ করা। বাক্যে চমৎকার প্রয়োগ: He abjured violence and chose a peaceful path. — অর্থাৎ, তিনি সহিংসতা পুরোপুরি শপথ করে ত্যাগ করে শান্তির পথ বেছে নিয়েছিলেন। মনে রাখার দারুণ কৌশল: Jury (বিচারক)-এর সামনে দাঁড়িয়ে কোনো কিছু আর না করার শপথ নিয়ে ত্যাগ করাই Abjure।"
       },
       {
         "type": 4,
@@ -1218,8 +1233,8 @@ const ALL_EPISODES = {
         "exEn": "She abnegated her personal desires to serve the poor.",
         "exBn": "দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন।",
         "trick": "‘Negate’ মানে বাতিল করা; নিজের ভোগবিলাস বা স্বার্থ Negate করাই হলো Abnegate!",
-        "dur": 13.5,
-        "script": "১১ নম্বর শব্দ: Abnegate. এটি একটি Verb. এর অর্থ নিজের স্বার্থ বা অধিকার ত্যাগ করা অথবা প্রত্যাখ্যান করা। Synonyms হলো Renounce, Relinquish এবং Deny। Antonyms হলো Claim, Assert এবং Embrace। বাক্যে ব্যবহার: She abnegated her personal desires to serve the poor. অর্থাৎ, দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন। মনে রাখার কৌশল: Negate মানে বাতিল করা; নিজের স্বার্থ বা ভোগবিলাস Negate করাই হলো Abnegate!"
+        "dur": 22.5,
+        "script": "11 নম্বর শব্দ: Abnegate। এটি একটি Verb, যার অর্থ নিজের স্বার্থ বা অধিকার ত্যাগ করা / প্রত্যাখ্যান করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Renounce অর্থাৎ পরিহার করা, Relinquish অর্থাৎ ছেড়ে দেওয়া, Surrender অর্থাৎ ত্যাগ করা, Deny অর্থাৎ অস্বীকার করা। আর Antonyms বা বিপরীত শব্দ হলো: Claim অর্থাৎ দাবি করা, Assert অর্থাৎ প্রতিষ্ঠা করা, Embrace অর্থাৎ গ্রহণ করা, Indulge অর্থাৎ লিপ্ত হওয়া। বাক্যে চমৎকার প্রয়োগ: She abnegated her personal desires to serve the poor. — অর্থাৎ, দরিদ্র মানুষের সেবায় তিনি নিজের ব্যক্তিগত চাওয়া-পাওয়া ও সুখ ত্যাগ করেছিলেন। মনে রাখার দারুণ কৌশল: ‘Negate’ মানে বাতিল করা; নিজের ভোগবিলাস বা স্বার্থ Negate করাই হলো Abnegate!"
       },
       {
         "type": 1,
@@ -1233,8 +1248,8 @@ const ALL_EPISODES = {
         "exEn": "War is an abomination that destroys countless innocent lives.",
         "exBn": "যুদ্ধ হলো একটি চরম ঘৃণ্য ও ধ্বংসাত্মক বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়।",
         "trick": "Ab + Ominous (অশুভ) কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বা অভিশপ্ত বিষয় হলো Abomination!",
-        "dur": 13.5,
-        "script": "১২ নম্বর শব্দ: Abomination. এটি একটি Noun. এর অর্থ চরম ঘৃণা, ঘৃণ্য বস্তু বা অতি জঘন্য কাজ। Synonyms হলো Anathema, Atrocity এবং Abhorrence। Antonyms হলো Delight, Blessing এবং Adoration। বাক্যে ব্যবহার: War is an abomination that destroys countless innocent lives. অর্থাৎ, যুদ্ধ হলো একটি চরম ঘৃণ্য বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়। মনে রাখার কৌশল: Ominous বা অশুভ কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বিষয়ই হলো Abomination!"
+        "dur": 22.5,
+        "script": "12 নম্বর শব্দ: Abomination। এটি একটি Noun, যার অর্থ চরম ঘৃণা / ঘৃণ্য বস্তু / অতি জঘন্য কাজ। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Anathema অর্থাৎ অভিশাপ/ঘৃণ্য বস্তু, Atrocity অর্থাৎ নৃশংসতা, Disgrace অর্থাৎ কলঙ্ক, Abhorrence অর্থাৎ তীব্র ঘৃণা। আর Antonyms বা বিপরীত শব্দ হলো: Delight অর্থাৎ আনন্দ, Blessing অর্থাৎ আশীর্বাদ, Treasure অর্থাৎ সম্পদ, Adoration অর্থাৎ শ্রদ্ধা। বাক্যে চমৎকার প্রয়োগ: War is an abomination that destroys countless innocent lives. — অর্থাৎ, যুদ্ধ হলো একটি চরম ঘৃণ্য ও ধ্বংসাত্মক বিষয় যা অসংখ্য নিরীহ মানুষের জীবন কেড়ে নেয়। মনে রাখার দারুণ কৌশল: Ab + Ominous (অশুভ) কিছু মনে করিয়ে দেয় এমন চরম ঘৃণ্য বা অভিশপ্ত বিষয় হলো Abomination!"
       },
       {
         "type": 1,
@@ -1248,8 +1263,8 @@ const ALL_EPISODES = {
         "exEn": "The aboriginal people have lived on this continent for thousands of years.",
         "exBn": "আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে।",
         "trick": "‘Origin’ (উৎপত্তি) থেকে মনে রাখুন; ভূমির মূল বা শুরু থেকে যারা আছে তারাই Aboriginal!",
-        "dur": 13.5,
-        "script": "১৩ নম্বর শব্দ: Aboriginal. এটি Adjective এবং Noun উভয় হিসেবেই ব্যবহৃত হয়। এর অর্থ আদিবাসী, স্থানীয় অধিবাসী বা আদিম। Synonyms হলো Native, Indigenous এবং Original। Antonyms হলো Immigrant, Foreign এবং Alien। বাক্যে ব্যবহার: The aboriginal people have lived on this continent for thousands of years. অর্থাৎ, আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে। মনে রাখার কৌশল: Origin বা উৎপত্তি থেকে মনে রাখুন, ভূমির শুরু থেকে যারা বসবাস করছে তারাই Aboriginal!"
+        "dur": 22.5,
+        "script": "13 নম্বর শব্দ: Aboriginal। এটি একটি Adjective / Noun, যার অর্থ আদিবাসী / দেশীয় অধিবাসী / আদিম। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Native অর্থাৎ দেশীয়/স্থানীয়, Indigenous অর্থাৎ ভূমিপুত্র/আদিবাসী, Original অর্থাৎ আদি, Earliest অর্থাৎ প্রাচীনতম। আর Antonyms বা বিপরীত শব্দ হলো: Immigrant অর্থাৎ অভিবাসী, Foreign অর্থাৎ বিদেশি, Alien অর্থাৎ বহিরাগত, Modern অর্থাৎ আধুনিক। বাক্যে চমৎকার প্রয়োগ: The aboriginal people have lived on this continent for thousands of years. — অর্থাৎ, আদিবাসী জনগোষ্ঠী হাজার হাজার বছর ধরে এই মহাদেশে বসবাস করে আসছে। মনে রাখার দারুণ কৌশল: ‘Origin’ (উৎপত্তি) থেকে মনে রাখুন; ভূমির মূল বা শুরু থেকে যারা আছে তারাই Aboriginal!"
       },
       {
         "type": 1,
@@ -1263,8 +1278,8 @@ const ALL_EPISODES = {
         "exEn": "Their abortive attempt to escape ended in immediate capture.",
         "exBn": "পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল।",
         "trick": "‘Abort’ (মাঝপথে বন্ধ করা) থেকে Abortive; সফল না হয়ে অঙ্কুরেই বিনষ্ট বা ব্যর্থ হওয়া!",
-        "dur": 13.5,
-        "script": "১৪ নম্বর শব্দ: Abortive. এটি একটি Adjective. এর অর্থ ব্যর্থ, অসফল বা অঙ্কুরেই বিনষ্ট। Synonyms হলো Unsuccessful, Failed এবং Futile। Antonyms হলো Successful, Fruitful এবং Effective। বাক্যে ব্যবহার: Their abortive attempt to escape ended in immediate capture. অর্থাৎ, পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল। মনে রাখার কৌশল: কোনো মিশন Abort করা মানে মাঝপথে বাতিল হওয়া, সেখান থেকেই Abortive মানে ব্যর্থ বা নিষ্ফল!"
+        "dur": 22.5,
+        "script": "14 নম্বর শব্দ: Abortive। এটি একটি Adjective, যার অর্থ ব্যর্থ / অসফল / অঙ্কুরেই বিনষ্ট। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Unsuccessful অর্থাৎ ব্যর্থ, Failed অর্থাৎ অসফল, Futile অর্থাৎ নিষ্ফল, Fruitless অর্থাৎ পণ্ডশ্রম। আর Antonyms বা বিপরীত শব্দ হলো: Successful অর্থাৎ সফল, Fruitful অর্থাৎ ফলপ্রসূ, Effective অর্থাৎ কার্যকর, Productive অর্থাৎ উৎপাদনশীল। বাক্যে চমৎকার প্রয়োগ: Their abortive attempt to escape ended in immediate capture. — অর্থাৎ, পালিয়ে যাওয়ার তাদের ব্যর্থ প্রচেষ্টা তাৎক্ষণিক ধরা পড়ার মধ্য দিয়েই শেষ হয়েছিল। মনে রাখার দারুণ কৌশল: ‘Abort’ (মাঝপথে বন্ধ করা) থেকে Abortive; সফল না হয়ে অঙ্কুরেই বিনষ্ট বা ব্যর্থ হওয়া!"
       },
       {
         "type": 1,
@@ -1278,8 +1293,8 @@ const ALL_EPISODES = {
         "exEn": "Fish abound in the fresh rivers of Bangladesh during the monsoon.",
         "exBn": "বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়।",
         "trick": "সীমানা বা ‘Bound’ উপচে পড়ার মতো কোনো এলাকায় প্রচুর থাকা মানেই Abound!",
-        "dur": 13.5,
-        "script": "১৫ নম্বর শব্দ: Abound. এটি একটি Verb. এর অর্থ প্রচুর পরিমাণে থাকা বা ভরপুর থাকা। Synonyms হলো Teem, Plentiful এবং Overflow। Antonyms হলো Lack, Dearth এবং Scarce। বাক্যে ব্যবহার: Fish abound in the fresh rivers of Bangladesh during the monsoon. অর্থাৎ, বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়। মনে রাখার কৌশল: বাউন্ডারি বা সীমানা উপচে পড়ার মতো কোনো কিছু প্রচুর থাকাই হলো Abound!"
+        "dur": 22.5,
+        "script": "15 নম্বর শব্দ: Abound। এটি একটি Verb, যার অর্থ প্রচুর পরিমাণে থাকা / উপচে পড়া / ভরপুর থাকা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Teem অর্থাৎ ভরপুর থাকা, Plentiful অর্থাৎ প্রচুর, Overflow অর্থাৎ উথলে ওঠা, Flourish অর্থাৎ সমৃদ্ধ হওয়া। আর Antonyms বা বিপরীত শব্দ হলো: Lack অর্থাৎ অভাব থাকা, Dearth অর্থাৎ ঘাটতি, Deficient অর্থাৎ অপর্যাপ্ত, Scarce অর্থাৎ দুষ্প্রাপ্য। বাক্যে চমৎকার প্রয়োগ: Fish abound in the fresh rivers of Bangladesh during the monsoon. — অর্থাৎ, বর্ষাকালে বাংলাদেশের মিঠাপানির নদীগুলোতে প্রচুর পরিমাণে মাছ পাওয়া যায়। মনে রাখার দারুণ কৌশল: সীমানা বা ‘Bound’ উপচে পড়ার মতো কোনো এলাকায় প্রচুর থাকা মানেই Abound!"
       },
       {
         "type": 1,
@@ -1293,8 +1308,8 @@ const ALL_EPISODES = {
         "exEn": "The editor abridged the massive novel to fit the magazine format.",
         "exBn": "সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন।",
         "trick": "নদীর দুই তীরের দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, লেখার দৈর্ঘ্য ছোট করা হলো Abridge!",
-        "dur": 13.5,
-        "script": "১৬ নম্বর শব্দ: Abridge. এটি একটি Verb. এর অর্থ সংক্ষিপ্ত করা বা ছোট করা। Synonyms হলো Shorten, Condense এবং Curtail। Antonyms হলো Expand, Lengthen এবং Extend। বাক্যে ব্যবহার: The editor abridged the massive novel to fit the magazine format. অর্থাৎ, সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন। মনে রাখার কৌশল: নদীর দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, তেমনি লেখার দৈর্ঘ্য ছোট করা হলো Abridge!"
+        "dur": 22.5,
+        "script": "16 নম্বর শব্দ: Abridge। এটি একটি Verb, যার অর্থ সংক্ষিপ্ত করা / ছোট করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Shorten অর্থাৎ ছোট করা, Condense অর্থাৎ সংক্ষিপ্ত করা, Curtail অর্থাৎ ছাঁটাই করা, Abbreviate অর্থাৎ সংক্ষেপ করা। আর Antonyms বা বিপরীত শব্দ হলো: Expand অর্থাৎ প্রসারিত করা, Lengthen অর্থাৎ দীর্ঘ করা, Extend অর্থাৎ বাড়ানো, Elaborate অর্থাৎ বিস্তারিত করা। বাক্যে চমৎকার প্রয়োগ: The editor abridged the massive novel to fit the magazine format. — অর্থাৎ, সম্পাদক বিশাল উপন্যাসটি ম্যাগাজিনে প্রকাশের উপযোগী করতে সংক্ষিপ্ত করেছিলেন। মনে রাখার দারুণ কৌশল: নদীর দুই তীরের দূরত্ব যেমন একটি Bridge কমিয়ে দেয়, লেখার দৈর্ঘ্য ছোট করা হলো Abridge!"
       },
       {
         "type": 1,
@@ -1308,8 +1323,8 @@ const ALL_EPISODES = {
         "exEn": "The government voted to abrogate the outdated colonial law.",
         "exBn": "সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল।",
         "trick": "কোনো পুরনো আইন বা নীতিকে Gate বন্ধ করে চিরতরে বাতিল (Nullify) করাই হলো Abrogate!",
-        "dur": 13.5,
-        "script": "১৭ নম্বর শব্দ: Abrogate. এটি একটি Verb. এর অর্থ আনুষ্ঠানিকভাবে আইন বা চুক্তি বাতিল বা রদ করা। Synonyms হলো Repeal, Nullify এবং Revoke। Antonyms হলো Enact, Ratify এবং Enforce। বাক্যে ব্যবহার: The government voted to abrogate the outdated colonial law. অর্থাৎ, সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল। মনে রাখার কৌশল: পুরনো নীতিকে গেট-আউট করে চিরতরে বাতিল করাই হলো Abrogate!"
+        "dur": 22.5,
+        "script": "17 নম্বর শব্দ: Abrogate। এটি একটি Verb, যার অর্থ আইন বা চুক্তি আনুষ্ঠানিকভাবে বাতিল করা / রদ করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Repeal অর্থাৎ বাতিল করা, Nullify অর্থাৎ অকার্যকর করা, Revoke অর্থাৎ প্রত্যাহার করা, Rescind অর্থাৎ রদ করা। আর Antonyms বা বিপরীত শব্দ হলো: Enact অর্থাৎ আইন প্রণয়ন করা, Ratify অর্থাৎ অনুমোদন করা, Establish অর্থাৎ প্রতিষ্ঠা করা, Enforce অর্থাৎ বলবৎ করা। বাক্যে চমৎকার প্রয়োগ: The government voted to abrogate the outdated colonial law. — অর্থাৎ, সরকার সেকেলে ঔপনিবেশিক আইনটি আনুষ্ঠানিকভাবে বাতিল ও রদ করার পক্ষে ভোট দিয়েছিল। মনে রাখার দারুণ কৌশল: কোনো পুরনো আইন বা নীতিকে Gate বন্ধ করে চিরতরে বাতিল (Nullify) করাই হলো Abrogate!"
       },
       {
         "type": 1,
@@ -1323,8 +1338,8 @@ const ALL_EPISODES = {
         "exEn": "The monarch ruled with absolute power over the entire kingdom.",
         "exBn": "সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ও অসীম ক্ষমতা নিয়ে রাজত্ব করেছিলেন।",
         "trick": "Absolute মানে যেখানে কোনো ‘If’ বা ‘But’ নেই—সম্পূর্ণ নিরঙ্কুশ ও চূড়ান্ত!",
-        "dur": 13.5,
-        "script": "১৮ নম্বর শব্দ: Absolute. এটি একটি Adjective. এর অর্থ সম্পূর্ণ, নিরঙ্কুশ বা শর্তহীন। Synonyms হলো Total, Complete এবং Supreme। Antonyms হলো Limited, Conditional এবং Partial। বাক্যে ব্যবহার: The monarch ruled with absolute power over the entire kingdom. অর্থাৎ, সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ক্ষমতা নিয়ে রাজত্ব করেছিলেন। মনে রাখার কৌশল: Absolute মানে যেখানে কোনো যদি বা কিন্তু নেই—পুরোপুরি নিরঙ্কুশ ও চূড়ান্ত!"
+        "dur": 22.5,
+        "script": "18 নম্বর শব্দ: Absolute। এটি একটি Adjective, যার অর্থ সম্পূর্ণ / নিরঙ্কুশ / শর্তহীন / অসীম। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Total অর্থাৎ সম্পূর্ণ, Complete অর্থাৎ পূর্ণাঙ্গ, Unconditional অর্থাৎ শর্তহীন, Supreme অর্থাৎ সর্বোচ্চ। আর Antonyms বা বিপরীত শব্দ হলো: Limited অর্থাৎ সীমিত, Conditional অর্থাৎ শর্তাধীন, Partial অর্থাৎ আংশিক, Incomplete অর্থাৎ অসম্পূর্ণ। বাক্যে চমৎকার প্রয়োগ: The monarch ruled with absolute power over the entire kingdom. — অর্থাৎ, সম্রাট সমগ্র রাজ্যের ওপর নিরঙ্কুশ ও অসীম ক্ষমতা নিয়ে রাজত্ব করেছিলেন। মনে রাখার দারুণ কৌশল: Absolute মানে যেখানে কোনো ‘If’ বা ‘But’ নেই—সম্পূর্ণ নিরঙ্কুশ ও চূড়ান্ত!"
       },
       {
         "type": 1,
@@ -1338,8 +1353,8 @@ const ALL_EPISODES = {
         "exEn": "The court examined the evidence and absolved him of all criminal charges.",
         "exBn": "আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল।",
         "trick": "রহস্য Solve হয়ে যাওয়ার পর আদালত নির্দোষ ব্যক্তিকে দায়মুক্ত (Absolve) করে!",
-        "dur": 13.5,
-        "script": "১৯ নম্বর শব্দ: Absolve. এটি একটি Verb. এর অর্থ অপরাধ বা দায় থেকে মুক্তি দেওয়া বা নির্দোষ ঘোষণা করা। Synonyms হলো Acquit, Exonerate এবং Pardon। Antonyms হলো Blame, Accuse এবং Condemn। বাক্যে ব্যবহার: The court examined the evidence and absolved him of all criminal charges. অর্থাৎ, আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল। মনে রাখার কৌশল: কেস Solve হওয়ার পর নির্দোষ ব্যক্তিকে দায়মুক্ত করাই হলো Absolve!"
+        "dur": 22.5,
+        "script": "19 নম্বর শব্দ: Absolve। এটি একটি Verb, যার অর্থ অপরাধ বা দায় থেকে মুক্তি দেওয়া / নির্দোষ ঘোষণা করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Acquit অর্থাৎ খালাস দেওয়া, Exonerate অর্থাৎ দায়মুক্ত করা, Pardon অর্থাৎ ক্ষমা করা, Clear অর্থাৎ দোষমুক্ত করা। আর Antonyms বা বিপরীত শব্দ হলো: Blame অর্থাৎ দোষারোপ করা, Accuse অর্থাৎ অভিযুক্ত করা, Condemn অর্থাৎ দণ্ডিত করা, Convict অর্থাৎ দোষী সাব্যস্ত করা। বাক্যে চমৎকার প্রয়োগ: The court examined the evidence and absolved him of all criminal charges. — অর্থাৎ, আদালত সাক্ষ্য-প্রমাণ পরীক্ষা করে তাকে সকল ফৌজদারি অভিযোগ থেকে নির্দোষ ঘোষণা ও খালাস দিয়েছিল। মনে রাখার দারুণ কৌশল: রহস্য Solve হয়ে যাওয়ার পর আদালত নির্দোষ ব্যক্তিকে দায়মুক্ত (Absolve) করে!"
       },
       {
         "type": 1,
@@ -1353,8 +1368,8 @@ const ALL_EPISODES = {
         "exEn": "He remained abstinent from unhealthy habits to maintain peak athletic fitness.",
         "exBn": "শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন।",
         "trick": "লোভনীয় কিন্তু ক্ষতিকর জিনিস থেকে নিজে ‘Absent’ বা দূরে থাকাই হলো Abstinent!",
-        "dur": 13.5,
-        "script": "২০ নম্বর শব্দ: Abstinent. এটি একটি Adjective. এর অর্থ স্বেচ্ছায় কোনো কিছু থেকে বিরত থাকা বা সংযমী। Synonyms হলো Temperate, Moderate এবং Restrained। Antonyms হলো Self-indulgent, Gluttonous এবং Intemperate। বাক্যে ব্যবহার: He remained abstinent from unhealthy habits to maintain peak athletic fitness. অর্থাৎ, শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন। মনে রাখার কৌশল: ক্ষতিকর আকর্ষণ থেকে নিজেকে দূরে বা Absent রাখাই হলো Abstinent!"
+        "dur": 22.5,
+        "script": "20 নম্বর শব্দ: Abstinent। এটি একটি Adjective, যার অর্থ স্বেচ্ছায় বিরত থাকা / সংযমী / মিতাচারী। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Temperate অর্থাৎ সংযমী/পরিমিত, Moderate অর্থাৎ পরিমিত, Restrained অর্থাৎ সংযত, Abstemious অর্থাৎ মিতাচারী। আর Antonyms বা বিপরীত শব্দ হলো: Self-indulgent অর্থাৎ আত্মভোগী, Gluttonous অর্থাৎ পেটুক/লোভী, Intemperate অর্থাৎ অসংযমী। বাক্যে চমৎকার প্রয়োগ: He remained abstinent from unhealthy habits to maintain peak athletic fitness. — অর্থাৎ, শীর্ষ শারীরিক সক্ষমতা ধরে রাখতে তিনি অস্বাস্থ্যকর অভ্যাস থেকে সম্পূর্ণ বিরত ও সংযমী ছিলেন। মনে রাখার দারুণ কৌশল: লোভনীয় কিন্তু ক্ষতিকর জিনিস থেকে নিজে ‘Absent’ বা দূরে থাকাই হলো Abstinent!"
       },
       {
         "type": 4,
@@ -1547,8 +1562,8 @@ const ALL_EPISODES = {
         "exEn": "He liked chemistry in the abstract, but he hated doing lab experiments.",
         "exBn": "তাত্ত্বিক বিষয় হিসেবে রসায়ন তার ভালো লাগলেও গবেষণাগারে ব্যবহারিক কাজ করতে সে অপছন্দ করত।",
         "trick": "Ab (দূরে) + Tract (টানা) -> যা বাস্তব বা দৃশ্যমান রূপ থেকে দূরে টানা হয়েছে, অর্থাৎ বিমূর্ত ধারণা!",
-        "dur": 13.5,
-        "script": "২১ নম্বর শব্দ: Abstract. এটি Adjective এবং Noun উভয় হিসেবে ব্যবহৃত হয়। এর অর্থ তাত্ত্বিক, বিমূর্ত বা যা সরাসরি চোখে দেখা বা স্পর্শ করা যায় না। Synonyms হলো Theoretical, Conceptual এবং Intangible। Antonyms হলো Concrete, Tangible এবং Definite। বাক্যে ব্যবহার: He liked chemistry in the abstract, but he hated doing lab experiments. অর্থাৎ, তাত্ত্বিক বিষয় হিসেবে রসায়ন তার ভালো লাগলেও গবেষণাগারে ব্যবহারিক কাজ করতে সে অপছন্দ করত। মনে রাখার কৌশল: বাস্তব বা দৃশ্যমান রূপ থেকে যা দূরে টানা হয়েছে, তাই Abstract বা বিমূর্ত!"
+        "dur": 22.5,
+        "script": "21 নম্বর শব্দ: Abstract। এটি একটি Adjective / Noun, যার অর্থ তাত্ত্বিক / বিমূর্ত / সরাসরি স্পর্শাতীত। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Theoretical অর্থাৎ তাত্ত্বিক, Conceptual অর্থাৎ ধারণাগত, Intangible অর্থাৎ বিমূর্ত, Non-concrete অর্থাৎ অবাস্তব। আর Antonyms বা বিপরীত শব্দ হলো: Concrete অর্থাৎ বাস্তব/দৃঢ়, Tangible অর্থাৎ স্পর্শযোগ্য, Real অর্থাৎ প্রকৃত, Definite অর্থাৎ সুনির্দিষ্ট। বাক্যে চমৎকার প্রয়োগ: He liked chemistry in the abstract, but he hated doing lab experiments. — অর্থাৎ, তাত্ত্বিক বিষয় হিসেবে রসায়ন তার ভালো লাগলেও গবেষণাগারে ব্যবহারিক কাজ করতে সে অপছন্দ করত। মনে রাখার দারুণ কৌশল: Ab (দূরে) + Tract (টানা) -> যা বাস্তব বা দৃশ্যমান রূপ থেকে দূরে টানা হয়েছে, অর্থাৎ বিমূর্ত ধারণা!"
       },
       {
         "type": 1,
@@ -1562,8 +1577,8 @@ const ALL_EPISODES = {
         "exEn": "The professor's lecture on quantum physics was so abstruse that very few students could follow.",
         "exBn": "কোয়ান্টাম পদার্থবিজ্ঞানের ওপর অধ্যাপকের বক্তৃতাটি এতটাই দুর্বোধ্য ছিল যে খুব কম শিক্ষার্থীই তা বুঝতে পেরেছিল।",
         "trick": "Abstruse শুনতে লাগে Obtuse বা Abstract Truth-এর মতো — যে গভীর রহস্য সহজে বোঝা যায় না, সেটাই Abstruse!",
-        "dur": 13.5,
-        "script": "২২ নম্বর শব্দ: Abstruse. এটি একটি Adjective. এর অর্থ দুর্বোধ্য, গূঢ় বা জটিল। Synonyms হলো Obscure, Recondite এবং Esoteric। Antonyms হলো Lucid, Clear এবং Transparent। বাক্যে ব্যবহার: The professor's lecture on quantum physics was so abstruse that very few students could follow. অর্থাৎ, কোয়ান্টাম পদার্থবিজ্ঞানের ওপর অধ্যাপকের বক্তৃতাটি এতটাই দুর্বোধ্য ছিল যে খুব কম শিক্ষার্থীই তা বুঝতে পেরেছিল। মনে রাখার কৌশল: যে সত্য সহজে মগজে ঢোকে না বা বোঝা কঠিন, সেটাই Abstruse বা দুর্বোধ্য!"
+        "dur": 22.5,
+        "script": "22 নম্বর শব্দ: Abstruse। এটি একটি Adjective, যার অর্থ দুর্বোধ্য / গূঢ় / জটিল ও সহজে অবোধ্য। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Obscure অর্থাৎ অস্পষ্ট/দুর্বোধ্য, Recondite অর্থাৎ গূঢ়, Esoteric অর্থাৎ রহস্যময়, Incomprehensible অর্থাৎ অবোধ্য। আর Antonyms বা বিপরীত শব্দ হলো: Lucid অর্থাৎ সহজবোধ্য, Clear অর্থাৎ পরিষ্কার, Transparent অর্থাৎ স্বচ্ছ, Obvious অর্থাৎ স্পষ্ট। বাক্যে চমৎকার প্রয়োগ: The professor's lecture on quantum physics was so abstruse that very few students could follow. — অর্থাৎ, কোয়ান্টাম পদার্থবিজ্ঞানের ওপর অধ্যাপকের বক্তৃতাটি এতটাই দুর্বোধ্য ছিল যে খুব কম শিক্ষার্থীই তা বুঝতে পেরেছিল। মনে রাখার দারুণ কৌশল: Abstruse শুনতে লাগে Obtuse বা Abstract Truth-এর মতো — যে গভীর রহস্য সহজে বোঝা যায় না, সেটাই Abstruse!"
       },
       {
         "type": 1,
@@ -1577,8 +1592,8 @@ const ALL_EPISODES = {
         "exEn": "The quality of public transport in the city is abysmal during rush hours.",
         "exBn": "ব্যস্ত সময়ে শহরের গণপরিবহনের মান অত্যন্ত শোচনীয় ও নিম্নমানের হয়ে পড়ে।",
         "trick": "Abyss মানে অতল গহ্বর; যা অতল খাদের মতো তলানিতে ঠেকেছে, সেটাই Abysmal বা চরম শোচনীয়!",
-        "dur": 13.5,
-        "script": "২৩ নম্বর শব্দ: Abysmal. এটি একটি Adjective. এর অর্থ অতলস্পর্শী, চরম শোচনীয় বা জঘন্য। Synonyms হলো Dreadful, Terrible এবং Appalling। Antonyms হলো Superb, Excellent এবং Outstanding। বাক্যে ব্যবহার: The quality of public transport in the city is abysmal during rush hours. অর্থাৎ, ব্যস্ত সময়ে শহরের গণপরিবহনের মান অত্যন্ত শোচনীয় হয়ে পড়ে। মনে রাখার কৌশল: Abyss শব্দের অর্থ অতল খাদ বা গহ্বর; যা অতল খাদের মতো তলানিতে ঠেকেছে, সেটাই Abysmal বা চরম শোচনীয়!"
+        "dur": 22.5,
+        "script": "23 নম্বর শব্দ: Abysmal। এটি একটি Adjective, যার অর্থ অতলস্পর্শী / চরম শোচনীয় / অত্যন্ত খারাপ। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Dreadful অর্থাৎ ভয়াবহ, Terrible অর্থাৎ ভীষণ খারাপ, Appalling অর্থাৎ হতভম্বকর, Bottomless অর্থাৎ অতল। আর Antonyms বা বিপরীত শব্দ হলো: Superb অর্থাৎ চমৎকার, Excellent অর্থাৎ উৎকৃষ্ট, Outstanding অর্থাৎ অসাধারণ, Splendid অর্থাৎ शानदार। বাক্যে চমৎকার প্রয়োগ: The quality of public transport in the city is abysmal during rush hours. — অর্থাৎ, ব্যস্ত সময়ে শহরের গণপরিবহনের মান অত্যন্ত শোচনীয় ও নিম্নমানের হয়ে পড়ে। মনে রাখার দারুণ কৌশল: Abyss মানে অতল গহ্বর; যা অতল খাদের মতো তলানিতে ঠেকেছে, সেটাই Abysmal বা চরম শোচনীয়!"
       },
       {
         "type": 1,
@@ -1592,8 +1607,8 @@ const ALL_EPISODES = {
         "exEn": "The management finally acceded to the workers' reasonable demands.",
         "exBn": "কর্তৃপক্ষ অবশেষে শ্রমিকদের যৌক্তিক দাবিগুলো মেনে নিতে সম্মত হয়েছিল।",
         "trick": "কোনো অনুরোধ বা দাবি Accept করার নীতিগত সম্মতিই হলো Accede (মনে রাখবেন: Accede to)!",
-        "dur": 13.5,
-        "script": "২৪ নম্বর শব্দ: Accede. এটি একটি Verb. এর অর্থ সম্মত হওয়া, মেনে নেওয়া বা রাজি হওয়া। মনে রাখবে, এর সাথে এপ্রোপ্রিয়েট প্রিপজিশন to বসে — Accede to। Synonyms হলো Consent, Acquiesce এবং Yield। Antonyms হলো Refuse, Reject এবং Disagree। বাক্যে ব্যবহার: The management finally acceded to the workers' reasonable demands. অর্থাৎ, কর্তৃপক্ষ অবশেষে শ্রমিকদের যৌক্তিক দাবিগুলো মেনে নিতে সম্মত হয়েছিল। মনে রাখার টেকনিক: কোনো অনুরোধ Accept করার নীতিগত সম্মতিই হলো Accede করা!"
+        "dur": 22.5,
+        "script": "24 নম্বর শব্দ: Accede। এটি একটি Verb, যার অর্থ সম্মত হওয়া / মেনে নেওয়া / রাজি হওয়া। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Consent অর্থাৎ সম্মতি দেওয়া, Acquiesce অর্থাৎ মেনে নেওয়া, Yield অর্থাৎ নতি স্বীকার করা, Concede অর্থাৎ স্বীকার করা। আর Antonyms বা বিপরীত শব্দ হলো: Refuse অর্থাৎ প্রত্যাখ্যান করা, Reject অর্থাৎ বাতিল করা, Disagree অর্থাৎ অসম্মত হওয়া, Dissent অর্থাৎ ভিন্নমত পোষণ। বাক্যে চমৎকার প্রয়োগ: The management finally acceded to the workers' reasonable demands. — অর্থাৎ, কর্তৃপক্ষ অবশেষে শ্রমিকদের যৌক্তিক দাবিগুলো মেনে নিতে সম্মত হয়েছিল। মনে রাখার দারুণ কৌশল: কোনো অনুরোধ বা দাবি Accept করার নীতিগত সম্মতিই হলো Accede (মনে রাখবেন: Accede to)!"
       },
       {
         "type": 1,
@@ -1607,8 +1622,8 @@ const ALL_EPISODES = {
         "exEn": "The dark lighting was designed to accentuate the actors' facial expressions.",
         "exBn": "অভিনেতাদের মুখের অভিব্যক্তি আরও সুস্পষ্ট ও জোরালোভাবে ফুটিয়ে তোলার জন্য হালকা আলো ব্যবহার করা হয়েছিল।",
         "trick": "Accent (উচ্চারণে জোর বা টান) দেওয়া থেকেই এসেছে Accentuate — কোনো কিছুকে হাইলাইট বা জোর দেওয়া!",
-        "dur": 13.5,
-        "script": "২৫ নম্বর শব্দ: Accentuate. এটি একটি Verb. এর অর্থ জোর দেওয়া, সুস্পষ্ট বা আকর্ষণীয় করে তোলা। Synonyms হলো Emphasize, Highlight এবং Underscore। Antonyms হলো Downplay এবং Mask। বাক্যে ব্যবহার: The dark lighting was designed to accentuate the actors' facial expressions. অর্থাৎ, অভিনেতাদের মুখের অভিব্যক্তি আরও সুস্পষ্ট ও জোরালো করতে মৃদু আলো দেওয়া হয়েছিল। মনে রাখার কৌশল: Accent মানেই কোনো উচ্চারণে জোর দেওয়া, আর কোনো বিষয়কে বিশেষভাবে হাইলাইট করাই হলো Accentuate করা!"
+        "dur": 22.5,
+        "script": "25 নম্বর শব্দ: Accentuate। এটি একটি Verb, যার অর্থ জোর দেওয়া / সুস্পষ্ট করা / আকর্ষণীয় করে তোলা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Emphasize অর্থাৎ জোর দেওয়া, Highlight অর্থাৎ তুলে ধরা, Stress অর্থাৎ গুরুত্ব দেওয়া, Underscore অর্থাৎ চিহ্নিত করা। আর Antonyms বা বিপরীত শব্দ হলো: Downplay অর্থাৎ খাটো করে দেখা, Understate অর্থাৎ কম করে বলা, Mask অর্থাৎ লুকানো, Diminish অর্থাৎ হ্রাস করা। বাক্যে চমৎকার প্রয়োগ: The dark lighting was designed to accentuate the actors' facial expressions. — অর্থাৎ, অভিনেতাদের মুখের অভিব্যক্তি আরও সুস্পষ্ট ও জোরালোভাবে ফুটিয়ে তোলার জন্য হালকা আলো ব্যবহার করা হয়েছিল। মনে রাখার দারুণ কৌশল: Accent (উচ্চারণে জোর বা টান) দেওয়া থেকেই এসেছে Accentuate — কোনো কিছুকে হাইলাইট বা জোর দেওয়া!"
       },
       {
         "type": 1,
@@ -1622,8 +1637,8 @@ const ALL_EPISODES = {
         "exEn": "Every student should have equal access to quality educational resources.",
         "exBn": "প্রত্যেক শিক্ষার্থীর মানসম্মত শিক্ষামূলক উপকরণের সমান প্রবেশাধিকার বা নাগাল পাওয়া উচিত।",
         "trick": "Access কার্ড দিয়ে যেমন তালা খুলে প্রবেশ করা যায়, তেমনি নাগাল বা অধিকারই হলো Access!",
-        "dur": 13.5,
-        "script": "২৬ নম্বর শব্দ: Access. এটি Noun এবং Verb উভয় রূপেই ব্যবহৃত হয়। এর অর্থ প্রবেশাধিকার, নাগাল পাওয়া বা পৌঁছানোর সুযোগ। Synonyms হলো Entry, Admission এবং Approach। Antonyms হলো Restriction এবং Exclusion। বাক্যে ব্যবহার: Every student should have equal access to quality educational resources. অর্থাৎ, প্রত্যেক শিক্ষার্থীর মানসম্মত শিক্ষামূলক উপকরণের সমান প্রবেশাধিকার থাকা উচিত। মনে রাখার কৌশল: Access কার্ড সোয়াইপ করে ঘরে প্রবেশ করা যায়, অর্থাৎ প্রবেশের সুযোগ বা অধিকারই হলো Access!"
+        "dur": 22.5,
+        "script": "26 নম্বর শব্দ: Access। এটি একটি Noun / Verb, যার অর্থ প্রবেশাধিকার / পৌঁছানোর পথ / নাগাল পাওয়া। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Entry অর্থাৎ প্রবেশ, Admission অর্থাৎ ভর্তি/প্রবেশ, Approach অর্থাৎ নাগাল, Admittance অর্থাৎ অনুমতি। আর Antonyms বা বিপরীত শব্দ হলো: Prohibition অর্থাৎ নিষেধাজ্ঞা, Exclusion অর্থাৎ বহিষ্কার, Denial অর্থাৎ প্রত্যাখ্যান, Restriction অর্থাৎ সীমাবদ্ধতা। বাক্যে চমৎকার প্রয়োগ: Every student should have equal access to quality educational resources. — অর্থাৎ, প্রত্যেক শিক্ষার্থীর মানসম্মত শিক্ষামূলক উপকরণের সমান প্রবেশাধিকার বা নাগাল পাওয়া উচিত। মনে রাখার দারুণ কৌশল: Access কার্ড দিয়ে যেমন তালা খুলে প্রবেশ করা যায়, তেমনি নাগাল বা অধিকারই হলো Access!"
       },
       {
         "type": 1,
@@ -1637,8 +1652,8 @@ const ALL_EPISODES = {
         "exEn": "The director's new film won widespread critical acclaim at the festival.",
         "exBn": "চলচ্চিত্র উৎসবে পরিচালকের নতুন ছবিটি সমালোচকদের ব্যাপক প্রশংসা ও সাধুবাদ অর্জন করেছিল।",
         "trick": "Claim মানে দাবি করা; কিন্তু সবাই যখন স্বতঃস্ফূর্ত চিৎকার করে কারও জয়গান গায়, সেটাই Acclaim!",
-        "dur": 13.5,
-        "script": "২৭ নম্বর শব্দ: Acclaim. এটি Verb ও Noun উভয় হিসেবে ব্যবহৃত হয়। এর অর্থ আন্তরিক সাধুবাদ, উচ্চ প্রশংসা বা অভিনন্দিত করা। Synonyms হলো Praise, Applaud এবং Extol। Antonyms হলো Criticize, Condemn এবং Denounce। বাক্যে ব্যবহার: The director's new film won widespread critical acclaim at the festival. অর্থাৎ, চলচ্চিত্র উৎসবে পরিচালকের নতুন সিনেমাটি সমালোচকদের বিপুল সাধুবাদ পেয়েছিল। মনে রাখার কৌশল: করতালিতে কারও জয়গান গাওয়া ও প্রকাশ্যে সম্মান জানানোই হলো Acclaim!"
+        "dur": 22.5,
+        "script": "27 নম্বর শব্দ: Acclaim। এটি একটি Verb / Noun, যার অর্থ উচ্চ প্রশংসা করা / সাধুবাদ জানানো / বিপুল সংবর্ধনা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Praise অর্থাৎ প্রশংসা করা, Applaud অর্থাৎ সাধুবাদ দেওয়া, Commend অর্থাৎ সুনাম করা, Extol অর্থাৎ গুণগান গাওয়া। আর Antonyms বা বিপরীত শব্দ হলো: Criticize অর্থাৎ সমালোচনা করা, Condemn অর্থাৎ নিন্দা করা, Denounce অর্থাৎ অভিযুক্ত করা, Disapprove অর্থাৎ অননুমোদন। বাক্যে চমৎকার প্রয়োগ: The director's new film won widespread critical acclaim at the festival. — অর্থাৎ, চলচ্চিত্র উৎসবে পরিচালকের নতুন ছবিটি সমালোচকদের ব্যাপক প্রশংসা ও সাধুবাদ অর্জন করেছিল। মনে রাখার দারুণ কৌশল: Claim মানে দাবি করা; কিন্তু সবাই যখন স্বতঃস্ফূর্ত চিৎকার করে কারও জয়গান গায়, সেটাই Acclaim!"
       },
       {
         "type": 1,
@@ -1652,8 +1667,8 @@ const ALL_EPISODES = {
         "exEn": "Winning the prestigious Nobel Prize is the highest accolade for a scientist.",
         "exBn": "মর্যাদাপূর্ণ নোবেল পুরস্কার অর্জন যেকোনো বিজ্ঞানীর জন্য সর্বোচ্চ সম্মাননা ও স্বীকৃতি।",
         "trick": "Accolade এসেছে বীর যোদ্ধাকে গলায় মেডেল পরিয়ে নাইটহুড উপাধিতে ভূষিত করার প্রথা থেকে!",
-        "dur": 13.5,
-        "script": "২৮ নম্বর শব্দ: Accolade. এটি একটি Noun. এর অর্থ আনুষ্ঠানিক সম্মাননা, রাষ্ট্রীয় পুরস্কার বা বিশেষ কাজের স্বীকৃতি। Synonyms হলো Honor, Award, Tribute এবং Laurels। Antonyms হলো Rebuke, Censure এবং Criticism। বাক্যে ব্যবহার: Winning the prestigious Nobel Prize is the highest accolade for a scientist. অর্থাৎ, সম্মানজনক নোবেল প্রাইজ অর্জন একজন বিজ্ঞানীর জীবনের সর্বোচ্চ স্বীকৃতি। মনে রাখার কৌশল: অসাধারণ অর্জনের জন্য গলায় মেডেল বা ট্রফি পরিয়ে দেওয়া বিশেষ সম্মাননাই হলো Accolade!"
+        "dur": 22.5,
+        "script": "28 নম্বর শব্দ: Accolade। এটি একটি Noun, যার অর্থ সম্মাননা / রাষ্ট্রীয় পুরস্কার / বিশেষ স্বীকৃতি বা বাহবা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Honor অর্থাৎ সম্মান, Award অর্থাৎ পুরস্কার, Tribute অর্থাৎ শ্রদ্ধাঞ্জলি, Citation অর্থাৎ প্রশংসাপত্র, Laurels অর্থাৎ যশ। আর Antonyms বা বিপরীত শব্দ হলো: Rebuke অর্থাৎ তিরস্কার, Censure অর্থাৎ তীব্র নিন্দা, Criticism অর্থাৎ সমালোচনা, Reprimand অর্থাৎ ভর্ৎসনা। বাক্যে চমৎকার প্রয়োগ: Winning the prestigious Nobel Prize is the highest accolade for a scientist. — অর্থাৎ, মর্যাদাপূর্ণ নোবেল পুরস্কার অর্জন যেকোনো বিজ্ঞানীর জন্য সর্বোচ্চ সম্মাননা ও স্বীকৃতি। মনে রাখার দারুণ কৌশল: Accolade এসেছে বীর যোদ্ধাকে গলায় মেডেল পরিয়ে নাইটহুড উপাধিতে ভূষিত করার প্রথা থেকে!"
       },
       {
         "type": 1,
@@ -1667,8 +1682,8 @@ const ALL_EPISODES = {
         "exEn": "The modern conference hall can comfortably accommodate more than five hundred guests.",
         "exBn": "আধুনিক সম্মেলন কক্ষটি পাঁচ শতাধিক অতিথিকে স্বাচ্ছন্দ্যে জায়গা দিতে সক্ষম।",
         "trick": "Accommodation মানে থাকার জায়গা; সেখান থেকেই Verb Accommodate — বাসস্থান বা জায়গা করে দেওয়া!",
-        "dur": 13.5,
-        "script": "২৯ নম্বর শব্দ: Accommodate. এটি একটি Verb. এর অর্থ জায়গা দেওয়া, সংস্থান করা কিংবা পরিস্থিতি অনুযায়ী মানিয়ে নেওয়া। বানানটি খুব গুরুত্বপূর্ণ — দুটি c এবং দুটি m (A-C-C-O-M-M-O-D-A-T-E)। Synonyms হলো Lodge, House, Adapt এবং Oblige। Antonyms হলো Refuse এবং Obstruct। বাক্যে ব্যবহার: The modern conference hall can comfortably accommodate more than five hundred guests. অর্থাৎ, আধুনিক সম্মেলন কক্ষটি পাঁচ শতাধিক অতিথিকে স্বাচ্ছন্দ্যে জায়গা দিতে পারে। মনে রাখার টেকনিক: বাসস্থান বা সুবিধামতো স্থান করে দেওয়ার কাজই হলো Accommodate!"
+        "dur": 22.5,
+        "script": "29 নম্বর শব্দ: Accommodate। এটি একটি Verb, যার অর্থ জায়গা দেওয়া / মানিয়ে নেওয়া / সংস্থান বা সহায়তা করা। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Lodge অর্থাৎ আবাস দেওয়া, House অর্থাৎ স্থান দেওয়া, Adapt অর্থাৎ মানিয়ে নেওয়া, Adjust অর্থাৎ সমন্বয় করা, Oblige অর্থাৎ উপকার করা। আর Antonyms বা বিপরীত শব্দ হলো: Inconvenience অর্থাৎ অসুবিধায় ফেলা, Reject অর্থাৎ প্রত্যাখ্যান করা, Refuse অর্থাৎ না করা, Obstruct অর্থাৎ বাধা দেওয়া। বাক্যে চমৎকার প্রয়োগ: The modern conference hall can comfortably accommodate more than five hundred guests. — অর্থাৎ, আধুনিক সম্মেলন কক্ষটি পাঁচ শতাধিক অতিথিকে স্বাচ্ছন্দ্যে জায়গা দিতে সক্ষম। মনে রাখার দারুণ কৌশল: Accommodation মানে থাকার জায়গা; সেখান থেকেই Verb Accommodate — বাসস্থান বা জায়গা করে দেওয়া!"
       },
       {
         "type": 1,
@@ -1682,8 +1697,8 @@ const ALL_EPISODES = {
         "exEn": "The thief confessed that he had a corrupt accomplice inside the bank.",
         "exBn": "চোরটি স্বীকার করেছিল যে ব্যাংকের ভেতরেই অপরাধে সাহায্যকারী তার এক অসৎ সহযোগী ছিল।",
         "trick": "Accomplish মানে কাজ সফল করা; আর অসৎ মিশন Accomplish করতে যে দোসর সাহায্য করে সে-ই Accomplice!",
-        "dur": 13.5,
-        "script": "৩০ নম্বর শব্দ: Accomplice. এটি একটি Noun. এর অর্থ অপরাধের সহযোগী, দুষ্কর্মের সঙ্গী বা সহায়তাকারী। বিসিএস এবং চাকরির পরীক্ষায় শব্দটি বারবার আসে। Synonyms হলো Partner in crime, Abettor এবং Collaborator। Antonyms হলো Opponent, Adversary এবং Victim। বাক্যে ব্যবহার: The thief confessed that he had a corrupt accomplice inside the bank. অর্থাৎ, চোরটি স্বীকার করেছিল যে ব্যাংকের ভেতরেই তার এক অসৎ সহযোগী ছিল। মনে রাখার কৌশল: অপরাধের প্ল্যান Accomplish করতে যে দোসর সাহায্য করে, সে-ই হলো Accomplice!"
+        "dur": 22.5,
+        "script": "30 নম্বর শব্দ: Accomplice। এটি একটি Noun, যার অর্থ অপরাধের সহযোগী / দুষ্কর্মের গোপন দোসর। এর গুরুত্বপূর্ণ Synonyms বা সমার্থক শব্দ হলো: Partner in crime অর্থাৎ অপরাধের সঙ্গী, Abettor অর্থাৎ সহায়তাকারী, Collaborator অর্থাৎ সহযোগী, Accessory অর্থাৎ সহায়ক। আর Antonyms বা বিপরীত শব্দ হলো: Opponent অর্থাৎ প্রতিপক্ষ, Adversary অর্থাৎ শত্রু, Victim অর্থাৎ শিকার, Bystander অর্থাৎ দর্শক। বাক্যে চমৎকার প্রয়োগ: The thief confessed that he had a corrupt accomplice inside the bank. — অর্থাৎ, চোরটি স্বীকার করেছিল যে ব্যাংকের ভেতরেই অপরাধে সাহায্যকারী তার এক অসৎ সহযোগী ছিল। মনে রাখার দারুণ কৌশল: Accomplish মানে কাজ সফল করা; আর অসৎ মিশন Accomplish করতে যে দোসর সাহায্য করে সে-ই Accomplice!"
       },
       {
         "type": 4,
@@ -1890,20 +1905,20 @@ function rebuildStageDOM() {
           <span class="meaning-bar">— ${sc.meaning}</span>
         </div>
         <div class="row">
-          <div class="card syn" style="--d:3.5s">
+          <div class="card syn" style="--d:3.8s">
             <h3><span>🟢</span> Synonyms (সমার্থক)</h3>
             <div class="v">${sc.syn}</div>
           </div>
-          <div class="card ant" style="--d:6.2s">
+          <div class="card ant" style="--d:8.0s">
             <h3><span>🔵</span> Antonyms (বিপরীত)</h3>
             <div class="v">${sc.ant}</div>
           </div>
         </div>
-        <div class="ex-box" style="--d:8.8s">
+        <div class="ex-box" style="--d:12.5s">
           <div class="ex-en">💬 "${sc.exEn}"</div>
           <div class="ex-bn">বাংলা: ${sc.exBn}</div>
         </div>
-        <div class="trick-box" style="--d:11.2s">
+        <div class="trick-box" style="--d:17.0s">
           <span>💡 মনে রাখার কৌশল:</span> ${sc.trick}
         </div>
       `;
@@ -2204,7 +2219,7 @@ const Core = (function() {
       // Word Lecture Slide
       // Top header (badge + pron)
       anim(c, s, lt, 0.1, W / 2, H * 0.13, () => {
-        drawPill(c, `শব্দ ${BN(sc.num)} / ২০`, W * 0.42, H * 0.13, u, '#facc15', '#1a1a1a');
+        drawPill(c, `শব্দ ${BN(sc.num)} (${(ALL_EPISODES[currentEp]||ALL_EPISODES[1]).badge})`, W * 0.42, H * 0.13, u, '#facc15', '#1a1a1a');
         drawPill(c, sc.pron, W * 0.58, H * 0.13, u, 'rgba(255,255,255,0.1)', 'rgba(244,255,248,0.85)');
       });
 
@@ -2245,7 +2260,7 @@ const Core = (function() {
       // Comparison Cards (Synonyms & Antonyms)
       const cardW = W * 0.45, cardH = H * 0.2, cardY = H * 0.35;
       // Syn Card
-      anim(c, s, lt, 3.5, W * 0.26, cardY + cardH / 2, () => {
+      anim(c, s, lt, 3.8, W * 0.26, cardY + cardH / 2, () => {
         const x = W * 0.04;
         rr(c, x, cardY, cardW, cardH, 1.4 * u);
         c.fillStyle = 'rgba(255,255,255,0.06)'; c.fill();
@@ -2263,7 +2278,7 @@ const Core = (function() {
       });
 
       // Ant Card
-      anim(c, s, lt, 6.2, W * 0.74, cardY + cardH / 2, () => {
+      anim(c, s, lt, 8.0, W * 0.74, cardY + cardH / 2, () => {
         const x = W * 0.51;
         rr(c, x, cardY, cardW, cardH, 1.4 * u);
         c.fillStyle = 'rgba(255,255,255,0.06)'; c.fill();
@@ -2281,7 +2296,7 @@ const Core = (function() {
       });
 
       // Example sentence box
-      anim(c, s, lt, 8.8, W / 2, H * 0.68, () => {
+      anim(c, s, lt, 12.5, W / 2, H * 0.68, () => {
         const ew = W * 0.92, eh = H * 0.17, ex = W * 0.04, ey = H * 0.58;
         rr(c, ex, ey, ew, eh, 1.2 * u);
         c.fillStyle = 'rgba(255,255,255,0.05)'; c.fill();
@@ -2298,7 +2313,7 @@ const Core = (function() {
       });
 
       // Mnemonic Trick box
-      anim(c, s, lt, 11.2, W / 2, H * 0.86, () => {
+      anim(c, s, lt, 17.0, W / 2, H * 0.86, () => {
         const tw = W * 0.92, th = H * 0.11, tx = W * 0.04, ty = H * 0.79;
         rr(c, tx, ty, tw, th, u);
         c.fillStyle = 'rgba(250,204,21,0.09)'; c.fill();
@@ -2571,8 +2586,70 @@ const Core = (function() {
 })();
 
 /* =======================================================================
-   4. AUDIO & SCRIPT STUDIO CONTROLLER (TTS, PER-SLIDE & FULL VOICE-OVER)
+   4. AUDIO & SCRIPT STUDIO CONTROLLER (INDEXEDDB PERSISTENCE, MIC RECORDER, SEE IN SCENE)
    ======================================================================= */
+const AudioDB = (function() {
+  const DB_NAME = 'WordSmartVocabAudioDB', STORE_NAME = 'clips', VERSION = 1;
+  let dbPromise = null;
+  function getDB() {
+    if (!dbPromise) {
+      dbPromise = new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, VERSION);
+        req.onupgradeneeded = e => {
+          const d = e.target.result;
+          if (!d.objectStoreNames.contains(STORE_NAME)) {
+            d.createObjectStore(STORE_NAME, { keyPath: 'id' });
+          }
+        };
+        req.onsuccess = e => resolve(e.target.result);
+        req.onerror = e => reject(e);
+      });
+    }
+    return dbPromise;
+  }
+
+  return {
+    async save(ep, slide, blob, dur, name) {
+      const db = await getDB();
+      return new Promise((res, rej) => {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        tx.objectStore(STORE_NAME).put({
+          id: `${ep}_${slide}`,
+          ep,
+          slide,
+          blob,
+          dur,
+          name: name || `ep${ep}_slide${slide}.webm`,
+          time: Date.now()
+        });
+        tx.oncomplete = () => res();
+        tx.onerror = e => rej(e);
+      });
+    },
+    async getAllForEp(ep) {
+      const db = await getDB();
+      return new Promise((res, rej) => {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const req = tx.objectStore(STORE_NAME).getAll();
+        req.onsuccess = () => {
+          const all = req.result || [];
+          res(all.filter(x => x.ep === ep));
+        };
+        req.onerror = e => rej(e);
+      });
+    },
+    async delete(ep, slide) {
+      const db = await getDB();
+      return new Promise((res, rej) => {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        tx.objectStore(STORE_NAME).delete(`${ep}_${slide}`);
+        tx.oncomplete = () => res();
+        tx.onerror = e => rej(e);
+      });
+    }
+  };
+})();
+
 (function initVoiceAndPlayer() {
   const $ = id => document.getElementById(id);
   let sc = [].slice.call(document.querySelectorAll('.scene'));
@@ -2586,6 +2663,76 @@ const Core = (function() {
   let curAudio = null, curIdx = 0, playing = true, timer = null, t0 = 0, tok = 0;
   let voiceObj = null;
 
+  // Restore saved audio from IndexedDB across page refreshes
+  async function restoreAudioFromDB() {
+    try {
+      const savedClips = await AudioDB.getAllForEp(currentEp);
+      if (savedClips && savedClips.length > 0) {
+        savedClips.forEach(c => {
+          if (c.slide < sc.length) {
+            if (au[c.slide] && au[c.slide].url) URL.revokeObjectURL(au[c.slide].url);
+            au[c.slide] = {
+              url: URL.createObjectURL(c.blob),
+              dur: c.dur,
+              blob: c.blob,
+              name: c.name
+            };
+          }
+        });
+        syncDurations();
+        renderStudio();
+      }
+    } catch (e) {
+      console.warn('AudioDB restore error:', e);
+    }
+  }
+
+  // Live Microphone Recorder
+  let mediaRecorder = null, recChunks = [], recTargetSlide = null;
+
+  async function toggleRecording(k, btn) {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+      mediaRecorder.stop();
+      return;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      recChunks = [];
+      recTargetSlide = k;
+      mediaRecorder = new MediaRecorder(stream);
+
+      mediaRecorder.ondataavailable = e => {
+        if (e.data && e.data.size > 0) recChunks.push(e.data);
+      };
+
+      mediaRecorder.onstop = async () => {
+        stream.getTracks().forEach(t => t.stop());
+        const blob = new Blob(recChunks, { type: 'audio/webm' });
+        const ac = new (window.AudioContext || window.webkitAudioContext)();
+        const buf = await ac.decodeAudioData(await blob.arrayBuffer());
+        ac.close();
+
+        const dur = buf.duration;
+        await AudioDB.save(currentEp, k, blob, dur, `mic_rec_slide_${k + 1}.webm`);
+
+        if (au[k] && au[k].url) URL.revokeObjectURL(au[k].url);
+        au[k] = { url: URL.createObjectURL(blob), dur, blob };
+
+        renderStudio();
+        syncDurations();
+        btn.textContent = '⏺ Record';
+        btn.classList.remove('rec');
+      };
+
+      mediaRecorder.start();
+      btn.textContent = '⏹ Stop Rec';
+      btn.classList.add('rec');
+    } catch (err) {
+      alert('Microphone permission required for recording: ' + err.message);
+    }
+  }
+
   window.reloadPlayerData = function(newScenes) {
     stopAllSpeech();
     clearTimeout(timer);
@@ -2593,6 +2740,8 @@ const Core = (function() {
     BASE_DURS = Core.SC.map(s => s.t);
     scripts = newScenes.map(s => s.script);
     au = sc.map(() => null);
+    curIdx = 0;
+    restoreAudioFromDB();
     syncDurations();
     renderStudio();
     setPlay(true);
@@ -2609,7 +2758,7 @@ const Core = (function() {
   }
 
   function estNarration(k) {
-    return scripts[k].replace(/\s/g, '').length / (11 * o.rate);
+    return scripts[k].replace(/\s/g, '').length / (10.5 * o.rate);
   }
   function slideDur(k) {
     if (au[k]) return Math.max(BASE_DURS[k], au[k].dur + 0.6);
@@ -2676,35 +2825,50 @@ const Core = (function() {
     showSlide(curIdx);
   }
 
-  
+  // Floating "Back to Studio" preview banner
+  function showScenePreviewBanner(k) {
+    const existing = document.getElementById('pv-banner');
+    if (existing) existing.remove();
+
+    const banner = document.createElement('div');
+    banner.id = 'pv-banner';
+    banner.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(6,20,13,0.95);border:1.5px solid #22c55e;padding:10px 24px;border-radius:40px;box-shadow:0 12px 35px rgba(0,0,0,0.85);display:flex;align-items:center;gap:16px;color:#f4fff8;font-size:14.5px;font-weight:700;animation:in 0.4s ease forwards;';
+    
+    const slideTitle = SCENES_DATA[k].word ? `শব্দ: ${SCENES_DATA[k].word}` : (SCENES_DATA[k].type === 0 ? 'Intro' : SCENES_DATA[k].type === 4 ? 'Recap' : `কুইজ ${SCENES_DATA[k].qNum || ''}`);
+    banner.innerHTML = `
+      <span>🎬 Slide ${k + 1} (${slideTitle}) প্রিভিউ চলছে...</span>
+      <button id="pv-back-btn" style="background:#22c55e;color:#04210f;font-weight:700;border:none;border-radius:20px;padding:6px 18px;cursor:pointer;font-size:13.5px;box-shadow:0 0 10px rgba(34,197,94,0.6);">↩ স্টুডিওতে ফিরুন</button>
+    `;
+
+    document.body.appendChild(banner);
+
+    document.getElementById('pv-back-btn').onclick = () => {
+      banner.remove();
+      setPlay(false);
+      $('vo').hidden = false;
+      const targetRow = document.querySelector(`.r[data-k="${k}"]`);
+      if (targetRow) targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+  }
+
   window.switchEpisode = function(epNum) {
     if (!ALL_EPISODES[epNum]) return;
     currentEp = epNum;
     SCENES_DATA = ALL_EPISODES[currentEp].scenes;
 
-    // 1. Rebuild DOM
     rebuildStageDOM();
-
-    // 2. Reload Core canvas
     Core.reload(SCENES_DATA);
-
-    // 3. Reload Voice & Player
     window.reloadPlayerData(SCENES_DATA);
-
-    // 4. Update Nav Buttons
     renderEpisodeNav();
 
-    // 5. Update Document Title
     document.title = `Word Smart 1 | ভোকাবুলারি মাস্টারক্লাস (${ALL_EPISODES[currentEp].badge})`;
 
-    // 6. Update URL query param
     try {
       const newUrl = new URL(window.location);
       newUrl.searchParams.set('ep', currentEp);
       window.history.replaceState({}, '', newUrl);
     } catch(e) {}
 
-    // 7. Update thumbnail if modal open
     if (window.updateThumbnail) {
       window.updateThumbnail();
     }
@@ -2731,15 +2895,16 @@ const Core = (function() {
       r.className = 'r';
       r.dataset.k = k;
       r.innerHTML = `
-        <div style="display:flex;justify-content:space-between;font-weight:700;">
-          <span>Slide ${k + 1}: ${SCENES_DATA[k].word || (SCENES_DATA[k].type === 0 ? 'Hook' : SCENES_DATA[k].type === 4 ? 'Quick Recap' : (SCENES_DATA[k].type === 2 ? 'Quiz ' + SCENES_DATA[k].qNum : 'Outro'))}</span>
-          <span class="st">${au[k] ? '🎧 অডিও ' + au[k].dur.toFixed(1) + 's' : (o.tts ? '🤖 TTS ≈ ' + estNarration(k).toFixed(1) + 's' : '🔇 No Voice')}</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-weight:700;">
+          <span style="color:#86efac;">Slide ${k + 1}: ${SCENES_DATA[k].word || (SCENES_DATA[k].type === 0 ? 'Hook' : SCENES_DATA[k].type === 4 ? 'Quick Recap' : (SCENES_DATA[k].type === 2 ? 'Quiz ' + SCENES_DATA[k].qNum : 'Outro'))}</span>
+          <span class="st" style="color:#fde68a;">${au[k] ? '🎧 অডিও ' + au[k].dur.toFixed(1) + 's (সংরক্ষিত)' : (o.tts ? '🤖 TTS ≈ ' + estNarration(k).toFixed(1) + 's' : '🔇 No Voice')}</span>
         </div>
-        <textarea>${scripts[k]}</textarea>
-        <div class="acts">
+        <textarea style="font-size:13.5px;line-height:1.45;">${scripts[k]}</textarea>
+        <div class="acts" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
           <button data-a="rec">⏺ Record</button>
           <label class="up"><input type="file" accept="audio/*" hidden> ⬆ Upload</label>
           <button data-a="test">▶ Test</button>
+          <button data-a="see" class="pri" style="background:#22c55e!important;color:#04210f!important;font-weight:700!important;">👁 See in Scene</button>
           <button data-a="clr" class="dng">🗑 Clear</button>
         </div>
       `;
@@ -2776,11 +2941,16 @@ const Core = (function() {
       const ac = new (window.AudioContext || window.webkitAudioContext)();
       const buf = await ac.decodeAudioData(await file.arrayBuffer());
       ac.close();
-      if (au[k]) URL.revokeObjectURL(au[k].url);
-      au[k] = { url: URL.createObjectURL(file), dur: buf.duration, buf };
+
+      const dur = buf.duration;
+      // Save permanently to IndexedDB
+      await AudioDB.save(currentEp, k, file, dur, file.name);
+
+      if (au[k] && au[k].url) URL.revokeObjectURL(au[k].url);
+      au[k] = { url: URL.createObjectURL(file), dur, buf, blob: file };
       renderStudio();
       syncDurations();
-    } catch (err) { alert('Could not decode audio file.'); }
+    } catch (err) { alert('Could not decode audio file: ' + err.message); }
   });
 
   rows.addEventListener('click', async e => {
@@ -2788,7 +2958,10 @@ const Core = (function() {
     if (!btn) return;
     const k = +btn.closest('.r').dataset.k;
     const act = btn.dataset.a;
-    if (act === 'test') {
+
+    if (act === 'rec') {
+      toggleRecording(k, btn);
+    } else if (act === 'test') {
       stopAllSpeech();
       if (au[k]) new Audio(au[k].url).play();
       else if (o.tts && 'speechSynthesis' in window) {
@@ -2797,155 +2970,25 @@ const Core = (function() {
         if (voiceObj) u.voice = voiceObj;
         speechSynthesis.speak(u);
       }
+    } else if (act === 'see') {
+      // See in Scene
+      $('vo').hidden = true;
+      stopAllSpeech();
+      clearTimeout(timer);
+      showScenePreviewBanner(k);
+      curIdx = k;
+      setPlay(true);
     } else if (act === 'clr') {
-      if (au[k]) { URL.revokeObjectURL(au[k].url); au[k] = null; }
+      // Delete permanently from IndexedDB
+      await AudioDB.delete(currentEp, k);
+      if (au[k] && au[k].url) { URL.revokeObjectURL(au[k].url); au[k] = null; }
       renderStudio();
       syncDurations();
     }
   });
 
-  // Full Audio Sync Tool Handlers
-  let FA = null, fUrl = null, fMarks = [];
-  $('f-file').onchange = async function() {
-    if (!this.files[0]) return;
-    try {
-      const ac = new (window.AudioContext || window.webkitAudioContext)();
-      const b = await ac.decodeAudioData(await this.files[0].arrayBuffer());
-      ac.close();
-      const n = b.length, m = new Float32Array(n);
-      for (let c = 0; c < b.numberOfChannels; c++) {
-        const chData = b.getChannelData(c);
-        for (let j = 0; j < n; j++) m[j] += chData[j] / b.numberOfChannels;
-      }
-      FA = { d: m, sr: b.sampleRate, dur: b.duration };
-      if (fUrl) URL.revokeObjectURL(fUrl);
-      fUrl = URL.createObjectURL(this.files[0]);
-      $('f-ed').hidden = false;
-      $('f-st').textContent = 'Full audio loaded: ' + FA.dur.toFixed(1) + ' s';
-    } catch (err) { alert('Error loading full audio.'); }
-  };
-
-  $('f-auto').onclick = () => {
-    if (!FA) return;
-    const need = Math.max(1, +$('f-to').value - +$('f-from').value);
-    const w = Math.round(FA.sr * 0.05), n = Math.floor(FA.d.length / w);
-    const rms = [];
-    for (let a = 0; a < n; a++) {
-      let q = 0; for (let b = a * w; b < (a + 1) * w; b++) q += FA.d[b] * FA.d[b];
-      rms.push(Math.sqrt(q / w));
-    }
-    const srt = rms.slice().sort((x, y) => x - y);
-    const thr = Math.max(0.005, srt[Math.floor(n * 0.95)] * 0.1);
-    const runs = []; let s0 = -1;
-    for (let a = 0; a <= n; a++) {
-      const sil = a < n && rms[a] < thr;
-      if (sil && s0 < 0) s0 = a;
-      if (!sil && s0 >= 0) {
-        if ((a - s0) * 0.05 >= 0.3) runs.push({ t: (s0 + a) / 2 * 0.05, l: (a - s0) * 0.05 });
-        s0 = -1;
-      }
-    }
-    const pick = runs.filter(x => x.t > 0.5 && x.t < FA.dur - 0.5).sort((x, y) => y.l - x.l).slice(0, need).sort((x, y) => x.t - y.t);
-    fMarks = [0].concat(pick.map(x => x.t));
-    $('f-marks').value = fMarks.map(x => x.toFixed(2)).join(', ');
-  };
-
-  function createWavBlob(d, sr) {
-    const n = d.length, bf = new ArrayBuffer(44 + n * 2), v = new DataView(bf);
-    const writeString = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
-    writeString(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); writeString(8, 'WAVEfmt ');
-    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
-    v.setUint32(24, sr, true); v.setUint32(28, sr * 2, true); v.setUint16(32, 2, true);
-    v.setUint16(34, 16, true); writeString(36, 'data'); v.setUint32(40, n * 2, true);
-    for (let j = 0; j < n; j++) {
-      const x = Math.max(-1, Math.min(1, d[j]));
-      v.setInt16(44 + j * 2, x < 0 ? x * 32768 : x * 32767, true);
-    }
-    return new Blob([bf], { type: 'audio/wav' });
-  }
-
-  $('f-apply').onclick = () => {
-    if (!FA) return;
-    const from = Math.max(0, +$('f-from').value - 1);
-    const to = Math.min(sc.length - 1, +$('f-to').value - 1);
-    const marks = $('f-marks').value.split(',').map(Number).filter(x => isFinite(x) && x >= 0).sort((a, b) => a - b);
-    if (!marks.length) return;
-
-    for (let j = 0; j <= to - from && j < marks.length; j++) {
-      const k = from + j;
-      const startSec = marks[j];
-      const endSec = (j + 1 < marks.length) ? marks[j + 1] : FA.dur;
-      const a0 = Math.floor(startSec * FA.sr), b0 = Math.floor(endSec * FA.sr);
-      const seg = FA.d.slice(a0, b0);
-      const ab = new OfflineAudioContext(1, 1, FA.sr).createBuffer(1, seg.length, FA.sr);
-      ab.copyToChannel(seg, 0);
-      if (au[k]) URL.revokeObjectURL(au[k].url);
-      const blob = createWavBlob(seg, FA.sr);
-      au[k] = { url: URL.createObjectURL(blob), dur: seg.length / FA.sr, buf: ab };
-    }
-    renderStudio();
-    syncDurations();
-    alert('Applied timestamps and split audio across slides successfully!');
-  };
-
-  $('f-clr').onclick = () => {
-    au.forEach(a => { if (a) URL.revokeObjectURL(a.url); });
-    au = sc.map(() => null);
-    renderStudio();
-    syncDurations();
-  };
-
-  window.VoiceSys = {
-    audioFor: async function() {
-      if (!o.voice || !au.some(Boolean) || typeof AudioEncoder === 'undefined') return null;
-      try {
-        const sr = 48000;
-        const off = new OfflineAudioContext(2, Math.ceil(Core.DUR * sr), sr);
-        au.forEach((a, k) => {
-          if (!a) return;
-          const s = off.createBufferSource();
-          s.buffer = a.buf;
-          s.connect(off.destination);
-          s.start(Core.SC[k].a + 0.35);
-        });
-        return await off.startRendering();
-      } catch (e) { return null; }
-    },
-    encodeAudio: async function(buf, mux) {
-      const sr = buf.sampleRate;
-      let err = null;
-      const enc = new AudioEncoder({
-        output: (c, m) => mux.addAudioChunk(c, m),
-        error: e => { err = e; }
-      });
-      enc.configure({ codec: 'mp4a.40.2', sampleRate: sr, numberOfChannels: 2, bitrate: 128000 });
-      const L = buf.getChannelData(0), R = buf.getChannelData(1), N = buf.length, C = 9600;
-      for (let p = 0; p < N; p += C) {
-        const n = Math.min(C, N - p), d = new Float32Array(2 * n);
-        d.set(L.subarray(p, p + n), 0);
-        d.set(R.subarray(p, p + n), n);
-        const ad = new AudioData({
-          format: 'f32-planar',
-          sampleRate: sr,
-          numberOfFrames: n,
-          numberOfChannels: 2,
-          timestamp: Math.round(p / sr * 1e6),
-          data: d
-        });
-        enc.encode(ad);
-        ad.close();
-        while (enc.encodeQueueSize > 8) {
-          await new Promise(r => setTimeout(r, 4));
-          if (err) throw err;
-        }
-      }
-      await enc.flush();
-      if (err) throw err;
-      enc.close();
-    }
-  };
-
-  showSlide(0);
+  // Initial restore from IndexedDB
+  restoreAudioFromDB();
 })();
 
 /* =======================================================================

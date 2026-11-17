@@ -87,20 +87,58 @@ body {
 }
 
 /* Animations & Sequential Reveals */
-.scene > *, .card, .u, .ex-box, .trick-box, .slide-top-bar, .quiz-timer, .recap-card {
+.slide-top-bar,
+.word-head,
+.card,
+.ex-box,
+.trick-box,
+.u,
+.quiz-timer,
+.recap-card,
+.scene > * {
   opacity: 0;
 }
-.row, .recap-grid, .word-head {
+
+.row,
+.recap-grid,
+.grid,
+.quiz-feedback {
   opacity: 1 !important;
   animation: none !important;
 }
-.active > *, .active .card, .active .u, .active .ex-box, .active .trick-box, .active .slide-top-bar, .active .recap-card {
+
+.active .slide-top-bar,
+.active .word-head,
+.active .card,
+.active .ex-box,
+.active .trick-box,
+.active .u,
+.active .recap-card,
+.active > *:not(.row):not(.recap-grid):not(.grid):not(.quiz-feedback) {
   animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards;
   animation-delay: var(--d, 0s);
 }
+
 @keyframes in {
-  from { opacity: 0; transform: translateY(2.5cqw) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(2.2cqw) scale(0.97);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.active .trick-box {
+  animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards, trickGlow 3s ease-in-out infinite 17.5s;
+  animation-delay: var(--d, 17.0s), 17.5s;
+}
+@keyframes trickGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.15); }
+  50% { box-shadow: 0 0 35px rgba(250, 204, 21, 0.35); }
 }
 
 /* Quiz Feedback (Hidden until timer ends at 7.5s) */
@@ -1192,26 +1230,26 @@ function BN(n) {
           <span class="badge">শব্দ ${BN(sc.num)} / ২০</span>
           <span class="pron">${sc.pron}</span>
         </div>
-        <div class="word-head" style="--d:.4s">
+        <div class="word-head" style="--d:0.5s">
           <span class="word-title">${sc.word}</span>
           <span class="word-pos">(${sc.pos})</span>
           <span class="meaning-bar">— ${sc.meaning}</span>
         </div>
         <div class="row">
-          <div class="card syn" style="--d:3.5s">
+          <div class="card syn" style="--d:3.8s">
             <h3><span>🟢</span> Synonyms (সমার্থক)</h3>
             <div class="v">${sc.syn}</div>
           </div>
-          <div class="card ant" style="--d:6.2s">
+          <div class="card ant" style="--d:8.0s">
             <h3><span>🔵</span> Antonyms (বিপরীত)</h3>
             <div class="v">${sc.ant}</div>
           </div>
         </div>
-        <div class="ex-box" style="--d:8.8s">
+        <div class="ex-box" style="--d:12.5s">
           <div class="ex-en">💬 "${sc.exEn}"</div>
           <div class="ex-bn">বাংলা: ${sc.exBn}</div>
         </div>
-        <div class="trick-box" style="--d:11.2s">
+        <div class="trick-box" style="--d:17.0s">
           <span>💡 মনে রাখার কৌশল:</span> ${sc.trick}
         </div>
       `;

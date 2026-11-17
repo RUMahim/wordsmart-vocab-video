@@ -87,17 +87,42 @@ body {
 }
 
 /* Animations & Sequential Reveals */
-.scene > *, .card, .u, .ex-box, .trick-box, .slide-top-bar, .quiz-timer, .recap-card {
+.slide-top-bar,
+.word-head,
+.card,
+.ex-box,
+.trick-box,
+.u,
+.quiz-timer,
+.recap-card,
+.intro-feat,
+.chip,
+.scene > * {
   opacity: 0;
 }
-.row, .recap-grid, .word-head {
+
+.row,
+.recap-grid,
+.grid,
+.quiz-feedback {
   opacity: 1 !important;
   animation: none !important;
 }
-.active > *, .active .card, .active .u, .active .ex-box, .active .trick-box, .active .slide-top-bar, .active .recap-card {
+
+.active .slide-top-bar,
+.active .word-head,
+.active .card,
+.active .ex-box,
+.active .trick-box,
+.active .u,
+.active .recap-card,
+.active .intro-feat,
+.active .chip,
+.active > *:not(.row):not(.recap-grid):not(.grid):not(.quiz-feedback) {
   animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards;
   animation-delay: var(--d, 0s);
 }
+
 @keyframes in {
   0% {
     opacity: 0;
@@ -110,8 +135,10 @@ body {
     filter: blur(0);
   }
 }
-.trick-box {
-  animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards, trickGlow 3s ease-in-out infinite 17.5s !important;
+
+.active .trick-box {
+  animation: in 0.65s cubic-bezier(.2, .9, .3, 1.2) forwards, trickGlow 3s ease-in-out infinite 17.5s;
+  animation-delay: var(--d, 17.0s), 17.5s;
 }
 @keyframes trickGlow {
   0%, 100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.15); }
@@ -1899,7 +1926,7 @@ function rebuildStageDOM() {
           <span class="badge">শব্দ ${BN(sc.num)} (${ALL_EPISODES[currentEp].badge})</span>
           <span class="pron">${sc.pron}</span>
         </div>
-        <div class="word-head" style="--d:.4s">
+        <div class="word-head" style="--d:0.5s">
           <span class="word-title">${sc.word}</span>
           <span class="word-pos">(${sc.pos})</span>
           <span class="meaning-bar">— ${sc.meaning}</span>
